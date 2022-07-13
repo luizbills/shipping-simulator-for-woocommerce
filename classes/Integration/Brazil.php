@@ -62,7 +62,7 @@ final class Brazil {
 	}
 
 	public function form_input_mask ( $mask ) {
-		return 'XXXXX-XXX';
+		return 'XX XXX-XXX';
 	}
 
 	public function add_cep_finder_link () {
@@ -76,7 +76,7 @@ final class Brazil {
 		);
 		?>
 		<div id="wc-shipping-sim-br-cep-finder">
-			<a href="<?= esc_url( $cep_finder_link ) ?>"><?= esc_html( $cep_finder_label ) ?></a>
+			<a href="<?= esc_url( $cep_finder_link ) ?>" target="_blank" rel="nofollow noopener"><?= esc_html( $cep_finder_label ) ?></a>
 		</div>
 		<?php
 	}
