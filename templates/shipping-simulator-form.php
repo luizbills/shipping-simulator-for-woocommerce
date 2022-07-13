@@ -3,9 +3,13 @@
 		<?php do_action( 'wc_shipping_simulator_form_start' ) ?>
 
 		<div id="wc-shipping-sim-form-fields">
+			<?php do_action( 'wc_shipping_simulator_form_fields_start' ) ?>
+
 			<input type="text" name="postcode" placeholder="Digite seu CEP" title="Digite seu CEP" class="input-text" data-mask="<?= esc_attr( $input_mask ); ?>" required>
 			<button type="submit" class="button submit">Consultar</button>
 			<?= $nonce ?>
+
+			<?php do_action( 'wc_shipping_simulator_form_fields_end' ) ?>
 		</div>
 
 		<?php do_action( 'wc_shipping_simulator_form_end' ) ?>
