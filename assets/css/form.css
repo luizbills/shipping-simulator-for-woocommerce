@@ -1,8 +1,9 @@
 #wc-shipping-sim {
-    padding-top: 1rem;
+    padding: 1.5em 0;
     border-top: 0.1em solid #e0e0e0;
 }
 #wc-shipping-sim-results table {
+    margin: 0.5em 0;
     border-collapse: collapse;
 }
 #wc-shipping-sim-results tr {
