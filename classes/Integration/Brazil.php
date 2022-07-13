@@ -41,13 +41,8 @@ final class Brazil {
 		if ( 'BR' !== h::get( $posted['country'] ) ) return;
 
 		h::throw_if(
-			! $this->is_cep( $posted['postcode'] ),
-			'O CEP informado não tem 8 digitos.'
-		);
-
-		h::throw_if(
 			null === $this->get_state_by_postcode( $posted['postcode'] ),
-			'O CEP informado não existe.'
+			'O CEP informado não existe ou está incompleto.'
 		);
 	}
 
@@ -89,12 +84,14 @@ final class Brazil {
 		$postcode = (int) $postcode;
 		$result = null;
 
-		foreach ( $this->get_states_postcode_range() as $state ) {
-			$min = (int) $state['min'];
-			$max = (int) $state['max'];
-			if ( $postcode >= $min && $postcode <= $max ) {
-				$result = $state['name'];
-				break;
+		if ( $this->is_cep( $postcode ) ) {
+			foreach ( $this->get_states_postcode_range() as $state ) {
+				$min = (int) $state['min'];
+				$max = (int) $state['max'];
+				if ( $postcode >= $min && $postcode <= $max ) {
+					$result = $state['name'];
+					break;
+				}
 			}
 		}
 
