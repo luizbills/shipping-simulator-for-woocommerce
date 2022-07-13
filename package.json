@@ -1,0 +1,10 @@
+{
+  "name": "wc-shipping-simulator",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "terser assets/js/form.js -c -m -o assets/js/form.min.js"
+  },
+  "devDependencies": {
+    "terser": "^5.14.1"
+  }
+}

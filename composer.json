@@ -1,0 +1,21 @@
+{
+    "require": {
+        "php": "^7.4",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Shipping_Simulator\\": [
+                "classes/"
+            ],
+            "Shipping_Simulator\\Core\\": [
+                "core/"
+            ]
+        }
+    },
+    "scripts": {
+        "build": "/usr/bin/env bash ./scripts/build",
+        "deploy": "/usr/bin/env bash ./scripts/deploy"
+    }
+}
