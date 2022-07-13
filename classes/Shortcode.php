@@ -8,7 +8,6 @@ use Shipping_Simulator\Ajax;
 final class Shortcode {
 	public function __start () {
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
-		add_action( 'woocommerce_before_single_product_summary', [ $this, 'maybe_include_shortcode' ] );
 	}
 
 	public static function get_tag () {
@@ -30,9 +29,23 @@ final class Shortcode {
 			'nonce' => Ajax::get_nonce_field(),
 			'product_type' => $product->get_type(),
 			'product_id' => $product->get_id(),
+
+			// customizable template variables
 			'input_mask' => apply_filters(
 				'wc_shipping_simulator_form_input_mask',
 				'' // no input mask by default
+			),
+			'input_placeholder' => apply_filters(
+				'wc_shipping_simulator_form_input_placeholder',
+				__( 'Type your postcode', 'wc-shipping-simulator' )
+			),
+			'input_type' => apply_filters(
+				'wc_shipping_simulator_form_input_type',
+				'tel'
+			),
+			'submit_label' => apply_filters(
+				'wc_shipping_simulator_form_submit_label',
+				'Consultar'
 			),
 		] );
 	}
@@ -51,16 +64,5 @@ final class Shortcode {
 			[],
 			h::config_get( 'VERSION' )
 		);
-	}
-
-	public function maybe_include_shortcode () {
-		$priority = 35;
-		$includer = function () {
-			global $product;
-			$tag = self::get_tag();
-			$id = $product ? $product->get_id() : 0;
-			echo do_shortcode( "[$tag product=\"$id\"]" );
-		};
-		add_action( 'woocommerce_single_product_summary', $includer, $priority );
 	}
 }

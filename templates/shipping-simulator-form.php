@@ -5,9 +5,11 @@
 		<div id="wc-shipping-sim-form-fields">
 			<?php do_action( 'wc_shipping_simulator_form_fields_start' ) ?>
 
-			<input type="text" name="postcode" placeholder="Digite seu CEP" title="Digite seu CEP" class="input-text" data-mask="<?= esc_attr( $input_mask ); ?>" required>
-			<button type="submit" class="button submit">Consultar</button>
+			<input name="postcode" type="<?= esc_attr( $input_type ); ?>" placeholder="<?= esc_attr( $input_placeholder ); ?>" title="<?= esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" data-mask="<?= esc_attr( $input_mask ); ?>" required maxlength="20">
+
 			<?= $nonce ?>
+
+			<button type="submit" class="button submit"><?= esc_html( $submit_label ); ?></button>
 
 			<?php do_action( 'wc_shipping_simulator_form_fields_end' ) ?>
 		</div>
@@ -16,5 +18,4 @@
 	</form>
 
 	<div id="wc-shipping-sim-results"></div>
-
 </section>
