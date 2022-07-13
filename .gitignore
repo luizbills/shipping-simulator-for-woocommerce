@@ -2,3 +2,5 @@
 /node_modules/
 /wp-build/
 *.log
+*.min.js
+*.min.css
