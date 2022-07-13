@@ -8,6 +8,4 @@ final class Shipping_Package {
 	public function __start () {
 
 	}
-
-
 }

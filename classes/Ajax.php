@@ -10,8 +10,6 @@ final class Ajax {
 		$action = self::get_ajax_action();
 		add_action( "wp_ajax_$action", [ $this, 'handle_request' ] );
 		add_action( "wp_ajax_nopriv_$action", [ $this, 'handle_request' ] );
-
-		// add_action( 'wp_head', function () { h::dd( WC()->cart ); });
 	}
 
 	public static function get_ajax_action () {
@@ -58,7 +56,10 @@ final class Ajax {
 					'wc_shipping_simulator_request_results_html',
 					h::get_template( 'shipping-simulator-results', [
 						'rates' => $rates,
-						'no_rates_notice' => 'No momento este produto não pode ser entregue na região informada.'
+						'no_results_notice' => apply_filters(
+							'wc_shipping_simulator_no_results_notice',
+							'No momento, este produto não pode ser entregue na região informada.'
+						),
 					] ),
 					$rates,
 					$posted
