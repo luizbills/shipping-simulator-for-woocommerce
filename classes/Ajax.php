@@ -40,8 +40,6 @@ final class Ajax {
 			$status = 403;
 		} else {
 			try {
-				do_action( 'wc_shipping_simulator_load_integrations' );
-
 				$posted = $this->sanitize_request_data( $posted );
 				$this->validate_request_data( $posted );
 

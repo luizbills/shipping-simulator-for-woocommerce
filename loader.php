@@ -11,7 +11,8 @@ defined( 'WPINC' ) || exit( 1 );
 // } );
 
 return [
-	[ Integration\Brazil::class, 10 ], // 10 is priority
-	[ Ajax::class, 10 ], // 10 is priority
-	[ Shortcode::class, 10 ], // 10 is priority
+	Settings::class,
+	Integration\Brazil::class,
+	Ajax::class,
+	Shortcode::class,
 ];
