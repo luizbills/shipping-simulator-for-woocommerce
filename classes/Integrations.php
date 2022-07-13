@@ -2,9 +2,7 @@
 
 namespace Shipping_Simulator;
 
-use Shipping_Simulator\Helpers as h;
-
-final class Settings {
+final class Integrations {
 	public function __start () {
 		add_action( 'init', [ $this, 'load_integrations' ] );
 	}
