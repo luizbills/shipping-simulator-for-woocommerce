@@ -33,10 +33,11 @@ final class Ajax {
 	public function handle_request ( $posted = null ) {
 		$response = [ 'success' => true ];
 		$posted = $posted ? $posted : $_GET;
+		$status = 200;
 
 		if ( ! check_ajax_referer( self::get_nonce_action(), self::get_nonce_arg(), false ) ) {
 			$response['success'] = false;
-			wp_send_json( $response, 403 );
+			$status = 403;
 		} else {
 			try {
 				do_action( 'wc_shipping_simulator_load_integrations' );
@@ -67,20 +68,30 @@ final class Ajax {
 			} catch ( Error $e ) {
 				$response['success'] = false;
 				$response['error'] = $e->getMessage();
+				$status = 400;
 			} catch ( \Throwable $e ) {
 				$response['success'] = false;
 				$response['error'] = esc_html__( 'Something went wrong. Please try again.' );
 				h::log( __METHOD__ . ' error: ' . $e->getMessage() );
+				$status = 500;
 			}
 		}
 
-		wp_send_json(
-			apply_filters(
-				'wc_shipping_simulator_request_response',
-				$response,
-				$posted
-			)
+		$status = apply_filters(
+			'wc_shipping_simulator_request_response_status',
+			$status,
+			$posted,
+			$response
 		);
+
+		$response = apply_filters(
+			'wc_shipping_simulator_request_response',
+			$response,
+			$posted,
+			$status
+		);
+
+		wp_send_json( $response, $status );
 	}
 
 	protected function sanitize_request_data ( $posted ) {
