@@ -30,6 +30,10 @@ final class Shortcode {
 			'nonce' => Ajax::get_nonce_field(),
 			'product_type' => $product->get_type(),
 			'product_id' => $product->get_id(),
+			'input_mask' => apply_filters(
+				'wc_shipping_simulator_form_input_mask',
+				'' // no input mask by default
+			),
 		] );
 	}
 

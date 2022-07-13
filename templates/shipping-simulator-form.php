@@ -4,7 +4,7 @@
 			<strong>Consulte o frete e prazo de entrega:</strong>
 		</div>
 		<div>
-			<input type="text" name="postcode" placeholder="Digite seu CEP" title="Digite seu CEP" class="input-text" data-mask="XXXXX-XXX" required>
+			<input type="text" name="postcode" placeholder="Digite seu CEP" title="Digite seu CEP" class="input-text" data-mask="<?= esc_attr( $input_mask ); ?>" required>
 			<button type="submit" class="button submit">Consultar</button>
 			<?= $nonce ?>
 		</div>

@@ -6,15 +6,22 @@ use Shipping_Simulator\Helpers as h;
 
 final class Brazil {
 	protected $state_list = null;
+	protected static $instace = null;
+
+	public static function instance () {
+		return self::$instace;
+	}
 
 	public function __start () {
+		self::$instace = $this;
 		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
-
 	}
 
 	public function add_hooks () {
 		$enabled = apply_filters( 'wc_shipping_simulator_integration_brazil_enabled', true );
 		if ( $enabled ) {
+			add_filter( 'wc_shipping_simulator_form_input_mask', [ $this, 'form_input_mask' ] );
+
 			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ], 10, 2 );
 
 			add_action( 'wc_shipping_simulator_validate_request_data', [ $this, 'validate_request_data' ] );
@@ -50,6 +57,10 @@ final class Brazil {
 			] );
 		}
 		return $package;
+	}
+
+	public function form_input_mask ( $mask ) {
+		return 'XXXXX-XXX';
 	}
 
 	protected function is_cep ( $postcode ) {
