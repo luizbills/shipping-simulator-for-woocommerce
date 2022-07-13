@@ -1,15 +1,3 @@
-<style>
-	#wc-shipping-sim-results table {
-		border-collapse: collapse;
-	}
-	#wc-shipping-sim-results tr {
-		border: 1px solid #f0f0f0;
-	}
-	#wc-shipping-sim-results .col-cost {
-		width: 30%;
-		text-align: right;
-	}
-</style>
 <table>
 	<?php foreach ( $rates as $rate ) : ?>
 		<tr class="method-<?= esc_attr( $rate->get_method_id() ) ?>">

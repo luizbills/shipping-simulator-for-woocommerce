@@ -41,6 +41,12 @@ final class Shortcode {
 			h::config_get( 'VERSION' ),
 			true
 		);
+		wp_enqueue_style(
+			h::prefix( 'form' ),
+			h::plugin_url( 'assets/css/form.css' ),
+			[],
+			h::config_get( 'VERSION' )
+		);
 	}
 
 	public function maybe_include_shortcode () {
