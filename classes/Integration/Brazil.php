@@ -22,7 +22,7 @@ final class Brazil {
 		if ( $enabled ) {
 			add_filter( 'wc_shipping_simulator_form_input_mask', [ $this, 'form_input_mask' ] );
 
-			add_action( 'wc_shipping_simulator_form_end', [ $this, 'form_end' ] );
+			add_action( 'wc_shipping_simulator_form_end', [ $this, 'add_cep_finder_link' ] );
 
 			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ], 10, 2 );
 
@@ -65,7 +65,7 @@ final class Brazil {
 		return 'XXXXX-XXX';
 	}
 
-	public function form_end () {
+	public function add_cep_finder_link () {
 		$cep_finder_link = apply_filters(
 			'wc_shipping_simulator_brazil_cep_finder_link',
 			'https://buscacepinter.correios.com.br/app/endereco/'
