@@ -22,6 +22,8 @@ final class Brazil {
 		if ( $enabled ) {
 			add_filter( 'wc_shipping_simulator_form_input_mask', [ $this, 'form_input_mask' ] );
 
+			add_action( 'wc_shipping_simulator_form_end', [ $this, 'form_end' ] );
+
 			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ], 10, 2 );
 
 			add_action( 'wc_shipping_simulator_validate_request_data', [ $this, 'validate_request_data' ] );
@@ -61,6 +63,22 @@ final class Brazil {
 
 	public function form_input_mask ( $mask ) {
 		return 'XXXXX-XXX';
+	}
+
+	public function form_end () {
+		$cep_finder_link = apply_filters(
+			'wc_shipping_simulator_brazil_cep_finder_link',
+			'https://buscacepinter.correios.com.br/app/endereco/'
+		);
+		$cep_finder_label = apply_filters(
+			'wc_shipping_simulator_brazil_cep_finder_label',
+			'Não sei meu cep'
+		);
+		?>
+		<div id="wc-shipping-sim-br-cep-finder">
+			<a href="<?= esc_url( $cep_finder_link ) ?>"><?= esc_html( $cep_finder_label ) ?></a>
+		</div>
+		<?php
 	}
 
 	protected function is_cep ( $postcode ) {
