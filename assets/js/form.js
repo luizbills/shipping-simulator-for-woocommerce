@@ -6,52 +6,74 @@ window.addEventListener('DOMContentLoaded', () => {
     const button = form.querySelector('#wc-shipping-sim .button.submit');
     const nonce = d.querySelector('#wc-shipping-sim #nonce');
     const I = (val) => val;
-    const hooks = window.wc_shipping_simulator = {
+    const hooks = {
         filterFormData: I,
         filterXHR: I,
         filterResults: I,
         filterProduct: I,
         filterQuantity: I,
+
         beforeSubmit: (xhr) => {
-            results.innerHTML = '';
+            hooks.resultsHandler('');
             input.disabled = true;
-            button.disabled = true;
             button.classList.add('loading')
         },
         afterSubmit: (xhr) => {
             input.disabled = false;
-            button.disabled = false;
             button.classList.remove('loading')
+        },
+        resultsHandler: (html) => {
+            results.innerHTML = html;
+        },
+        errorHandler: (message, data) => {
+            alert(message);
+            console.error('wc-shipping-simulator request error:', data);
         },
         submitHandler: (evt) => {
             evt.preventDefault();
-    
+            if (config.requesting) return;
+            config.requesting = true;
+
             const qty = getQuantity();
             const product = getProduct();
-    
-            let formData = `action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}`;
-            
-            formData = hooks.filterFormData(formData);
-            
+            const formData = hooks.filterFormData(`action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}`);
+
+            if (config.cache && config.cache[formData]) {
+                hooks.resultsHandler(config.cache[formData])
+                config.requesting = false;
+                return;
+            }
+
             let xhr = new XMLHttpRequest();
+
             xhr.open('GET', encodeURI(form.action + '?' + formData), true);
-            xhr.onreadystatechange = () => {
-                if (XMLHttpRequest.DONE !== xhr.readyState) return;
+
+            xhr.timeout = 300000; // 5 minutes
+
+            xhr.onload = () => {
+                config.requesting = false;
                 hooks.afterSubmit(xhr)
-                
-                const res = JSON.parse(xhr.responseText);
-                if (res.success) {
-                    // success
-                    results.innerHTML = hooks.filterResults(res.results_html ? res.results_html : '')
-                } else {
-                    // error
-                    alert(res.error)
+
+                try {
+                    const res = JSON.parse(xhr.responseText);
+                    if (res.success) {
+                        const results = hooks.filterResults(res.results_html ? res.results_html : '')
+                        hooks.resultsHandler(results);
+                        config.cache[formData] = results;
+                    } else {
+                        hooks.errorHandler(res.error, res)
+                    }
+                } catch (e) {
+                    hooks.errorHandler('Unexpected error', e)
                 }
-                console.log(xhr)
             };
-    
+
+            xhr.ontimeout = () => {
+                hooks.errorHandler('Timeout error', null)
+            }
+
             xhr = hooks.filterXHR(xhr)
-    
+
             hooks.beforeSubmit(xhr)
 
             xhr.send();
@@ -64,7 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     input.value = applyMask(input.value || '', mask);
                     input.maxLength = mask ? mask.length : 20;
                 })
-                
+
                 // usage: applyMask('01012000', 'XX-XX-XXXX') // returns "01-01-2000"
                 function applyMask (text, mask, symbol = 'X') {
                     if (!mask) return text;
@@ -84,12 +106,17 @@ window.addEventListener('DOMContentLoaded', () => {
                     return result;
                   }
             }
-        }
+        },
     };
+    const config = window.wc_shipping_simulator = {
+        requesting: false,
+        cache: {},
+        hooks,
+    }
 
     const event = new Event('wc_shipping_simulator:init');
     d.dispatchEvent(event);
-    
+
     form.addEventListener('submit', hooks.submitHandler);
 
     hooks.inputMaskHandler && hooks.inputMaskHandler();
