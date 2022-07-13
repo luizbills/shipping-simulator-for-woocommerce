@@ -51,18 +51,20 @@ final class Shortcode {
 	}
 
 	protected function enqueue_scripts () {
+		$suffix = h::get_defined( 'SCRIPT_DEBUG' ) ? '' : '.min';
+		$plugin_version = h::config_get( 'VERSION' );
 		wp_enqueue_script(
 			h::prefix( 'form' ),
-			h::plugin_url( 'assets/js/form.js' ),
+			h::plugin_url( "assets/js/form$suffix.js" ),
 			[],
-			h::config_get( 'VERSION' ),
+			$plugin_version,
 			true
 		);
 		wp_enqueue_style(
 			h::prefix( 'form' ),
-			h::plugin_url( 'assets/css/form.css' ),
+			h::plugin_url( "assets/css/form$suffix.css" ),
 			[],
-			h::config_get( 'VERSION' )
+			$plugin_version
 		);
 	}
 }

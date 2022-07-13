@@ -2,9 +2,12 @@
   "name": "wc-shipping-simulator",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "terser assets/js/form.js -c -m -o assets/js/form.min.js"
+    "postinstall": "npm run build",
+    "build": "npm run minify:js && npm run minify:css",
+    "minify:js": "esbuild assets/js/form.js --minify --outfile=assets/js/form.min.js",
+    "minify:css": "esbuild assets/css/form.css --minify --outfile=assets/css/form.min.css"
   },
   "devDependencies": {
-    "terser": "^5.14.1"
+    "esbuild": "^0.14.49"
   }
 }
