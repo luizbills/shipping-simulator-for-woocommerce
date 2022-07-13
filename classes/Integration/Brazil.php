@@ -15,7 +15,7 @@ final class Brazil {
 	public function add_hooks () {
 		$enabled = apply_filters( 'wc_shipping_simulator_integration_brazil_enabled', true );
 		if ( $enabled ) {
-			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ] );
+			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ], 10, 2 );
 
 			add_action( 'wc_shipping_simulator_validate_request_data', [ $this, 'validate_request_data' ] );
 
@@ -32,7 +32,7 @@ final class Brazil {
 		if ( 'BR' !== h::get( $posted['country'] ) ) return;
 
 		h::throw_if(
-			$this->is_cep( $posted['postcode'] ),
+			! $this->is_cep( $posted['postcode'] ),
 			'O CEP informado não tem 8 digitos.'
 		);
 

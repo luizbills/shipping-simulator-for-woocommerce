@@ -45,11 +45,12 @@ window.addEventListener('DOMContentLoaded', () => {
             hooks.afterSubmit(xhr)
             
             const res = JSON.parse(xhr.responseText);
-            if (200 === xhr.status) {
+            if (res.success) {
                 // success
                 results.innerHTML = hooks.filterResults(res.results_html ? res.results_html : '')
             } else {
                 // error
+                alert(res.error)
             }
             console.log(xhr)
         };

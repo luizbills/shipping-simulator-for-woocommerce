@@ -65,7 +65,7 @@ final class Shipping_Package {
 		$contents_total = 0;
 
 		foreach ( $this->contents as $item ) {
-			$contents_total += h::get( (float) $item['line_total'], 0 );
+			$contents_total += h::get( $item['line_total'], 0 );
 		}
 
 		$package = apply_filters(
