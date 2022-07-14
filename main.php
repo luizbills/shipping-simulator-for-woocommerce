@@ -26,8 +26,7 @@ along with Shipping Simulator for WooCommerce. If not, see http://www.gnu.org/li
 // prevents your PHP files from being executed via direct browser access
 defined( 'WPINC' ) || exit( 1 );
 
-// uncomment to load your plugin translations
-// load_plugin_textdomain( 'wc-shipping-simulator', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+load_plugin_textdomain( 'wc-shipping-simulator', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 try {
 	// check composer autoload

@@ -11,9 +11,10 @@ defined( 'WPINC' ) || exit( 1 );
 // } );
 
 return [
-	Integrations::class,
-	Integration\Brazil::class,
 	Ajax::class,
 	Shortcode::class,
 	Tweaks::class,
+	Integrations::class,
+	Integration\Brazil::class,
+	Integration\Correios::class,
 ];
