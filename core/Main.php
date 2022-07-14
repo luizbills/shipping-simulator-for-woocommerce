@@ -2,8 +2,6 @@
 
 namespace Shipping_Simulator\Core;
 
-use Shipping_Simulator\Core\Config;
-
 abstract class Main {
 	protected static $classes_to_load = [];
 	protected static $dependencies = [];
