@@ -49,7 +49,7 @@ final class Shortcode {
 			),
 			'submit_label' => apply_filters(
 				'wc_shipping_simulator_form_submit_label',
-				'Consultar'
+				__( 'Apply', 'wc-shipping-simulator' )
 			),
 		] );
 	}
