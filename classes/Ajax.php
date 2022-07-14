@@ -10,6 +10,12 @@ final class Ajax {
 		$action = self::get_ajax_action();
 		add_action( "wp_ajax_$action", [ $this, 'handle_request' ] );
 		add_action( "wp_ajax_nopriv_$action", [ $this, 'handle_request' ] );
+
+		add_action( 'wp_head', function () {
+			if ( h::get( $_GET['debug'] ) ) {
+				h::dd( WC()->cart->get_cart() );
+			}
+		} );
 	}
 
 	public static function get_ajax_action () {
@@ -45,7 +51,7 @@ final class Ajax {
 				$package = apply_filters( 'wc_shipping_simulator_request_update_package', $package, $posted );
 
 				if ( ! $package->ready ) {
-					$package->add_product( $posted['product'], $posted['quantity'] );
+					$package->add_product( $posted['product'], $posted['quantity'], $posted['variation'] );
 					$package->set_destination( [
 						'postcode' => $posted['postcode']
 					] );
@@ -107,6 +113,7 @@ final class Ajax {
 		$sanitized = [
 			'postcode' => h::sanitize_postcode( h::get( $posted['postcode'] ) ),
 			'product' => absint( h::get( $posted['product'] ) ),
+			'variation' => absint( h::get( $posted['variation'], 0 ) ),
 			'quantity' => absint( h::get( $posted['quantity'] ) ),
 		];
 		return apply_filters(

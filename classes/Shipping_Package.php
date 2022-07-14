@@ -34,16 +34,38 @@ final class Shipping_Package {
 		}
 	}
 
-	public function add_product ( $product_id, $quantity ) {
+	public function add_product ( $product_id, $quantity, $variation_id = null ) {
 		$product = wc_get_product( $product_id );
-		$variation_id = null;
+		$variation_id = $variation_id ? absint( $variation_id ) : 0;
 		$variation = [];
 		$quantity = max( $quantity, 1 );
+		$price = $product->get_price();
+		$is_virtual = $product->is_virtual();
 
-		if ( in_array( $product->get_type(), [ 'variable', 'variation' ] ) ) {
-			// TODO: support to variable products
+		if ( 'variable' === $product->get_type() ) {
+			$product_variation = wc_get_product( $variation_id );
+
+			h::throw_if(
+				! $product_variation || ! $product_variation->variation_is_visible(),
+				esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
+			);
+
+			$atts = $product_variation->get_attributes();
+
+			foreach ( $atts as $key => $value ) {
+				$variation[ 'attribute_' . $key ] = $value;
+			}
+
+			$price = $product_variation->get_price();
+			$is_virtual = $product_variation->is_virtual();
 		}
 
+		h::throw_if(
+			$is_virtual,
+			esc_attr__( 'This product is virtual and can not shippable.', 'wc-shipping-simulator' )
+		);
+
+		$total = $price * $quantity;
 		$this->contents[] = apply_filters(
 			'wc_shipping_simulator_shipping_package_item',
 			[
@@ -54,9 +76,9 @@ final class Shipping_Package {
 				'data' => $product,
 				'line_tax' => 0,
 				'line_tax_data' => [ 'subtotal' => [], 'total' => [] ],
-				'line_subtotal' => $product->get_price() * $quantity,
+				'line_subtotal' => $total,
 				'line_subtotal_tax' => 0,
-				'line_total' => $product->get_price() * $quantity,
+				'line_total' => $total,
 			]
 		);
 	}

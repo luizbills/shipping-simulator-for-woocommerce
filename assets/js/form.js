@@ -26,17 +26,25 @@ window.addEventListener('DOMContentLoaded', () => {
             results.innerHTML = html;
         },
         errorHandler: (message, data) => {
-            alert(message);
+            alert(message ? message : 'Error');
             console.error('wc-shipping-simulator request error:', data);
         },
         submitHandler: (evt) => {
             evt.preventDefault();
             if (config.requesting) return;
+
             config.requesting = true;
 
-            const qty = getQuantity();
             const product = getProduct();
-            const formData = hooks.filterFormData(`action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}`);
+            if ( 0 === product.id ) {
+                config.requesting = false;
+                return;
+            }
+
+            const variation = product.variation_id ? '&variation=' + product.variation_id : '';
+            const qty = getQuantity();
+
+            const formData = hooks.filterFormData(`action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}${variation}`);
 
             let xhr = new XMLHttpRequest();
 
@@ -62,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
             };
 
             xhr.ontimeout = () => {
-                hooks.errorHandler('Timeout error', null)
+                hooks.errorHandler('Timeout error', 'timeout')
             }
 
             xhr = hooks.filterXHR(xhr)
@@ -119,13 +127,23 @@ window.addEventListener('DOMContentLoaded', () => {
             id: form.dataset.productId
         };
         if ( 'variable' === product.type ) {
-            // TODO
+            const variation_id_input = d.querySelector('.variations_form .variation_id');
+            product.variation_id = variation_id_input ? variation_id_input.value : null;
+            if (!product.variation_id) {
+                const error = wc_add_to_cart_variation_params ? wc_add_to_cart_variation_params.i18n_make_a_selection_text : '';
+                hooks.errorHandler(error, 'no_variation_selected')
+                product.id = 0; // abort the submit
+            }
         }
         return hooks.filterProduct(product)
     }
 
     function getQuantity () {
-        let value = form.dataset.quantity ? form.dataset.quantity|0 : 1;
-        return hooks.filterQuantity(value)
+        let value = form.dataset.quantity;
+        let input = d.querySelector('[name="quantity"]');
+        if (input) {
+            value = input.value;
+        }
+        return hooks.filterQuantity(value|0)
     }
 })
