@@ -38,12 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
             const product = getProduct();
             const formData = hooks.filterFormData(`action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}`);
 
-            if (config.cache && config.cache[formData]) {
-                hooks.resultsHandler(config.cache[formData])
-                config.requesting = false;
-                return;
-            }
-
             let xhr = new XMLHttpRequest();
 
             xhr.open('GET', encodeURI(form.action + '?' + formData), true);
@@ -59,7 +53,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     if (res.success) {
                         const results = hooks.filterResults(res.results_html ? res.results_html : '')
                         hooks.resultsHandler(results);
-                        config.cache[formData] = results;
                     } else {
                         hooks.errorHandler(res.error, res)
                     }
@@ -110,7 +103,6 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     const config = window.wc_shipping_simulator = {
         requesting: false,
-        cache: {},
         hooks,
     }
 

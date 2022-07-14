@@ -90,12 +90,22 @@ final class Ajax {
 			$status
 		);
 
+		$cache_max_age = (int) apply_filters(
+			'wc_shipping_simulator_request_cache_max_age',
+			600 // 10 minutes
+		);
+
+		if ( $cache_max_age > 0 ) {
+			add_filter( 'nocache_headers', '__return_empty_array', 999 );
+			header( "Cache-Control: max-age=$cache_max_age, must-revalidate" );
+		}
+
 		wp_send_json( $response, $status );
 	}
 
 	protected function sanitize_request_data ( $posted ) {
 		$sanitized = [
-			'postcode' => preg_replace( '/[^0-9a-z]/i', '', h::get( $posted['postcode'] ) ),
+			'postcode' => h::sanitize_postcode( h::get( $posted['postcode'] ) ),
 			'product' => absint( h::get( $posted['product'] ) ),
 			'quantity' => absint( h::get( $posted['quantity'] ) ),
 		];
