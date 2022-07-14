@@ -30,9 +30,11 @@ final class Tweaks {
 
 	public function include_shortcode () {
 		global $product;
-		$tag = Shortcode::get_tag();
-		$id = $product ? $product->get_id() : 0;
-		echo do_shortcode( "[$tag product=\"$id\"]" );
+		if ( $product && $this->product_needs_shipping( $product ) ) {
+			$id = $product->get_id();
+			$tag = Shortcode::get_tag();
+			echo do_shortcode( "[$tag product=\"$id\"]" );
+		}
 	}
 
 	public function results_after () {
@@ -42,5 +44,23 @@ final class Tweaks {
 		?>
 		<div id="wc-shipping-sim-results-after"><?= h::safe_html( $text ) ?></div>
 		<?php
+	}
+
+	protected function product_needs_shipping ( $product ) {
+		$result = false;
+		$type = $product->get_type();
+		if ( in_array( $type, [ 'simple', 'variation' ] ) ) {
+			$result = $product->needs_shipping();
+		}
+		elseif ( 'variable' === $product->get_type() ) {
+			$variations = $product->get_available_variations();
+			foreach ( $variations as $variation ) {
+				if ( ! $variation['is_virtual'] ) {
+					$result = true;
+					break;
+				}
+			}
+		}
+		return apply_filters( 'wc_shipping_simulator_product_needs_shipping', $result, $product );
 	}
 }
