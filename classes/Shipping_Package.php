@@ -91,14 +91,24 @@ final class Shipping_Package {
 		$original_packages = $wc_shipping->packages;
 
 		// calculate
-		$result = $wc_shipping->calculate_shipping( [ $this->get_package() ] );
+		$package = $this->get_package();
+		$result = $wc_shipping->calculate_shipping( [ $package ] );
 
 		// restore the WC_Shipping->packages
 		$wc_shipping->packages = $original_packages;
 
+		$rates = h::get( $result[0]['rates'], [] );
+
+		if ( count( $rates ) > 1 ) {
+			uasort( $rates, function ( $a, $b ) {
+				return $a->get_cost() <=> $b->get_cost();
+			} );
+		}
+
 		$rates = apply_filters(
 			'wc_shipping_simulator_shipping_package_rates',
-			h::get( $result[0]['rates'], [] )
+			$rates,
+			$package
 		);
 
 		return $rates;
