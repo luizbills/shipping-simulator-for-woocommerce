@@ -17,4 +17,5 @@ return [
 	Integrations::class,
 	Integration\Brazil::class,
 	Integration\Correios::class,
+	Integration\Free_Shipping::class,
 ];
