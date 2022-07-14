@@ -5,7 +5,7 @@
 		<div id="wc-shipping-sim-form-fields">
 			<?php do_action( 'wc_shipping_simulator_form_fields_start' ) ?>
 
-			<input name="postcode" type="<?= esc_attr( $input_type ); ?>" placeholder="<?= esc_attr( $input_placeholder ); ?>" title="<?= esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" data-mask="<?= esc_attr( $input_mask ); ?>" required maxlength="20">
+			<input name="postcode" type="<?= esc_attr( $input_type ); ?>" value="<?= esc_attr( $input_value ) ?>" placeholder="<?= esc_attr( $input_placeholder ); ?>" title="<?= esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" data-mask="<?= esc_attr( $input_mask ); ?>" required maxlength="20">
 
 			<?= $nonce ?>
 

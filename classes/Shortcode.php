@@ -43,6 +43,10 @@ final class Shortcode {
 				'wc_shipping_simulator_form_input_type',
 				'tel'
 			),
+			'input_value' => apply_filters(
+				'wc_shipping_simulator_form_input_value',
+				$this->get_customer_postcode()
+			),
 			'submit_label' => apply_filters(
 				'wc_shipping_simulator_form_submit_label',
 				'Consultar'
@@ -66,5 +70,17 @@ final class Shortcode {
 			[],
 			$plugin_version
 		);
+
+		do_action( 'wc_shipping_simulator_shortcode_enqueue_scripts' );
+	}
+
+	protected function get_customer_postcode () {
+		if ( is_user_logged_in() ) {
+			$user_id = get_current_user_id();
+			$billing_postcode = get_user_meta( $user_id, 'billing_postcode', true );
+			$postcode = $billing_postcode ? $billing_postcode : get_user_meta( $user_id, 'shipping_postcode', true );
+			return h::sanitize_postcode( $postcode );
+		}
+		return '';
 	}
 }
