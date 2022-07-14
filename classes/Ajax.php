@@ -58,7 +58,7 @@ final class Ajax {
 						'rates' => $rates,
 						'no_results_notice' => apply_filters(
 							'wc_shipping_simulator_no_results_notice',
-							'No momento, este produto não pode ser entregue na região informada.'
+							__( 'Unfortunately at this moment this product cannot be delivered to the specified region.', 'wc-shipping-simulator' )
 						),
 					] ),
 					$rates,
