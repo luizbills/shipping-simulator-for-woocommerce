@@ -21,7 +21,7 @@ final class Tweaks {
 
 	public function form_start () {
 		// TODO: get this text from a settings field
-		$text = '<strong>Consulte o frete e prazo de entrega:</strong>';
+		$text = '<strong>' . __( 'Check shipping cost and delivery time:', 'wc-shipping-simulator' ) . '</strong>';
 		if ( ! $text ) return;
 		?>
 		<div id="wc-shipping-sim-before"><?= h::safe_html( $text ) ?></div>
@@ -37,7 +37,7 @@ final class Tweaks {
 
 	public function results_after () {
 		// TODO: get this text from a settings field
-		$text = 'Os prazos de entrega começam a contar a partir da confirmação do pagamento.';
+		$text = __( 'Delivery times start from the confirmation of payment.', 'wc-shipping-simulator' );
 		if ( ! $text ) return;
 		?>
 		<div id="wc-shipping-sim-results-after"><?= h::safe_html( $text ) ?></div>
