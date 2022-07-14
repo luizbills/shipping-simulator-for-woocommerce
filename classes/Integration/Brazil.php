@@ -81,14 +81,14 @@ final class Brazil {
 	}
 
 	protected function get_state_by_postcode ( $postcode ) {
-		$postcode = (int) $postcode;
 		$result = null;
 
 		if ( $this->is_cep( $postcode ) ) {
+			$cep = (int) $postcode;
 			foreach ( $this->get_states_postcode_range() as $state ) {
 				$min = (int) $state['min'];
 				$max = (int) $state['max'];
-				if ( $postcode >= $min && $postcode <= $max ) {
+				if ( $cep >= $min && $cep <= $max ) {
 					$result = $state['name'];
 					break;
 				}
