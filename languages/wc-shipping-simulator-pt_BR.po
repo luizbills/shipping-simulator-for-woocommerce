@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-"
 "simulator\n"
-"POT-Creation-Date: 2022-07-14T17:27:47-03:00\n"
-"PO-Revision-Date: 2022-07-14 17:28-0300\n"
+"POT-Creation-Date: 2022-07-14T19:15:04-03:00\n"
+"PO-Revision-Date: 2022-07-14 19:16-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -36,7 +36,7 @@ msgstr "Luiz Bills"
 msgid "https://github.com/luizbills"
 msgstr "https://github.com/luizbills"
 
-#: classes/Ajax.php:61
+#: classes/Ajax.php:67
 msgid ""
 "Unfortunately at this moment this product cannot be delivered to the "
 "specified region."
@@ -44,21 +44,31 @@ msgstr ""
 "Infelizmente, neste momento, este produto não pode ser entregue na região "
 "informada."
 
-#: classes/Ajax.php:125
+#: classes/Ajax.php:132
 msgid "The postcode is required."
 msgstr "O CEP é obrigatório."
 
-#: classes/Ajax.php:129
+#: classes/Ajax.php:136
 msgid "Invalid product ID."
 msgstr "ID de produto inválido."
 
-#: classes/Ajax.php:133
+#: classes/Ajax.php:140
 msgid "The quantity must be greater than zero."
 msgstr "A quantidade deve ser maior que zero."
 
 #: classes/Integration/Correios.php:76
 msgid "Shipping options for %s"
 msgstr "Opções de frete para %s"
+
+#: classes/Shipping_Package.php:50
+msgid ""
+"Please select some product options before adding this product to your cart."
+msgstr ""
+"Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
+
+#: classes/Shipping_Package.php:65
+msgid "This product is virtual and can not shippable."
+msgstr "Este produto é virtual e não pode ser enviado."
 
 #: classes/Shortcode.php:40
 msgid "Type your postcode"
@@ -72,7 +82,7 @@ msgstr "Consultar"
 msgid "Check shipping cost and delivery time:"
 msgstr "Consulte o frete e o prazo de entrega:"
 
-#: classes/Tweaks.php:40
+#: classes/Tweaks.php:42
 msgid "Delivery times start from the confirmation of payment."
 msgstr ""
 "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
