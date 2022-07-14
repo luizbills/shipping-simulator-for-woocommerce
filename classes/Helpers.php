@@ -259,4 +259,8 @@ abstract class Helpers {
 	// public static function foo () {
 	//     return 'bar';
 	// }
+
+	public static function sanitize_postcode ( $postcode ) {
+		return preg_replace( '/[^0-9]/', '', $postcode );
+	}
 }
