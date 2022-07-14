@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-"
 "simulator\n"
-"POT-Creation-Date: 2022-07-14T17:07:34-03:00\n"
-"PO-Revision-Date: 2022-07-14 17:08-0300\n"
+"POT-Creation-Date: 2022-07-14T17:27:47-03:00\n"
+"PO-Revision-Date: 2022-07-14 17:28-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -55,6 +55,10 @@ msgstr "ID de produto inválido."
 #: classes/Ajax.php:133
 msgid "The quantity must be greater than zero."
 msgstr "A quantidade deve ser maior que zero."
+
+#: classes/Integration/Correios.php:76
+msgid "Shipping options for %s"
+msgstr "Opções de frete para %s"
 
 #: classes/Shortcode.php:40
 msgid "Type your postcode"
