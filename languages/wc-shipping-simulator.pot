@@ -1,0 +1,71 @@
+# Copyright (C) 2022 Luiz Bills
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-simulator\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-07-14T18:35:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: wc-shipping-simulator\n"
+
+#. Plugin Name of the plugin
+msgid "Shipping Simulator for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+msgid "Allows your customers to calculate the shipping rates on the product page"
+msgstr ""
+
+#. Author of the plugin
+msgid "Luiz Bills"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/luizbills"
+msgstr ""
+
+#: classes/Ajax.php:125
+msgid "The postcode is required."
+msgstr ""
+
+#: classes/Ajax.php:129
+msgid "Invalid product ID."
+msgstr ""
+
+#: classes/Ajax.php:133
+msgid "The quantity must be greater than zero."
+msgstr ""
+
+#: classes/Shortcode.php:40
+msgid "Type your postcode"
+msgstr ""
+
+#: classes/Shortcode.php:52
+msgid "Apply"
+msgstr ""
+
+#: classes/Tweaks.php:24
+msgid "Check shipping cost and delivery time:"
+msgstr ""
+
+#: classes/Tweaks.php:40
+msgid "Delivery times start from the confirmation of payment."
+msgstr ""
+
+#: core/Dependencies.php:71
+msgid "Missing dependencies of %s plugin:"
+msgstr ""
+
+#: dependencies.php:25
+msgid "Install and activate the %s plugin."
+msgstr ""
+
+#: main.php:43
+msgid "Error on plugin %s activation: %s"
+msgstr ""
