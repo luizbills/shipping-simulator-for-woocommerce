@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-"
 "simulator\n"
-"POT-Creation-Date: 2022-07-14T18:35:31+00:00\n"
-"PO-Revision-Date: 2022-07-14 16:24-0300\n"
+"POT-Creation-Date: 2022-07-14T17:07:34-03:00\n"
+"PO-Revision-Date: 2022-07-14 17:08-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -35,6 +35,14 @@ msgstr "Luiz Bills"
 #. Author URI of the plugin
 msgid "https://github.com/luizbills"
 msgstr "https://github.com/luizbills"
+
+#: classes/Ajax.php:61
+msgid ""
+"Unfortunately at this moment this product cannot be delivered to the "
+"specified region."
+msgstr ""
+"Infelizmente, neste momento, este produto não pode ser entregue na região "
+"informada."
 
 #: classes/Ajax.php:125
 msgid "The postcode is required."
