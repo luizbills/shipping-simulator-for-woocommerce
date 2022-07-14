@@ -14,7 +14,9 @@ final class Brazil {
 
 	public function __start () {
 		self::$instace = $this;
-		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
+		if ( 'BRL' === get_woocommerce_currency() ) {
+			add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
+		}
 	}
 
 	public function add_hooks () {
