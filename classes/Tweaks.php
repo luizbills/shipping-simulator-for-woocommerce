@@ -24,7 +24,7 @@ final class Tweaks {
 		$text = '<strong>' . __( 'Check shipping cost and delivery time:', 'wc-shipping-simulator' ) . '</strong>';
 		if ( ! $text ) return;
 		?>
-		<div id="wc-shipping-sim-before"><?= h::safe_html( $text ) ?></div>
+		<div id="wc-shipping-sim-before"><?php echo h::safe_html( $text ) ?></div>
 		<?php
 	}
 
@@ -42,7 +42,7 @@ final class Tweaks {
 		$text = __( 'Delivery times start from the confirmation of payment.', 'wc-shipping-simulator' );
 		if ( ! $text ) return;
 		?>
-		<div id="wc-shipping-sim-results-after"><?= h::safe_html( $text ) ?></div>
+		<div id="wc-shipping-sim-results-after"><?php echo h::safe_html( $text ) ?></div>
 		<?php
 	}
 
