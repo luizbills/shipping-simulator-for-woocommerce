@@ -1,6 +1,6 @@
 === Shipping Simulator for WooCommerce ===
 Contributors: luizbills
-Donate link: https://luizpb.com/en
+Donate link: https://ko-fi.com/luizbills
 Tags: woocommerce, shipping, simulator, simulador, frete
 Requires at least: 5.0
 Tested up to: 6.0
