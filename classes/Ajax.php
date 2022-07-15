@@ -10,12 +10,6 @@ final class Ajax {
 		$action = self::get_ajax_action();
 		add_action( "wp_ajax_$action", [ $this, 'handle_request' ] );
 		add_action( "wp_ajax_nopriv_$action", [ $this, 'handle_request' ] );
-
-		add_action( 'wp_head', function () {
-			if ( h::get( $_GET['debug'] ) ) {
-				h::dd( WC()->cart->get_cart() );
-			}
-		} );
 	}
 
 	public static function get_ajax_action () {
