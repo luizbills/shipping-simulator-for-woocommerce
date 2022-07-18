@@ -60,6 +60,7 @@ final class Ajax {
 							'wc_shipping_simulator_no_results_notice',
 							__( 'Unfortunately at this moment this product cannot be delivered to the specified region.', 'wc-shipping-simulator' )
 						),
+						'data' => $posted,
 					] ),
 					$rates,
 					$posted

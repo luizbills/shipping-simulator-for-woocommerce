@@ -27,7 +27,7 @@ final class Correios {
 	public function add_hooks () {
 		if ( $this->is_enabled() ) {
 			add_filter( 'wc_shipping_simulator_shipping_package_rates', [ $this, 'shipping_package_rates' ] );
-			add_action( 'wc_shipping_simulator_request_results_html', [ $this, 'request_results_html' ], 5, 3 );
+			add_filter( 'wc_shipping_simulator_results_title_address', [ $this, 'results_title_address' ], 10, 2 );
 		}
 	}
 
@@ -47,36 +47,20 @@ final class Correios {
 		return $rates;
 	}
 
-	public function request_results_html ( $html, $rates, $posted ) {
-		if ( count( $rates ) > 0 ) {
-			$postcode = h::get( $posted['postcode'] );
-			$result = WC_Correios_Autofill_Addresses::get_address( $postcode );
-			$address = $postcode;
-
-			if ( $result ) {
-				$parts = [
-					h::get( $result->address ),
-					h::get( $result->city ),
-					h::get( $result->state )
-				];
-				$address = apply_filters(
-					'wc_shipping_simulator_integration_correios_results_address',
-					implode( ', ', array_filter( $parts ) ),
-					$result
-				);
-			}
-
-			$text = sprintf(
-				esc_html__( 'Shipping options for %s', 'wc-shipping-simulator' ),
-				'<strong>' . $address . '</strong>'
-			);
-
-			$html = str_replace(
-				'<table',
-				'<div id="wc-shipping-sim-results-address">' . $text . '</div><table',
-				$html
-			);
+	public function results_title_address ( $address, $data ) {
+		$result = WC_Correios_Autofill_Addresses::get_address( $data['postcode'] );
+		if ( $result ) {
+			$parts = [
+				h::get( $result->address ),
+				h::get( $result->city ),
+				h::get( $result->state )
+			];
+			$address = '<strong>' . apply_filters(
+				'wc_shipping_simulator_integration_correios_results_address',
+				implode( ', ', array_filter( $parts ) ),
+				$result
+			) . '</strong>';
 		}
-		return $html;
+		return $address;
 	}
 }
