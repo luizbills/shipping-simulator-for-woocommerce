@@ -4,6 +4,7 @@ namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
 use Shipping_Simulator\Shipping_Package;
+use Shipping_Simulator\Admin\Settings;
 
 final class Ajax {
 	public function __start () {
@@ -58,7 +59,7 @@ final class Ajax {
 						'rates' => $rates,
 						'no_results_notice' => apply_filters(
 							'wc_shipping_simulator_no_results_notice',
-							__( 'Unfortunately at this moment this product cannot be delivered to the specified region.', 'wc-shipping-simulator' )
+							Settings::get_option( 'no_results' )
 						),
 						'data' => $posted,
 					] ),

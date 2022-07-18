@@ -4,6 +4,7 @@ namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
 use Shipping_Simulator\Shortcode;
+use Shipping_Simulator\Admin\Settings;
 
 final class Tweaks {
 	protected static $instace = null;
@@ -21,21 +22,26 @@ final class Tweaks {
 	}
 
 	public function auto_inser_shortcode () {
+		if ( 'yes' !== Settings::get_option( 'auto_insert' ) ) return;
 		global $product;
-		if ( $product && $this->product_needs_shipping( $product ) ) {
+		if ( $product ) {
 			$id = $product->get_id();
 			$tag = Shortcode::get_tag();
-			echo do_shortcode( "[$tag product=\"$id\"]" );
+			echo do_shortcode( "[$tag]" );
 		}
 	}
 
 	public function form_start () {
-		// TODO: get this text from a settings field
-		$text = '<strong>' . __( 'Check shipping cost and delivery time:', 'wc-shipping-simulator' ) . '</strong>';
-		if ( ! $text ) return;
-		?>
-		<div id="wc-shipping-sim-before"><?php echo h::safe_html( $text ) ?></div>
-		<?php
+		$option = Settings::get_option( 'form_title' );
+		$title = apply_filters(
+			'wc_shipping_simulator_form_title',
+			$option ? "<strong>$option</strong>" : ''
+		);
+		if ( $title ) {
+			?>
+			<div id="wc-shipping-sim-form-title"><?php echo h::safe_html( $title ) ?></div>
+			<?php
+		}
 	}
 
 	public function results_before ( $data ) {
@@ -56,29 +62,15 @@ final class Tweaks {
 	}
 
 	public function results_after () {
-		// TODO: get this text from a settings field
-		$text = __( 'Delivery times start from the confirmation of payment.', 'wc-shipping-simulator' );
-		if ( ! $text ) return;
-		?>
-		<div id="wc-shipping-sim-results-after"><?php echo h::safe_html( $text ) ?></div>
-		<?php
-	}
-
-	protected function product_needs_shipping ( $product ) {
-		$result = false;
-		$type = $product->get_type();
-		if ( in_array( $type, [ 'simple', 'variation' ] ) ) {
-			$result = $product->needs_shipping();
+		$option = Settings::get_option( 'after_results' );
+		$text = apply_filters(
+			'wc_shipping_simulator_text_after_results',
+			$option
+		);
+		if ( $text ) {
+			?>
+			<div id="wc-shipping-sim-results-after"><?php echo h::safe_html( $text ) ?></div>
+			<?php
 		}
-		elseif ( 'variable' === $product->get_type() ) {
-			$variations = $product->get_available_variations();
-			foreach ( $variations as $variation ) {
-				if ( ! $variation['is_virtual'] ) {
-					$result = true;
-					break;
-				}
-			}
-		}
-		return apply_filters( 'wc_shipping_simulator_product_needs_shipping', $result, $product );
 	}
 }

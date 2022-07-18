@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-simulator\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-14T19:15:04-03:00\n"
+"POT-Creation-Date: 2022-07-18T18:45:33-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -30,24 +30,88 @@ msgstr ""
 msgid "https://github.com/luizbills"
 msgstr ""
 
-#: classes/Ajax.php:67
+#: classes/Admin/inc/settings_fields.php:12
+msgid "Shipping Simulator Settings"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:13
+msgid "The following options are used to configure the Shipping Simulator. In almost all text fields below you can use html tags like <span>, <strong>, <em>, etc."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:18
+msgid "Enable Auto-Insert"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:20
+msgid "Display automatically the shipping simulator in product pages. Alternatively you can manually insert the shipping simulator using the %s shortcode."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:28
+msgid "Title"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:29
+msgid "Text that appears before the simulator fields."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:30
+msgid "Check shipping cost and delivery time:"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:35
+msgid "Input placeholder"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:36
+msgid "Text that appears when the postcode field is empty."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:37
+msgid "Type your postcode"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:42
+msgid "Button Text"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:43
+msgid "Text that appears on the shipping simulator button."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:44
+msgid "Apply"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:49
+msgid "Text after results."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:50
+msgid "Delivery times start from the confirmation of payment."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:56
+msgid "Text when not have results."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:57
 msgid "Unfortunately at this moment this product cannot be delivered to the specified region."
 msgstr ""
 
-#: classes/Ajax.php:132
+#: classes/Admin/Settings.php:47
+msgid "Shipping Simulator"
+msgstr ""
+
+#: classes/Ajax.php:128
 msgid "The postcode is required."
 msgstr ""
 
-#: classes/Ajax.php:136
+#: classes/Ajax.php:132
 msgid "Invalid product ID."
 msgstr ""
 
-#: classes/Ajax.php:140
+#: classes/Ajax.php:136
 msgid "The quantity must be greater than zero."
-msgstr ""
-
-#: classes/Integration/Correios.php:76
-msgid "Shipping options for %s"
 msgstr ""
 
 #: classes/Shipping_Package.php:50
@@ -58,23 +122,11 @@ msgstr ""
 msgid "This product is virtual and can not shippable."
 msgstr ""
 
-#: classes/Shortcode.php:40
-msgid "Type your postcode"
+#: classes/Tweaks.php:50
+msgid "Shipping options for"
 msgstr ""
 
-#: classes/Shortcode.php:52
-msgid "Apply"
-msgstr ""
-
-#: classes/Tweaks.php:24
-msgid "Check shipping cost and delivery time:"
-msgstr ""
-
-#: classes/Tweaks.php:42
-msgid "Delivery times start from the confirmation of payment."
-msgstr ""
-
-#: core/Dependencies.php:71
+#: core/Dependencies.php:68
 msgid "Missing dependencies of %s plugin:"
 msgstr ""
 

@@ -1,0 +1,58 @@
+<?php
+
+namespace Shipping_Simulator\Admin;
+
+use Shipping_Simulator\Helpers as h;
+
+final class Settings {
+	protected static $fields = null;
+
+	public function __start () {
+		add_filter( 'woocommerce_get_sections_shipping', [ $this, 'add_section' ] );
+		add_filter( 'woocommerce_get_settings_shipping', [ $this, 'add_settings' ], 10, 2 );
+	}
+
+	public static function get_option ( $key ) {
+		$key = self::get_prefix() . $key;
+		$option = \get_option( $key );
+		if ( false === $option ) {
+			$fields = self::get_fields();
+			return h::get( $fields[ $key ][ 'default' ], false );
+		}
+		return $option;
+	}
+
+	public static function get_id () {
+		return h::get_slug();
+	}
+
+	public static function get_prefix () {
+		return h::prefix();
+	}
+
+	protected static function get_fields ( $assoc = true ) {
+		if ( null === self::$fields ) {
+			$fields = include __DIR__ . '/inc/settings_fields.php';
+			self::$fields = [];
+			foreach ( $fields as $i => $field ) {
+				$type = h::get( $field['type'], 'text' );
+				$key = in_array( $type, [ 'title', 'sectionend' ] ) ? $i : $field['id'];
+				self::$fields[ $key ] = $field;
+			}
+		}
+		return $assoc ? self::$fields : array_values( self::$fields );
+	}
+
+	public function add_section ( $sections ) {
+		$sections[ self::get_id() ] = esc_html__( 'Shipping Simulator', 'wc-shipping-simulator' );
+		return $sections;
+	}
+
+	public function add_settings ( $settings, $current_section ) {
+		if ( self::get_id() === $current_section ) {
+			$settings = self::get_fields( false );
+		}
+
+		return $settings;
+	}
+}

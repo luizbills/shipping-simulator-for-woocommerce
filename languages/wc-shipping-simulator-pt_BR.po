@@ -3,10 +3,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-shipping-"
-"simulator\n"
-"POT-Creation-Date: 2022-07-14T19:15:04-03:00\n"
-"PO-Revision-Date: 2022-07-14 19:16-0300\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
+"simulator-for-woocommerce\n"
+"POT-Creation-Date: 2022-07-18T18:45:33-03:00\n"
+"PO-Revision-Date: 2022-07-18 18:46-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -36,7 +36,83 @@ msgstr "Luiz Bills"
 msgid "https://github.com/luizbills"
 msgstr "https://github.com/luizbills"
 
-#: classes/Ajax.php:67
+#: classes/Admin/inc/settings_fields.php:12
+msgid "Shipping Simulator Settings"
+msgstr "Configurações do Simulador de Frete"
+
+#: classes/Admin/inc/settings_fields.php:13
+msgid ""
+"The following options are used to configure the Shipping Simulator. In "
+"almost all text fields below you can use html tags like <span>, <strong>, "
+"<em>, etc."
+msgstr ""
+"As opções a seguir são usadas para configurar o Simulador de Frete. Em quase "
+"todos os campos de texto é possível usar tags de html como <span>, <strong>, "
+"<em>, etc."
+
+#: classes/Admin/inc/settings_fields.php:18
+msgid "Enable Auto-Insert"
+msgstr "Ativar Auto-Inserção"
+
+#: classes/Admin/inc/settings_fields.php:20
+msgid ""
+"Display automatically the shipping simulator in product pages. Alternatively "
+"you can manually insert the shipping simulator using the %s shortcode."
+msgstr ""
+"Exibe automaticamente o simulador de frete nas páginas de produto. "
+"Alternativamente, você pode inserir manualmente o simulador de frete usando "
+"o shortcode %s."
+
+#: classes/Admin/inc/settings_fields.php:28
+msgid "Title"
+msgstr "Título"
+
+#: classes/Admin/inc/settings_fields.php:29
+msgid "Text that appears before the simulator fields."
+msgstr "Texto que aparece antes dos campos do simulador."
+
+#: classes/Admin/inc/settings_fields.php:30
+msgid "Check shipping cost and delivery time:"
+msgstr "Consulte o frete e o prazo de entrega:"
+
+#: classes/Admin/inc/settings_fields.php:35
+msgid "Input placeholder"
+msgstr "Placeholder do campo"
+
+#: classes/Admin/inc/settings_fields.php:36
+msgid "Text that appears when the postcode field is empty."
+msgstr "Texto que aparece quando o campo do código postal está vazio."
+
+#: classes/Admin/inc/settings_fields.php:37
+msgid "Type your postcode"
+msgstr "Digite seu CEP"
+
+#: classes/Admin/inc/settings_fields.php:42
+msgid "Button Text"
+msgstr "Texto do botão"
+
+#: classes/Admin/inc/settings_fields.php:43
+msgid "Text that appears on the shipping simulator button."
+msgstr "Texto que aparece no botão do simulador de frete."
+
+#: classes/Admin/inc/settings_fields.php:44
+msgid "Apply"
+msgstr "Consultar"
+
+#: classes/Admin/inc/settings_fields.php:49
+msgid "Text after results."
+msgstr "Texto depois dos resultados."
+
+#: classes/Admin/inc/settings_fields.php:50
+msgid "Delivery times start from the confirmation of payment."
+msgstr ""
+"Os prazos de entrega começam a contar a partir da confirmação do pagamento."
+
+#: classes/Admin/inc/settings_fields.php:56
+msgid "Text when not have results."
+msgstr "Texto quando não tem resultados."
+
+#: classes/Admin/inc/settings_fields.php:57
 msgid ""
 "Unfortunately at this moment this product cannot be delivered to the "
 "specified region."
@@ -44,50 +120,36 @@ msgstr ""
 "Infelizmente, neste momento, este produto não pode ser entregue na região "
 "informada."
 
-#: classes/Ajax.php:132
+#: classes/Admin/Settings.php:47
+msgid "Shipping Simulator"
+msgstr "Simulador de Frete"
+
+#: classes/Ajax.php:128
 msgid "The postcode is required."
 msgstr "O CEP é obrigatório."
 
-#: classes/Ajax.php:136
+#: classes/Ajax.php:132
 msgid "Invalid product ID."
 msgstr "ID de produto inválido."
 
-#: classes/Ajax.php:140
+#: classes/Ajax.php:136
 msgid "The quantity must be greater than zero."
 msgstr "A quantidade deve ser maior que zero."
-
-#: classes/Integration/Correios.php:76
-msgid "Shipping options for %s"
-msgstr "Opções de frete para %s"
 
 #: classes/Shipping_Package.php:50
 msgid ""
 "Please select some product options before adding this product to your cart."
-msgstr ""
-"Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
+msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
 
 #: classes/Shipping_Package.php:65
 msgid "This product is virtual and can not shippable."
 msgstr "Este produto é virtual e não pode ser enviado."
 
-#: classes/Shortcode.php:40
-msgid "Type your postcode"
-msgstr "Digite seu CEP"
+#: classes/Tweaks.php:50
+msgid "Shipping options for"
+msgstr "Opções de frete para"
 
-#: classes/Shortcode.php:52
-msgid "Apply"
-msgstr "Consultar"
-
-#: classes/Tweaks.php:24
-msgid "Check shipping cost and delivery time:"
-msgstr "Consulte o frete e o prazo de entrega:"
-
-#: classes/Tweaks.php:42
-msgid "Delivery times start from the confirmation of payment."
-msgstr ""
-"Os prazos de entrega começam a contar a partir da confirmação do pagamento."
-
-#: core/Dependencies.php:71
+#: core/Dependencies.php:68
 msgid "Missing dependencies of %s plugin:"
 msgstr "Está faltando algumas dependências do plugin %s:"
 
