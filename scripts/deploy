@@ -31,7 +31,7 @@ PLUGIN_ASSETS_DIR=".wp-org"
 # ----- STOP EDITING HERE -----
 
 set -e
-clear >$(tty) # clear the terminal
+clear >$( tty ) # clear the terminal
 
 # ASK INFO
 echo "--------------------------------------------"
@@ -53,8 +53,8 @@ clear
 
 # VARS
 CURRENT_DIR="."
-DIR="$(realpath ${CURRENT_DIR})"
-TEMP_GITHUB_REPO="/tmp/${GITHUB_REPO_SLUG}-git"
+DIR="$( realpath ${CURRENT_DIR} )"
+TEMP_GITHUB_REPO="/tmp/${WP_PLUGIN_SLUG}-git"
 TEMP_SVN_REPO="/tmp/${WP_PLUGIN_SLUG}-svn"
 SVN_REPO="http://plugins.svn.wordpress.org/${WP_PLUGIN_SLUG}/"
 GIT_REPO="https://github.com/${GITHUB_REPO_SLUG}.git"
@@ -94,9 +94,6 @@ then
 	npm install || { echo "Unable to install npm packages."; exit 1; }
 fi
 
-echo ""
-read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
-
 # REMOVE UNWANTED FILES & FOLDERS
 echo "Removing unwanted files"
 rm -Rf .git
@@ -120,11 +117,8 @@ rm -f CONTRIBUTING.md
 rm -f .gitpod.dockerfile
 rm -f .gitpod.yml
 
-# don't deploy WordPress plugin banners and icons
-if [[ -n PLUGIN_ASSETS_DIR ]];
-then
-    rm -Rf ${PLUGIN_ASSETS_DIR}
-fi
+echo ""
+read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
 
 # CHECKOUT SVN DIR IF NOT EXISTS
 echo "Checking out WordPress.org plugin SVN repository"
@@ -137,15 +131,20 @@ cd "$TEMP_SVN_REPO"
 echo "Updating SVN"
 svn update || { echo "Unable to update SVN."; exit 1; }
 
+echo "Checking Plugin icon, banner and screenshots ..."
+rm -Rf assets/
+
 # DELETE TRUNK
 echo "Replacing trunk"
 rm -Rf trunk/
 
+# COPY GIT DIR TO TRUNK
+cp -a "${TEMP_GITHUB_REPO}/." trunk/
+
+mv trunk/$PLUGIN_ASSETS_DIR assets
+
 # DELETE VERSION TAG
 rm -Rf tags/${VERSION}
-
-# COPY GIT DIR TO TRUNK
-cp -R "$TEMP_GITHUB_REPO" trunk/
 
 # DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
 svn add --force * --auto-props --parents --depth infinity -q
