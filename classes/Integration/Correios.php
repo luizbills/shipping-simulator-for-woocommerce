@@ -14,19 +14,20 @@ final class Correios {
 
 	public function __start () {
 		self::$instace = $this;
-		if ( class_exists( 'WC_Correios' ) ) {
-			add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
-			add_action( 'wc_shipping_simulator_request_results_html', [ $this, 'request_results_html' ], 5, 3 );
-		}
+		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
+	}
+
+	public function is_enabled () {
+		return apply_filters(
+			'wc_shipping_simulator_integration_correios_enabled',
+			class_exists( 'WC_Correios' )
+		);
 	}
 
 	public function add_hooks () {
-		$enabled = apply_filters(
-			'wc_shipping_simulator_integration_correios_enabled',
-			true
-		);
-		if ( $enabled ) {
+		if ( $this->is_enabled() ) {
 			add_filter( 'wc_shipping_simulator_shipping_package_rates', [ $this, 'shipping_package_rates' ] );
+			add_action( 'wc_shipping_simulator_request_results_html', [ $this, 'request_results_html' ], 5, 3 );
 		}
 	}
 

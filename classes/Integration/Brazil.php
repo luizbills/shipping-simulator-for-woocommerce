@@ -14,14 +14,18 @@ final class Brazil {
 
 	public function __start () {
 		self::$instace = $this;
-		if ( 'BRL' === get_woocommerce_currency() ) {
-			add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
-		}
+		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
+	}
+
+	public function is_enabled () {
+		return apply_filters(
+			'wc_shipping_simulator_integration_brazil_enabled',
+			'BRL' === get_woocommerce_currency()
+		);
 	}
 
 	public function add_hooks () {
-		$enabled = apply_filters( 'wc_shipping_simulator_integration_brazil_enabled', true );
-		if ( $enabled ) {
+		if ( $this->is_enabled() ) {
 			add_filter( 'wc_shipping_simulator_form_input_mask', [ $this, 'form_input_mask' ] );
 
 			add_action( 'wc_shipping_simulator_form_end', [ $this, 'add_cep_finder_link' ] );

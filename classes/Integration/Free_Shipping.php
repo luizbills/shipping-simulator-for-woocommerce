@@ -17,9 +17,15 @@ final class Free_Shipping {
 		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10, 2 );
 	}
 
+	public function is_enabled () {
+		return apply_filters(
+			'wc_shipping_simulator_integration_free_shipping_enabled',
+			true
+		);
+	}
+
 	public function add_hooks () {
-		$enabled = apply_filters( 'wc_shipping_simulator_integration_free_shipping_enabled', true );
-		if ( $enabled ) {
+		if ( $this->is_enabled() ) {
 			add_filter( 'wc_shipping_simulator_shipping_package_rates', [ $this, 'shipping_package_rates' ], 10, 2 );
 		}
 	}
