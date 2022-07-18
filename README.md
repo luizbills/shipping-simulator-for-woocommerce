@@ -1,14 +1,12 @@
 # Shipping Simulator for WooCommerce
 
-* Contributors: luizbills
-* Donate link: https://ko-fi.com/luizbills
-* Tags: woocommerce, shipping, simulator, simulador, frete
-* Requires at least: 5.0
-* Tested up to: 6.0
-* Stable tag: 1.0.0
-* Requires PHP: 7.3
-* License: GPLv3
-* License URI: https://www.gnu.org/licenses/gpl-3.0.html
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/shipping-simulator-for-woocommerce?label=Plugin%20Version&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/)
+[![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/shipping-simulator-for-woocommerce?label=PHP%20Required&logo=php&logoColor=white&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/shipping-simulator-for-woocommerce?label=Plugin%20Rating&logo=wordpress&style=flat-square)](https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/reviews/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/shipping-simulator-for-woocommerce.svg?label=Downloads&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/advanced/)
+[![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/)
+
+[![Donate](https://img.shields.io/badge/DONATE-Ko--fi-ff5f5f?style=social&logo=ko-fi)](https://ko-fi.com/luizbills)
 
 ## Description
 
