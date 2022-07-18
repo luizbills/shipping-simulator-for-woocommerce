@@ -8,8 +8,12 @@ final class Settings {
 	protected static $fields = null;
 
 	public function __start () {
+		// WooCommerce custom settings in Shipping Tab
 		add_filter( 'woocommerce_get_sections_shipping', [ $this, 'add_section' ] );
 		add_filter( 'woocommerce_get_settings_shipping', [ $this, 'add_settings' ], 10, 2 );
+
+		// plugin action links
+		add_filter( 'plugin_action_links_' . plugin_basename( h::config_get( 'FILE' ) ), [ $this, 'add_plugin_action_links' ] );
 	}
 
 	public static function get_option ( $key ) {
@@ -54,5 +58,22 @@ final class Settings {
 		}
 
 		return $settings;
+	}
+
+	public function add_plugin_action_links ( $actions ) {
+		$settings_url = admin_url( 'admin.php?page=wc-settings&tab=shipping&section=' . self::get_id() );
+		$donation_url = esc_url( h::config_get( 'DONATION_URL' ) );
+		$help_url = 'https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/';
+
+		return array_merge(
+			[
+				"<a href=\"$donation_url\" target='blank' rel='noopener' style='color:#087f5b;font-weight:700;'>" . esc_html__( 'Donate', 'wc-shipping-simulator' ) .  "</a>",
+
+				"<a href=\"$help_url\" target='blank' rel='noopener' style='color:#3b5bdb;font-weight:700;'>" . esc_html__( 'Forum', 'wc-shipping-simulator' ) .  "</a>",
+
+				"<a href=\"$settings_url\">" . esc_html__( 'Settings', 'wc-shipping-simulator' ) .  "</a>",
+			],
+			$actions
+		);
 	}
 }
