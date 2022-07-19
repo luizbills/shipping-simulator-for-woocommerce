@@ -25,7 +25,7 @@ WP_PLUGIN_SLUG="shipping-simulator-for-woocommerce"
 GITHUB_REPO_SLUG="luizbills/shipping-simulator-for-woocommerce"
 
 # folder with plugin icon, banner and screenshots used in https://wordpress.org
-PLUGIN_ASSETS_DIR=".wp-org"
+PLUGIN_ASSETS_DIR=".wordpress-org"
 
 # ----- STOP EDITING HERE -----
 
@@ -143,9 +143,6 @@ cd "$TEMP_SVN_REPO"
 echo "Updating SVN"
 svn update || { echo "Unable to update SVN."; exit 1; }
 
-echo "Checking Plugin icon, banner and screenshots ..."
-rm -Rf assets/
-
 # DELETE TRUNK
 echo "Replacing trunk"
 rm -Rf trunk/
@@ -153,7 +150,12 @@ rm -Rf trunk/
 # COPY GIT DIR TO TRUNK
 cp -a "${TEMP_GITHUB_REPO}/." trunk/
 
-mv trunk/$PLUGIN_ASSETS_DIR assets
+if [[ -d "trunk/${PLUGIN_ASSETS_DIR}" ]];
+then
+	echo "Checking Plugin icon, banner and screenshots ..."
+	rm -Rf assets/
+	mv trunk/$PLUGIN_ASSETS_DIR assets
+fi
 
 # DELETE VERSION TAG
 rm -Rf tags/${VERSION}

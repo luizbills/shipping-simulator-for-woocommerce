@@ -51,6 +51,7 @@ fi
 
 # delete some dev files
 echo "Removing unwanted files"
+rm -Rf .wordpress-org
 rm -Rf .git
 rm -Rf .github
 rm -Rf tests
