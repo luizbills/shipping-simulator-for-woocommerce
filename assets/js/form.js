@@ -1,10 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
     const d = document
   	const form = d.querySelector('#wc-shipping-sim-form');
+    const input = form.querySelector('.input-postcode');
+    const button = form.querySelector('.button.submit');
+    const nonce = form.querySelector('#nonce');
     const results = d.querySelector('#wc-shipping-sim-results');
-    const input = form.querySelector('#wc-shipping-sim .input-text');
-    const button = form.querySelector('#wc-shipping-sim .button.submit');
-    const nonce = d.querySelector('#wc-shipping-sim #nonce');
     const I = (val) => val;
     const hooks = {
         filterFormData: I,
