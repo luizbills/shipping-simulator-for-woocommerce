@@ -15,4 +15,5 @@ return [
 	Integration\Correios::class,
 	Integration\Free_Shipping::class,
 	Admin\Settings::class,
+	Admin\Plugin_Meta::class,
 ];

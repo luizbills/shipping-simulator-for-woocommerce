@@ -62,15 +62,8 @@ final class Settings {
 
 	public function add_plugin_action_links ( $actions ) {
 		$settings_url = admin_url( 'admin.php?page=wc-settings&tab=shipping&section=' . self::get_id() );
-		$donation_url = esc_url( h::config_get( 'DONATION_URL' ) );
-		$help_url = 'https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/';
-
 		return array_merge(
 			[
-				"<a href=\"$donation_url\" target='blank' rel='noopener' style='color:#087f5b;font-weight:700;'>" . esc_html__( 'Donate', 'wc-shipping-simulator' ) .  "</a>",
-
-				"<a href=\"$help_url\" target='blank' rel='noopener' style='color:#3b5bdb;font-weight:700;'>" . esc_html__( 'Forum', 'wc-shipping-simulator' ) .  "</a>",
-
 				"<a href=\"$settings_url\">" . esc_html__( 'Settings', 'wc-shipping-simulator' ) .  "</a>",
 			],
 			$actions

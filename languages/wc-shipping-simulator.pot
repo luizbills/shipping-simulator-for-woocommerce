@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-19T10:44:56-03:00\n"
+"POT-Creation-Date: 2022-07-19T11:13:35-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -98,19 +98,19 @@ msgstr ""
 msgid "Unfortunately at this moment this product cannot be delivered to the specified region."
 msgstr ""
 
+#: classes/Admin/Plugin_Meta.php:19
+msgid "Community support"
+msgstr ""
+
+#: classes/Admin/Plugin_Meta.php:21
+msgid "Donate"
+msgstr ""
+
 #: classes/Admin/Settings.php:51
 msgid "Shipping Simulator"
 msgstr ""
 
-#: classes/Admin/Settings.php:70
-msgid "Donate"
-msgstr ""
-
-#: classes/Admin/Settings.php:72
-msgid "Forum"
-msgstr ""
-
-#: classes/Admin/Settings.php:74
+#: classes/Admin/Settings.php:67
 msgid "Settings"
 msgstr ""
 
