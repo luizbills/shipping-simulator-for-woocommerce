@@ -49,7 +49,7 @@ final class Correios {
 
 	public function results_title_address ( $address, $data ) {
 		$result = WC_Correios_Autofill_Addresses::get_address( $data['postcode'] );
-		if ( $result ) {
+		if ( h::filled( $result ) ) {
 			$parts = [
 				h::get( $result->address ),
 				h::get( $result->city ),
