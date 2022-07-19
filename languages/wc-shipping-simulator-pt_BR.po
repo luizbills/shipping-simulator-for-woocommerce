@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
-"simulator-for-woocommerce\n"
-"POT-Creation-Date: 2022-07-18T18:45:33-03:00\n"
-"PO-Revision-Date: 2022-07-18 18:46-0300\n"
+"simulator-for-woocommerce-github\n"
+"POT-Creation-Date: 2022-07-19T10:44:56-03:00\n"
+"PO-Revision-Date: 2022-07-19 10:45-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -120,9 +120,21 @@ msgstr ""
 "Infelizmente, neste momento, este produto não pode ser entregue na região "
 "informada."
 
-#: classes/Admin/Settings.php:47
+#: classes/Admin/Settings.php:51
 msgid "Shipping Simulator"
 msgstr "Simulador de Frete"
+
+#: classes/Admin/Settings.php:70
+msgid "Donate"
+msgstr "Faça uma doação"
+
+#: classes/Admin/Settings.php:72
+msgid "Forum"
+msgstr "Fórum"
+
+#: classes/Admin/Settings.php:74
+msgid "Settings"
+msgstr "Configurações"
 
 #: classes/Ajax.php:128
 msgid "The postcode is required."
