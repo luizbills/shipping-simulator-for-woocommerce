@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const d = document
-  	const form = d.querySelector('#wc-shipping-sim-form');
+    const d = document;
+    const form = d.querySelector('#wc-shipping-sim-form');
     const input = form.querySelector('.input-postcode');
     const button = form.querySelector('.button.submit');
     const nonce = form.querySelector('#nonce');
@@ -16,11 +16,11 @@ window.addEventListener('DOMContentLoaded', () => {
         beforeSubmit: (xhr) => {
             hooks.resultsHandler('');
             input.disabled = true;
-            button.classList.add('loading')
+            button.classList.add('loading');
         },
         afterSubmit: (xhr) => {
             input.disabled = false;
-            button.classList.remove('loading')
+            button.classList.remove('loading');
         },
         resultsHandler: (html) => {
             results.innerHTML = html;
@@ -36,15 +36,23 @@ window.addEventListener('DOMContentLoaded', () => {
             config.requesting = true;
 
             const product = getProduct();
-            if ( 0 === product.id ) {
+            if (0 === product.id) {
                 config.requesting = false;
                 return;
             }
 
-            const variation = product.variation_id ? '&variation=' + product.variation_id : '';
+            const variation = product.variation_id
+                ? '&variation=' + product.variation_id
+                : '';
             const qty = getQuantity();
 
-            const formData = hooks.filterFormData(`action=${form.dataset.ajaxAction}&nonce=${nonce.value}&postcode=${input.value}&product=${product.id}&quantity=${qty >= 1 ? qty : 1}${variation}`);
+            const formData = hooks.filterFormData(
+                `action=${form.dataset.ajaxAction}&nonce=${
+                    nonce.value
+                }&postcode=${input.value}&product=${product.id}&quantity=${
+                    qty >= 1 ? qty : 1
+                }${variation}`
+            );
 
             let xhr = new XMLHttpRequest();
 
@@ -54,28 +62,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
             xhr.onload = () => {
                 config.requesting = false;
-                hooks.afterSubmit(xhr)
+                hooks.afterSubmit(xhr);
 
                 try {
                     const res = JSON.parse(xhr.responseText);
                     if (res.success) {
-                        const results = hooks.filterResults(res.results_html ? res.results_html : '')
+                        const results = hooks.filterResults(
+                            res.results_html ? res.results_html : ''
+                        );
                         hooks.resultsHandler(results);
                     } else {
-                        hooks.errorHandler(res.error, res)
+                        hooks.errorHandler(res.error, res);
                     }
                 } catch (e) {
-                    hooks.errorHandler('Unexpected error', e)
+                    hooks.errorHandler('Unexpected error', e);
                 }
             };
 
             xhr.ontimeout = () => {
-                hooks.errorHandler('Timeout error', 'timeout')
-            }
+                hooks.errorHandler('Timeout error', 'timeout');
+            };
 
-            xhr = hooks.filterXHR(xhr)
+            xhr = hooks.filterXHR(xhr);
 
-            hooks.beforeSubmit(xhr)
+            hooks.beforeSubmit(xhr);
 
             xhr.send();
         },
@@ -86,10 +96,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     const mask = input.dataset.mask;
                     input.value = applyMask(input.value || '', mask);
                     input.maxLength = mask ? mask.length : 20;
-                })
+                });
 
                 // usage: applyMask('01012000', 'XX-XX-XXXX') // returns "01-01-2000"
-                function applyMask (text, mask, symbol = 'X') {
+                function applyMask(text, mask, symbol = 'X') {
                     if (!mask) return text;
                     let result = '';
                     // remove all non allphanumerics
@@ -97,22 +107,22 @@ window.addEventListener('DOMContentLoaded', () => {
                     for (let i = 0, j = 0, len = mask.length; i < len; i++) {
                         if (!_text[j]) break;
                         if (symbol === mask[i]) {
-                            result += _text[j]
-                            j++
+                            result += _text[j];
+                            j++;
                         } else {
                             result += mask[i] || '';
                             j = j > 0 ? j-- : 0;
                         }
                     }
                     return result;
-                  }
+                }
             }
         },
     };
-    const config = window.wc_shipping_simulator = {
+    const config = (window.wc_shipping_simulator = {
         requesting: false,
         hooks,
-    }
+    });
 
     const event = new Event('wc_shipping_simulator:init');
     d.dispatchEvent(event);
@@ -121,29 +131,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
     hooks.inputMaskHandler && hooks.inputMaskHandler();
 
-    function getProduct () {
+    function getProduct() {
         const product = {
             type: form.dataset.productType,
-            id: form.dataset.productId
+            id: form.dataset.productId,
         };
-        if ( 'variable' === product.type ) {
-            const variation_id_input = d.querySelector('.variations_form .variation_id');
-            product.variation_id = variation_id_input ? variation_id_input.value : null;
+        if ('variable' === product.type) {
+            const variation_id_input = d.querySelector(
+                '.variations_form .variation_id'
+            );
+            product.variation_id = variation_id_input
+                ? variation_id_input.value
+                : null;
             if (!product.variation_id) {
-                const error = wc_add_to_cart_variation_params ? wc_add_to_cart_variation_params.i18n_make_a_selection_text : '';
-                hooks.errorHandler(error, 'no_variation_selected')
+                const error = wc_add_to_cart_variation_params
+                    ? wc_add_to_cart_variation_params.i18n_make_a_selection_text
+                    : '';
+                hooks.errorHandler(error, 'no_variation_selected');
                 product.id = 0; // abort the submit
             }
         }
-        return hooks.filterProduct(product)
+        return hooks.filterProduct(product);
     }
 
-    function getQuantity () {
+    function getQuantity() {
         let value = form.dataset.quantity;
         let input = d.querySelector('[name="quantity"]');
         if (input) {
             value = input.value;
         }
-        return hooks.filterQuantity(value|0)
+        return hooks.filterQuantity(value | 0);
     }
-})
+});
