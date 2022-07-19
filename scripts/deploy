@@ -127,6 +127,7 @@ rm -f .editorconfig
 rm -f CONTRIBUTING.md
 rm -f .gitpod.dockerfile
 rm -f .gitpod.yml
+rm -f .prettierrc.json
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}

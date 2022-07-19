@@ -71,6 +71,7 @@ rm -f .editorconfig
 rm -f CONTRIBUTING.md
 rm -f .gitpod.dockerfile
 rm -f .gitpod.yml
+rm -f .prettierrc.json
 
 # find and delete any zip files
 find $TMP_DIR -name "*.zip" -type f -delete
