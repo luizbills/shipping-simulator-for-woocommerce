@@ -99,7 +99,6 @@ do
 	output=$(php -l "$file")
 	if [ ! $? -eq 0 ];
 	then
-		#echo "$output"
 		echo -e "\e[31mPHP Syntax Error!\e[0m"
 		exit 1
 	fi
