@@ -93,6 +93,18 @@ then
 	npm install || { echo "Unable to install npm packages."; exit 1; }
 fi
 
+echo "Looking for PHP syntax errors"
+find . -type f -name '*.php' ! -path './vendor/*' -print0 | while read -d $'\0' file
+do
+	output=$(php -l "$file")
+	if [ ! $? -eq 0 ];
+	then
+		#echo "$output"
+		echo -e "\e[31mPHP Syntax Error!\e[0m"
+		exit 1
+	fi
+done
+
 # REMOVE UNWANTED FILES & FOLDERS
 echo "Removing unwanted files"
 rm -Rf .git
