@@ -12,7 +12,7 @@
 					<span class="shipping-rate-label"><?php echo h::safe_html( $rate->get_label() ); ?></span>
 					<?php do_action( 'wc_shipping_simulator_results_col_label', $rate ) ?>
 				</th>
-				<td  class="col-cost">
+				<td class="col-cost">
 					<?php echo wc_price( $rate->get_cost() ); ?>
 					<?php do_action( 'wc_shipping_simulator_results_col_cost', $rate ) ?>
 				</td>
