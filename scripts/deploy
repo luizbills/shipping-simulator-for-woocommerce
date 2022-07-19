@@ -104,6 +104,7 @@ do
 		exit 1
 	fi
 done
+echo "No syntax errors found"
 
 # REMOVE UNWANTED FILES & FOLDERS
 echo "Removing unwanted files"
