@@ -17,15 +17,19 @@ Allows customers to calculate the shipping rates on the product page in your Woo
 
 ***This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs. More details in our [documentation](https://github.com/luizbills/shipping-simulator-for-woocommerce/blob/main/docs/README.md).*
 
-**Github Repo**: [https://github.com/luizbills/shipping-simulator-for-woocommerce](https://github.com/luizbills/shipping-simulator-for-woocommerce)
+= Contribuitions =
 
-**Donations**: [https://ko-fi.com/luizbills](https://ko-fi.com/luizbills)
+For bugs, suggestions or contribuitions, open a issue in our [Github Repository](https://github.com/luizbills/shipping-simulator-for-woocommerce/issues) or create a topic in [WordPress Plugin Forum](https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/).
+
+= Donations =
+
+Support this plugin on [https://ko-fi.com/luizbills](https://ko-fi.com/luizbills)
 
 == Frequently Asked Questions ==
 
 = Where can I get support or talk to other users? =
 
-You can ask for help in the Plugin Forum.
+You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/)
 
 == Screenshots ==
 
