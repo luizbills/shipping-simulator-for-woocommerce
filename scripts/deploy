@@ -24,8 +24,7 @@ WP_PLUGIN_SLUG="shipping-simulator-for-woocommerce"
 # GITHUB user who owns the repo
 GITHUB_REPO_SLUG="luizbills/shipping-simulator-for-woocommerce"
 
-# folder with plugin banner and screenshots
-# note: you should commit these assets separately
+# folder with plugin icon, banner and screenshots used in https://wordpress.org
 PLUGIN_ASSETS_DIR=".wp-org"
 
 # ----- STOP EDITING HERE -----
