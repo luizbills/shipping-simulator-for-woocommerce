@@ -39,8 +39,12 @@ final class Ajax {
 			$status = 403;
 		} else {
 			try {
+				h::logger()->info( 'Request raw data: ' . wp_json_encode( $posted ) );
+
 				$posted = $this->sanitize_request_data( $posted );
 				$this->validate_request_data( $posted );
+
+				h::logger()->info( 'Request sanitized data: ' . wp_json_encode( $posted ) );
 
 				$package = new Shipping_Package();
 				$package = apply_filters( 'wc_shipping_simulator_request_update_package', $package, $posted );
@@ -73,7 +77,7 @@ final class Ajax {
 			} catch ( \Throwable $e ) {
 				$response['success'] = false;
 				$response['error'] = esc_html__( 'Something went wrong. Please try again.' );
-				h::log( __METHOD__ . ' error: ' . $e->getMessage() );
+				h::logger()->error( __METHOD__ . ' error: ' . $e->getMessage() );
 				$status = 500;
 			}
 		}
@@ -92,14 +96,15 @@ final class Ajax {
 			$status
 		);
 
-		$cache_max_age = (int) apply_filters(
-			'wc_shipping_simulator_request_cache_max_age',
-			600 // 10 minutes
-		);
-
-		if ( $cache_max_age > 0 ) {
-			add_filter( 'nocache_headers', '__return_empty_array', 999 );
-			header( "Cache-Control: max-age=$cache_max_age, must-revalidate" );
+		if ( ! Settings::debug_enabled() ) {
+			$cache_max_age = (int) apply_filters(
+				'wc_shipping_simulator_request_cache_max_age',
+				600 // 10 minutes
+			);
+			if ( $cache_max_age > 0 ) {
+				add_filter( 'nocache_headers', '__return_empty_array', 999 );
+				header( "Cache-Control: max-age=$cache_max_age, must-revalidate" );
+			}
 		}
 
 		wp_send_json( $response, $status );

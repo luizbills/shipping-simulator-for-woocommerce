@@ -3,6 +3,7 @@
 namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
+use Shipping_Simulator\Admin\Settings;
 
 final class Shipping_Package {
 	public $ready = false;
@@ -114,12 +115,15 @@ final class Shipping_Package {
 
 		// calculate
 		$package = $this->get_package();
+		h::logger()->info( 'Calculating shipping rates for ...' );
+		$this->log_package( $package );
 		$result = $wc_shipping->calculate_shipping( [ $package ] );
 
 		// restore the WC_Shipping->packages
 		$wc_shipping->packages = $original_packages;
 
 		$rates = h::get( $result[0]['rates'], [] );
+		h::logger()->info( 'Result: ' . wp_json_encode( array_keys( $rates ) ) );
 
 		if ( count( $rates ) > 1 ) {
 			uasort( $rates, function ( $a, $b ) {
@@ -134,5 +138,24 @@ final class Shipping_Package {
 		);
 
 		return $rates;
+	}
+
+	protected function log_package ( $package ) {
+		if ( Settings::debug_enabled() ) {
+			$i = 1;
+			foreach ( $package['contents'] as $item ) {
+				$data = [
+					'name' => $item['data']->get_name(),
+					'product_id' => $item['product_id'],
+					'variation_id' => $item['variation_id'],
+					'variation' => $item['variation'],
+					'quantity' => $item['quantity'],
+				];
+				h::logger()->info( "Package item #$i: " . wp_json_encode( $data ) );
+				$i++;
+			}
+			h::logger()->info( 'Package destination: ' . wp_json_encode( $package['destination'] ) );
+			h::logger()->info( 'Package total: ' . wp_json_encode( $package['contents_cost'] ) );
+		}
 	}
 }

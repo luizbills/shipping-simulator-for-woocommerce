@@ -10,6 +10,7 @@ return [
 	Ajax::class,
 	Shortcode::class,
 	Tweaks::class,
+	Logger::class,
 	Integrations::class,
 	Integration\Brazil::class,
 	Integration\Correios::class,
