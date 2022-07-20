@@ -44,7 +44,7 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Changelog ==
 
-[See changelog for all versions](https://raw.githubusercontent.com/luizbills/shipping-simulator-for-woocommerce/main/CHANGELOG.md)
+[See changelog for all versions](https://github.com/luizbills/shipping-simulator-for-woocommerce/blob/main/CHANGELOG.md)
 
 == Upgrade Notice ==
 
