@@ -45,14 +45,16 @@ final class Shipping_Package {
 		$price = $product->get_price();
 		$is_virtual = $product->is_virtual();
 
-		h::throw_if(
-			$variation_id && $is_virtual,
-			esc_attr__( 'This product is virtual and can not shippable.', 'wc-shipping-simulator' )
-		);
+		if ( apply_filters( 'wc_shipping_simulator_package_validate_virtual_product', true ) ) {
+			h::throw_if(
+				$is_virtual,
+				esc_attr__( 'This product is virtual and can not shippable.', 'wc-shipping-simulator' )
+			);
+		}
 
 		$price_total = $price * $quantity;
 		$this->contents[] = apply_filters(
-			'wc_shipping_simulator_shipping_package_item',
+			'wc_shipping_simulator_package_item',
 			[
 				'product_id' => $product_id,
 				'variation_id' => $variation_id,
@@ -66,6 +68,8 @@ final class Shipping_Package {
 				'line_total' => $price_total,
 			]
 		);
+
+		return true;
 	}
 
 	public function get_package () {
@@ -80,7 +84,7 @@ final class Shipping_Package {
 		}
 
 		$package = apply_filters(
-			'wc_shipping_simulator_shipping_package_data',
+			'wc_shipping_simulator_package_data',
 			[
 				'contents' => $this->contents,
 				'destination' => $this->destination,
@@ -121,7 +125,7 @@ final class Shipping_Package {
 		}
 
 		$rates = apply_filters(
-			'wc_shipping_simulator_shipping_package_rates',
+			'wc_shipping_simulator_package_rates',
 			$rates,
 			$package
 		);
@@ -147,7 +151,6 @@ final class Shipping_Package {
 					'variation_id' => $item['variation_id'],
 					'variation' => $item['variation'],
 				];
-
 				h::logger()->info( "Package item #$i: " . wp_json_encode( $item_data ) );
 			}
 			h::logger()->info( 'Package destination: ' . wp_json_encode( $package['destination'] ) );
