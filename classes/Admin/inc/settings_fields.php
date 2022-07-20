@@ -58,6 +58,14 @@ return [
 		'css' => 'height: 6rem;',
 	],
 	[
+		'id'       => $prefix . 'debug_mode',
+		'type'     => 'checkbox',
+		'name'     => esc_html__( 'Debug mode', 'wc-shipping-simulator' ),
+		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
+		'desc_tip' => __( 'Enable debug mode to log your shipping simulations and display helpful tips.', 'wc-shipping-simulator' ),
+		'default'  => 'no'
+	],
+	[
 		'id' => $prefix . 'settings',
 		'type' => 'sectionend',
 	],

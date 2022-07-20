@@ -34,6 +34,10 @@ final class Settings {
 		return h::prefix();
 	}
 
+	public static function debug_enabled () {
+		return 'yes' === self::get_option( 'debug_mode' );
+	}
+
 	protected static function get_fields ( $assoc = true ) {
 		if ( null === self::$fields ) {
 			$fields = include __DIR__ . '/inc/settings_fields.php';
