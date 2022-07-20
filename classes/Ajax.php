@@ -41,7 +41,7 @@ final class Ajax {
 			try {
 				h::logger()->info( 'Request raw data: ' . wp_json_encode( $posted ) );
 
-				$posted = $this->sanitize_request_data( $posted );
+				$posted = $this->prepare_request_data( $posted );
 				$this->validate_request_data( $posted );
 
 				h::logger()->info( 'Request sanitized data: ' . wp_json_encode( $posted ) );
@@ -110,16 +110,16 @@ final class Ajax {
 		wp_send_json( $response, $status );
 	}
 
-	protected function sanitize_request_data ( $posted ) {
-		$sanitized = [
-			'postcode' => h::sanitize_postcode( h::get( $posted['postcode'] ) ),
-			'product' => absint( h::get( $posted['product'] ) ),
+	protected function prepare_request_data ( $posted ) {
+		$data = [
+			'postcode' => h::sanitize_postcode( h::get( $posted['postcode'], '' ) ),
+			'product' => absint( h::get( $posted['product'], 0 ) ),
 			'variation' => absint( h::get( $posted['variation'], 0 ) ),
-			'quantity' => absint( h::get( $posted['quantity'] ) ),
+			'quantity' => absint( h::get( $posted['quantity'], 1 ) ),
 		];
 		return apply_filters(
-			'wc_shipping_simulator_sanitize_request_data',
-			$sanitized,
+			'wc_shipping_simulator_prepare_request_data',
+			$data,
 			$posted
 		);
 	}
@@ -132,10 +132,10 @@ final class Ajax {
 				! $posted['postcode'],
 				esc_html__( 'The postcode is required.', 'wc-shipping-simulator' )
 			);
-			$product = wc_get_product( $posted['product'] );
+			$product = wc_get_product( $posted['variation'] ? $posted['variation'] : $posted['product'] );
 			h::throw_if(
 				! $product,
-				esc_html__( 'Invalid product ID.', 'wc-shipping-simulator' )
+				esc_html__( 'Invalid product.', 'wc-shipping-simulator' )
 			);
 			h::throw_if(
 				$posted['quantity'] < 1,
