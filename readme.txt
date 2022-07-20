@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/luizbills
 Tags: woocommerce, shipping simulator, simulador de frete
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 Requires PHP: 7.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -44,14 +44,7 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Changelog ==
 
-= 1.0.2 =
-* Improve frontend javascript
-
-= 1.0.1 =
-* Move support and donation links from plugin actions to plugin meta
-
-= 1.0.0 =
-* Initial release
+[See changelog for all versions](https://raw.githubusercontent.com/luizbills/shipping-simulator-for-woocommerce/main/CHANGELOG.md)
 
 == Upgrade Notice ==
 
