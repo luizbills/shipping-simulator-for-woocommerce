@@ -26,7 +26,7 @@ final class Correios {
 
 	public function add_hooks () {
 		if ( $this->is_enabled() ) {
-			add_filter( 'wc_shipping_simulator_shipping_package_rates', [ $this, 'shipping_package_rates' ] );
+			add_filter( 'wc_shipping_simulator_package_rates', [ $this, 'shipping_package_rates' ] );
 			add_filter( 'wc_shipping_simulator_results_title_address', [ $this, 'results_title_address' ], 10, 2 );
 		}
 	}

@@ -26,7 +26,7 @@ final class Free_Shipping {
 
 	public function add_hooks () {
 		if ( $this->is_enabled() ) {
-			add_filter( 'wc_shipping_simulator_shipping_package_rates', [ $this, 'shipping_package_rates' ], 10, 2 );
+			add_filter( 'wc_shipping_simulator_package_rates', [ $this, 'shipping_package_rates' ], 10, 2 );
 		}
 	}
 

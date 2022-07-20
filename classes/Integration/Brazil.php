@@ -30,7 +30,7 @@ final class Brazil {
 
 			add_action( 'wc_shipping_simulator_form_end', [ $this, 'add_cep_finder_link' ] );
 
-			add_filter( 'wc_shipping_simulator_sanitize_request_data', [ $this, 'sanitize_request_data' ], 10, 2 );
+			add_filter( 'wc_shipping_simulator_prepare_request_data', [ $this, 'prepare_request_data' ], 10, 2 );
 
 			add_action( 'wc_shipping_simulator_validate_request_data', [ $this, 'validate_request_data' ] );
 
@@ -38,9 +38,9 @@ final class Brazil {
 		}
 	}
 
-	public function sanitize_request_data ( $sanitized, $posted ) {
-		$sanitized['country'] = h::get( $posted['country'], 'BR' );
-		return $sanitized;
+	public function prepare_request_data ( $data, $posted ) {
+		$data['country'] = h::get( $posted['country'], 'BR' );
+		return $data;
 	}
 
 	public function validate_request_data ( $posted ) {
