@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
+"Project-Id-Version: Shipping Simulator for WooCommerce 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce-github\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-19T11:13:35-03:00\n"
+"POT-Creation-Date: 2022-07-20T11:10:41-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -42,60 +42,78 @@ msgstr ""
 msgid "Enable Auto-Insert"
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:20
+#: classes/Admin/inc/settings_fields.php:19
+#: classes/Admin/inc/settings_fields.php:30
+#: classes/Admin/inc/settings_fields.php:73
+msgid "Enable"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:21
 msgid "Display automatically the shipping simulator in product pages. Alternatively you can manually insert the shipping simulator using the %s shortcode."
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:28
-msgid "Title"
-msgstr ""
-
 #: classes/Admin/inc/settings_fields.php:29
-msgid "Text that appears before the simulator fields."
-msgstr ""
-
-#: classes/Admin/inc/settings_fields.php:30
-msgid "Check shipping cost and delivery time:"
-msgstr ""
-
-#: classes/Admin/inc/settings_fields.php:35
-msgid "Input placeholder"
-msgstr ""
-
-#: classes/Admin/inc/settings_fields.php:36
-msgid "Text that appears when the postcode field is empty."
+msgid "Product variation is required"
 msgstr ""
 
 #: classes/Admin/inc/settings_fields.php:37
-msgid "Type your postcode"
+msgid "Title"
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:42
-msgid "Button Text"
+#: classes/Admin/inc/settings_fields.php:38
+msgid "Text that appears before the simulator fields."
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:43
-msgid "Text that appears on the shipping simulator button."
+#: classes/Admin/inc/settings_fields.php:39
+msgid "Check shipping cost and delivery time:"
 msgstr ""
 
 #: classes/Admin/inc/settings_fields.php:44
+msgid "Input placeholder"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:45
+msgid "Text that appears when the postcode field is empty."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:46
+msgid "Type your postcode"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:51
+msgid "Button Text"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:52
+msgid "Text that appears on the shipping simulator button."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:53
 msgid "Apply"
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:49
+#: classes/Admin/inc/settings_fields.php:58
 msgid "Text after results."
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:50
+#: classes/Admin/inc/settings_fields.php:59
 msgid "Delivery times start from the confirmation of payment."
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:56
+#: classes/Admin/inc/settings_fields.php:65
 msgid "Text when not have results."
 msgstr ""
 
-#: classes/Admin/inc/settings_fields.php:57
+#: classes/Admin/inc/settings_fields.php:66
 msgid "Unfortunately at this moment this product cannot be delivered to the specified region."
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:72
+msgid "Debug mode"
+msgstr ""
+
+#: classes/Admin/inc/settings_fields.php:74
+msgid "Enable debug mode to log your shipping simulations and display helpful tips."
 msgstr ""
 
 #: classes/Admin/Plugin_Meta.php:19
@@ -106,32 +124,80 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: classes/Admin/Settings.php:51
-msgid "Shipping Simulator"
+#: classes/Admin/Settings.php:55
+msgid "Shipping simulator"
 msgstr ""
 
-#: classes/Admin/Settings.php:67
+#: classes/Admin/Settings.php:71
 msgid "Settings"
 msgstr ""
 
-#: classes/Ajax.php:128
+#: classes/Ajax.php:133
 msgid "The postcode is required."
 msgstr ""
 
-#: classes/Ajax.php:132
-msgid "Invalid product ID."
+#: classes/Ajax.php:138
+msgid "Invalid product."
 msgstr ""
 
-#: classes/Ajax.php:136
+#: classes/Ajax.php:142
 msgid "The quantity must be greater than zero."
 msgstr ""
 
-#: classes/Shipping_Package.php:50
-msgid "Please select some product options before adding this product to your cart."
+#: classes/Debug_Box.php:20
+msgid "Yes"
 msgstr ""
 
-#: classes/Shipping_Package.php:65
+#: classes/Debug_Box.php:21
+msgid "No"
+msgstr ""
+
+#: classes/Debug_Box.php:24
+msgid "Product type:"
+msgstr ""
+
+#: classes/Debug_Box.php:25
+msgid "Product ID:"
+msgstr ""
+
+#: classes/Debug_Box.php:32
+#: classes/Debug_Box.php:40
+#: classes/Debug_Box.php:52
+msgid "Has weight?"
+msgstr ""
+
+#: classes/Debug_Box.php:33
+#: classes/Debug_Box.php:41
+#: classes/Debug_Box.php:53
+msgid "Has dimensions?"
+msgstr ""
+
+#: classes/Debug_Box.php:50
+msgid "VARIATION"
+msgstr ""
+
+#: classes/Debug_Box.php:51
+msgid "Attributes:"
+msgstr ""
+
+#: classes/Debug_Box.php:54
+msgid "Is virtual?"
+msgstr ""
+
+#: classes/Debug_Box.php:74
+msgid "DEBUG MODE ENABLED"
+msgstr ""
+
+#: classes/Debug_Box.php:80
+msgid "This box not appears for your customers."
+msgstr ""
+
+#: classes/Shipping_Package.php:51
 msgid "This product is virtual and can not shippable."
+msgstr ""
+
+#: classes/Shipping_Package.php:135
+msgid "Please select some product options before adding this product to your cart."
 msgstr ""
 
 #: classes/Tweaks.php:50

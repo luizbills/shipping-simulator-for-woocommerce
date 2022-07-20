@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce-github\n"
-"POT-Creation-Date: 2022-07-19T11:13:35-03:00\n"
-"PO-Revision-Date: 2022-07-19 11:14-0300\n"
+"POT-Creation-Date: 2022-07-20T11:10:41-03:00\n"
+"PO-Revision-Date: 2022-07-20 11:14-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -54,7 +54,13 @@ msgstr ""
 msgid "Enable Auto-Insert"
 msgstr "Ativar Auto-Inserção"
 
-#: classes/Admin/inc/settings_fields.php:20
+#: classes/Admin/inc/settings_fields.php:19
+#: classes/Admin/inc/settings_fields.php:30
+#: classes/Admin/inc/settings_fields.php:73
+msgid "Enable"
+msgstr "Ativar"
+
+#: classes/Admin/inc/settings_fields.php:21
 msgid ""
 "Display automatically the shipping simulator in product pages. Alternatively "
 "you can manually insert the shipping simulator using the %s shortcode."
@@ -63,62 +69,77 @@ msgstr ""
 "Alternativamente, você pode inserir manualmente o simulador de frete usando "
 "o shortcode %s."
 
-#: classes/Admin/inc/settings_fields.php:28
+#: classes/Admin/inc/settings_fields.php:29
+msgid "Product variation is required"
+msgstr "Variação do produto é obrigatória"
+
+#: classes/Admin/inc/settings_fields.php:37
 msgid "Title"
 msgstr "Título"
 
-#: classes/Admin/inc/settings_fields.php:29
+#: classes/Admin/inc/settings_fields.php:38
 msgid "Text that appears before the simulator fields."
 msgstr "Texto que aparece antes dos campos do simulador."
 
-#: classes/Admin/inc/settings_fields.php:30
+#: classes/Admin/inc/settings_fields.php:39
 msgid "Check shipping cost and delivery time:"
 msgstr "Consulte o frete e o prazo de entrega:"
 
-#: classes/Admin/inc/settings_fields.php:35
+#: classes/Admin/inc/settings_fields.php:44
 msgid "Input placeholder"
 msgstr "Placeholder do campo"
 
-#: classes/Admin/inc/settings_fields.php:36
+#: classes/Admin/inc/settings_fields.php:45
 msgid "Text that appears when the postcode field is empty."
 msgstr "Texto que aparece quando o campo do código postal está vazio."
 
-#: classes/Admin/inc/settings_fields.php:37
+#: classes/Admin/inc/settings_fields.php:46
 msgid "Type your postcode"
 msgstr "Digite seu CEP"
 
-#: classes/Admin/inc/settings_fields.php:42
+#: classes/Admin/inc/settings_fields.php:51
 msgid "Button Text"
 msgstr "Texto do botão"
 
-#: classes/Admin/inc/settings_fields.php:43
+#: classes/Admin/inc/settings_fields.php:52
 msgid "Text that appears on the shipping simulator button."
 msgstr "Texto que aparece no botão do simulador de frete."
 
-#: classes/Admin/inc/settings_fields.php:44
+#: classes/Admin/inc/settings_fields.php:53
 msgid "Apply"
 msgstr "Consultar"
 
-#: classes/Admin/inc/settings_fields.php:49
+#: classes/Admin/inc/settings_fields.php:58
 msgid "Text after results."
 msgstr "Texto depois dos resultados."
 
-#: classes/Admin/inc/settings_fields.php:50
+#: classes/Admin/inc/settings_fields.php:59
 msgid "Delivery times start from the confirmation of payment."
 msgstr ""
 "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
 
-#: classes/Admin/inc/settings_fields.php:56
+#: classes/Admin/inc/settings_fields.php:65
 msgid "Text when not have results."
 msgstr "Texto quando não tem resultados."
 
-#: classes/Admin/inc/settings_fields.php:57
+#: classes/Admin/inc/settings_fields.php:66
 msgid ""
 "Unfortunately at this moment this product cannot be delivered to the "
 "specified region."
 msgstr ""
 "Infelizmente, neste momento, este produto não pode ser entregue na região "
 "informada."
+
+#: classes/Admin/inc/settings_fields.php:72
+msgid "Debug mode"
+msgstr "Modo de depuração"
+
+#: classes/Admin/inc/settings_fields.php:74
+msgid ""
+"Enable debug mode to log your shipping simulations and display helpful tips."
+msgstr ""
+"Ative o modo de depuração para registrar em arquivos de log suas simulações "
+"de frete e mostrar informações úteis."
 
 #: classes/Admin/Plugin_Meta.php:19
 msgid "Community support"
@@ -128,34 +149,78 @@ msgstr "Suporte da comunidade"
 msgid "Donate"
 msgstr "Faça uma doação"
 
-#: classes/Admin/Settings.php:51
-msgid "Shipping Simulator"
-msgstr "Simulador de Frete"
+#: classes/Admin/Settings.php:55
+msgid "Shipping simulator"
+msgstr "Simulador de frete"
 
-#: classes/Admin/Settings.php:67
+#: classes/Admin/Settings.php:71
 msgid "Settings"
 msgstr "Configurações"
 
-#: classes/Ajax.php:128
+#: classes/Ajax.php:133
 msgid "The postcode is required."
 msgstr "O CEP é obrigatório."
 
-#: classes/Ajax.php:132
-msgid "Invalid product ID."
-msgstr "ID de produto inválido."
+#: classes/Ajax.php:138
+msgid "Invalid product."
+msgstr "Produto inválido."
 
-#: classes/Ajax.php:136
+#: classes/Ajax.php:142
 msgid "The quantity must be greater than zero."
 msgstr "A quantidade deve ser maior que zero."
 
-#: classes/Shipping_Package.php:50
+#: classes/Debug_Box.php:20
+msgid "Yes"
+msgstr "Sim"
+
+#: classes/Debug_Box.php:21
+msgid "No"
+msgstr "Não"
+
+#: classes/Debug_Box.php:24
+msgid "Product type:"
+msgstr "Tipo do produto:"
+
+#: classes/Debug_Box.php:25
+msgid "Product ID:"
+msgstr "ID do produto:"
+
+#: classes/Debug_Box.php:32 classes/Debug_Box.php:40 classes/Debug_Box.php:52
+msgid "Has weight?"
+msgstr "Tem peso?"
+
+#: classes/Debug_Box.php:33 classes/Debug_Box.php:41 classes/Debug_Box.php:53
+msgid "Has dimensions?"
+msgstr "Tem dimensões?"
+
+#: classes/Debug_Box.php:50
+msgid "VARIATION"
+msgstr "VARIAÇÃO"
+
+#: classes/Debug_Box.php:51
+msgid "Attributes:"
+msgstr "Atributos:"
+
+#: classes/Debug_Box.php:54
+msgid "Is virtual?"
+msgstr "É virtual?"
+
+#: classes/Debug_Box.php:74
+msgid "DEBUG MODE ENABLED"
+msgstr "MODO DE DEPURAÇÃO ATIVADO"
+
+#: classes/Debug_Box.php:80
+msgid "This box not appears for your customers."
+msgstr "Essa caixa não aparece para seus clientes."
+
+#: classes/Shipping_Package.php:51
+msgid "This product is virtual and can not shippable."
+msgstr "Este produto é virtual e não pode ser enviado."
+
+#: classes/Shipping_Package.php:135
 msgid ""
 "Please select some product options before adding this product to your cart."
 msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
-
-#: classes/Shipping_Package.php:65
-msgid "This product is virtual and can not shippable."
-msgstr "Este produto é virtual e não pode ser enviado."
 
 #: classes/Tweaks.php:50
 msgid "Shipping options for"
