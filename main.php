@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Shipping Simulator for WooCommerce
-Version: 1.1.0
+Version: 1.1.1
 Description: Allows your customers to calculate the shipping rates on the product page
 Author: Luiz Bills
 Author URI: https://github.com/luizbills
@@ -9,7 +9,6 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: wc-shipping-simulator
 Domain Path: /languages
-Update URI: false
 
 Shipping Simulator for WooCommerce is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
