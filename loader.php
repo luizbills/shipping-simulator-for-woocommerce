@@ -12,6 +12,7 @@ return [
 	Tweaks::class,
 	Logger::class,
 	Integrations::class,
+	Debug_Box::class,
 	Integration\Brazil::class,
 	Integration\Correios::class,
 	Integration\Free_Shipping::class,

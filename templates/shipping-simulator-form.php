@@ -1,4 +1,6 @@
 <section id="wc-shipping-sim">
+	<?php do_action( 'wc_shipping_simulator_wrapper_start' ) ?>
+
 	<form id="wc-shipping-sim-form" action="<?php echo esc_url( $ajax_url ); ?>" data-ajax-action="<?php echo esc_attr( $ajax_action ) ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>" data-product-type="<?php echo esc_attr( $product_type ); ?>">
 		<?php do_action( 'wc_shipping_simulator_form_start' ) ?>
 
@@ -17,5 +19,9 @@
 		<?php do_action( 'wc_shipping_simulator_form_end' ) ?>
 	</form>
 
+	<?php do_action( 'wc_shipping_simulator_form_after' ) ?>
+
 	<div id="wc-shipping-sim-results"></div>
+
+	<?php do_action( 'wc_shipping_simulator_wrapper_end' ) ?>
 </section>

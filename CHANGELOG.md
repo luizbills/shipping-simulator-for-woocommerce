@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 -   Fix correios integration
 -   Add debug mode option in Settings
 -   Now is possible log the shipping simulations with debug mode enabled
+-   Now a box with helpful informations appears on product page with debug mode enabled
 
 ## 1.0.2 - 2022-07-19 - [Source changes](https://github.com/olivierlacan/shipping-simulator-for-woocommerce/compare/1.0.1...1.0.2)
 
