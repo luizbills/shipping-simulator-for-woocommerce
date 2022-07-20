@@ -4,7 +4,6 @@ namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
 use Shipping_Simulator\Admin\Settings;
-use WC_Product_Variation;
 
 final class Shipping_Package {
 	public $ready = false;
