@@ -51,6 +51,11 @@ final class Shipping_Package {
 			);
 		}
 
+		h::throw_if(
+			'yes' === Settings::get_option( 'requires_variation' ) && 0 === $variation_id && $product->is_type( 'variable' ),
+			esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
+		);
+
 		$price_total = $price * $quantity;
 		$this->contents[] = apply_filters(
 			'wc_shipping_simulator_package_item',
