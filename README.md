@@ -22,11 +22,13 @@ You can ask for help in the Plugin Forum.
 
 ## Screenshots
 
-![Shipping simulator in a product page (in portuguese)](/.wp-org/screenshot-1.png)
+![Shipping simulator in a product page (in portuguese)](/.wordpress-org/screenshot-1.png)
 
-![Shipping simulator with results (in portuguese)](/.wp-org/screenshot-2.png)
+![Shipping simulator with results (in portuguese)](/.wordpress-org/screenshot-2.png)
 
-![Shipping simulator without results (in portuguese)](/.wp-org/screenshot-3.png)
+![Shipping simulator without results (in portuguese)](/.wordpress-org/screenshot-3.png)
+
+![Settings page link](/.wordpress-org/screenshot-4.png)
 
 ## Changelog
 
