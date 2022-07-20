@@ -8,12 +8,8 @@ use Shipping_Simulator\Admin\Settings;
 final class Debug_Box {
 	public function __start () {
 		if ( Settings::debug_enabled() ) {
-			add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10, 2 );
+			add_action( 'wc_shipping_simulator_wrapper_end', [ $this, 'form_before' ] );
 		}
-	}
-
-	public function add_hooks () {
-		add_action( 'wc_shipping_simulator_wrapper_end', [ $this, 'form_before' ] );
 	}
 
 	public function form_before () {
@@ -61,7 +57,7 @@ final class Debug_Box {
 			}
 		}
 
-		$lines = apply_filters( 'wc_shipping_simulator_integration_debug_box_lines', $lines, $product );
+		$lines = apply_filters( 'wc_shipping_simulator_debug_box_lines', $lines, $product );
 
 		?>
 		<style>
