@@ -74,6 +74,13 @@ final class Shortcode {
 			$plugin_version,
 			true
 		);
+		wp_localize_script(
+			h::prefix( 'form' ),
+			'wc_shipping_simulator_params',
+			[
+				'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
+			]
+		);
 		wp_enqueue_style(
 			h::prefix( 'form' ),
 			h::plugin_url( "assets/css/form$suffix.css" ),

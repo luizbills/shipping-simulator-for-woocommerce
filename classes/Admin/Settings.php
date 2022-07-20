@@ -52,7 +52,7 @@ final class Settings {
 	}
 
 	public function add_section ( $sections ) {
-		$sections[ self::get_id() ] = esc_html__( 'Shipping Simulator', 'wc-shipping-simulator' );
+		$sections[ self::get_id() ] = esc_html__( 'Shipping simulator', 'wc-shipping-simulator' );
 		return $sections;
 	}
 

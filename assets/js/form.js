@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+    const settings = window.wc_shipping_simulator_params || {};
     const d = document;
     const form = d.querySelector('#wc-shipping-sim-form');
     const input = form.querySelector('.input-postcode');
@@ -140,10 +141,8 @@ window.addEventListener('DOMContentLoaded', () => {
             const variation_id_input = d.querySelector(
                 '.variations_form .variation_id'
             );
-            product.variation_id = variation_id_input
-                ? variation_id_input.value
-                : null;
-            if (!product.variation_id) {
+            product.variation_id = variation_id_input ? variation_id_input.value : 0;
+            if (settings.requires_variation && !product.variation_id) {
                 const error = wc_add_to_cart_variation_params
                     ? wc_add_to_cart_variation_params.i18n_make_a_selection_text
                     : '';

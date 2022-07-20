@@ -16,10 +16,19 @@ return [
 		'id'       => $prefix . 'auto_insert',
 		'type'     => 'checkbox',
 		'name'     => esc_html__( 'Enable Auto-Insert', 'wc-shipping-simulator' ),
-		'desc'     => sprintf(
-			__( 'Display automatically the shipping simulator in product pages. Alternatively you can manually insert the shipping simulator using the %s shortcode.', 'wc-shipping-simulator' ),
+		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
+		'desc_tip' => sprintf(
+			esc_html__( 'Display automatically the shipping simulator in product pages. Alternatively you can manually insert the shipping simulator using the %s shortcode.', 'wc-shipping-simulator' ),
 			'<code>' . "[$shortcode]" . '</code>'
 		),
+		'default'  => 'yes'
+	],
+	[
+		'id'       => $prefix . 'requires_variation',
+		'type'     => 'checkbox',
+		'name'     => esc_html__( 'Product variation is required', 'wc-shipping-simulator' ),
+		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
+		'desc_tip' => esc_html__( 'Disable this option to allow customers simulate shipping rates even when a variation is not selected on variable products.' ),
 		'default'  => 'yes'
 	],
 	[
