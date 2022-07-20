@@ -4,6 +4,7 @@ namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
 use Shipping_Simulator\Admin\Settings;
+use WC_Product_Variation;
 
 final class Shipping_Package {
 	public $ready = false;
@@ -36,37 +37,20 @@ final class Shipping_Package {
 	}
 
 	public function add_product ( $product_id, $quantity, $variation_id = null ) {
-		$product = wc_get_product( $product_id );
+		$product_id = absint( $product_id );
 		$variation_id = $variation_id ? absint( $variation_id ) : 0;
-		$variation = [];
+		$variation = $variation_id ? wc_get_product_variation_attributes( $variation_id ) : [];
 		$quantity = max( $quantity, 1 );
+		$product = wc_get_product( $variation_id ? $variation_id : $product_id );
 		$price = $product->get_price();
 		$is_virtual = $product->is_virtual();
 
-		if ( 'variable' === $product->get_type() ) {
-			$product_variation = wc_get_product( $variation_id );
-
-			h::throw_if(
-				! $product_variation || ! $product_variation->variation_is_visible(),
-				esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
-			);
-
-			$atts = $product_variation->get_attributes();
-
-			foreach ( $atts as $key => $value ) {
-				$variation[ 'attribute_' . $key ] = $value;
-			}
-
-			$price = $product_variation->get_price();
-			$is_virtual = $product_variation->is_virtual();
-		}
-
 		h::throw_if(
-			$is_virtual,
+			$variation_id && $is_virtual,
 			esc_attr__( 'This product is virtual and can not shippable.', 'wc-shipping-simulator' )
 		);
 
-		$total = $price * $quantity;
+		$price_total = $price * $quantity;
 		$this->contents[] = apply_filters(
 			'wc_shipping_simulator_shipping_package_item',
 			[
@@ -77,18 +61,22 @@ final class Shipping_Package {
 				'data' => $product,
 				'line_tax' => 0,
 				'line_tax_data' => [ 'subtotal' => [], 'total' => [] ],
-				'line_subtotal' => $total,
+				'line_subtotal' => $price_total,
 				'line_subtotal_tax' => 0,
-				'line_total' => $total,
+				'line_total' => $price_total,
 			]
 		);
 	}
 
 	public function get_package () {
 		$contents_total = 0;
+		$has_variations = false;
 
 		foreach ( $this->contents as $item ) {
 			$contents_total += h::get( $item['line_total'], 0 );
+			if ( ! $has_variations ) {
+				$has_variations = 0 !== $item['variation_id'];
+			}
 		}
 
 		$package = apply_filters(
@@ -99,7 +87,8 @@ final class Shipping_Package {
 				'applied_coupons' => [],
 				'user' => [ 'ID' => get_current_user_id() ],
 				'contents_cost' => $contents_total,
-				'cart_subtotal' => $contents_total
+				'cart_subtotal' => $contents_total,
+				'has_variations' => $has_variations
 			]
 		);
 		$package['DOING_SHIPPING_SIMULATION'] = true;
@@ -137,22 +126,29 @@ final class Shipping_Package {
 			$package
 		);
 
+		h::throw_if(
+			$package['has_variations'] && 0 === count( $rates ),
+			esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
+		);
+
 		return $rates;
 	}
 
 	protected function log_package ( $package ) {
 		if ( Settings::debug_enabled() ) {
-			$i = 1;
+			$i = 0;
 			foreach ( $package['contents'] as $item ) {
-				$data = [
+				$i++;
+				$item_data = [
 					'name' => $item['data']->get_name(),
 					'product_id' => $item['product_id'],
+					'quantity' => $item['quantity'],
+					'weight' => $item['data']->get_weight(),
 					'variation_id' => $item['variation_id'],
 					'variation' => $item['variation'],
-					'quantity' => $item['quantity'],
 				];
-				h::logger()->info( "Package item #$i: " . wp_json_encode( $data ) );
-				$i++;
+
+				h::logger()->info( "Package item #$i: " . wp_json_encode( $item_data ) );
 			}
 			h::logger()->info( 'Package destination: ' . wp_json_encode( $package['destination'] ) );
 			h::logger()->info( 'Package total: ' . wp_json_encode( $package['contents_cost'] ) );

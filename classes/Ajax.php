@@ -132,8 +132,9 @@ final class Ajax {
 				! $posted['postcode'],
 				esc_html__( 'The postcode is required.', 'wc-shipping-simulator' )
 			);
+			$product = wc_get_product( $posted['product'] );
 			h::throw_if(
-				0 === $posted['product'],
+				! $product,
 				esc_html__( 'Invalid product ID.', 'wc-shipping-simulator' )
 			);
 			h::throw_if(
