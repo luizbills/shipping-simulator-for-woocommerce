@@ -32,4 +32,4 @@ You can ask for help in the Plugin Forum.
 
 ## Changelog
 
-See [readme.txt](/readme.txt)
+See [CHANGELOG.md](/CHANGELOG.md)
