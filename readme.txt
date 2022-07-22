@@ -1,6 +1,6 @@
 === Shipping Simulator for WooCommerce ===
 Contributors: luizbills
-Donate link: http://luizpb.com/donate/
+Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil
 Requires at least: 5.0
 Tested up to: 6.0
@@ -27,7 +27,7 @@ For bugs, suggestions or contribuitions, open a issue in our [Github Repository]
 
 = Donations =
 
-Support this plugin on [http://luizpb.com/donate/](http://luizpb.com/donate/)
+Support this plugin on [https://luizpb.com/donate/](https://luizpb.com/donate/)
 
 == Frequently Asked Questions ==
 
