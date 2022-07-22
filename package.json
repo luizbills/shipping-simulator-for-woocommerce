@@ -1,6 +1,4 @@
 {
-    "name": "wc-shipping-simulator",
-    "version": "1.0.0",
     "scripts": {
         "start": "./scripts/bundle --watch",
         "build": "./scripts/bundle",
