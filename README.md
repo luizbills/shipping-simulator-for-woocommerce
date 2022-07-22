@@ -4,7 +4,7 @@
 [![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/shipping-simulator-for-woocommerce?label=PHP%20Required&logo=php&logoColor=white&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/)
 [![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/shipping-simulator-for-woocommerce?label=Plugin%20Rating&logo=wordpress&style=flat-square)](https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/reviews/)
 [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/shipping-simulator-for-woocommerce.svg?label=Downloads&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/advanced/)
-[![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/)
+[![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](/LICENSE)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/luizbills)
 
