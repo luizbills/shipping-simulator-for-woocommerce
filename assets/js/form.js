@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         config.hooks.errorHandler(res.error, res);
                     }
                 } catch (e) {
-                    config.hooks.errorHandler('Unexpected error', e);
+                    config.hooks.errorHandler(config.errors.unexpected, e);
                 }
             };
 
@@ -128,6 +128,10 @@ window.addEventListener('DOMContentLoaded', () => {
         requesting: false,
         ...params,
         hooks,
+        errors: {
+            timeout: 'Timeout error',
+            unexpected: 'Unexpected error',
+        },
     };
 
     // Use this global object to manipulate the simulator
