@@ -4,7 +4,7 @@ Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 Requires PHP: 7.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Shipping Simulator for WooCommerce
-Version: 1.1.1
+Version: 1.2.0
 Description: Allows your customers to calculate the shipping rates on the product page
 Author: Luiz Bills
 Author URI: https://github.com/luizbills
