@@ -15,13 +15,13 @@ final class Tweaks {
 
 	public function __start () {
 		self::$instace = $this;
-		add_action( 'woocommerce_single_product_summary', [ $this, 'auto_inser_shortcode' ], 35 );
+		add_action( 'woocommerce_single_product_summary', [ $this, 'auto_insert_shortcode' ], 35 );
 		add_action( 'wc_shipping_simulator_form_start', [ $this, 'form_start' ] );
 		add_action( 'wc_shipping_simulator_results_before', [ $this, 'results_before' ] );
 		add_action( 'wc_shipping_simulator_results_after', [ $this, 'results_after' ] );
 	}
 
-	public function auto_inser_shortcode () {
+	public function auto_insert_shortcode () {
 		if ( 'yes' !== Settings::get_option( 'auto_insert' ) ) return;
 		global $product;
 		if ( $product ) {
