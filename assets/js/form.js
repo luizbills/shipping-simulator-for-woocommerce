@@ -83,7 +83,9 @@ window.addEventListener('DOMContentLoaded', () => {
             };
 
             xhr.ontimeout = () => {
-                config.hooks.errorHandler('Timeout error', 'timeout');
+                config.requesting = false;
+                config.hooks.afterSubmit(xhr);
+                config.hooks.errorHandler(config.errors.timeout, 'timeout');
             };
 
             xhr = config.hooks.filterXHR(xhr);
