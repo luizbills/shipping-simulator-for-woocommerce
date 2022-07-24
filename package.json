@@ -1,4 +1,5 @@
 {
+    "name": "shipping-simulator-for-woocommerce",
     "scripts": {
         "start": "./scripts/bundle --watch",
         "build": "./scripts/bundle",
