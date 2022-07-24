@@ -29,7 +29,7 @@ final class Shortcode {
 			$prod = wc_get_product( $atts['product'] );
 		}
 
-		if ( $prod && $this->product_needs_shipping( $prod ) ) {
+		if ( $prod && 'instock' === $prod->get_stock_status() && $this->product_needs_shipping( $prod ) ) {
 			$this->enqueue_scripts();
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
