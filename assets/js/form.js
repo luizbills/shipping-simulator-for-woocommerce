@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const settings = window.wc_shipping_simulator_params || {};
+    const params = window.wc_shipping_simulator_params || {};
     const d = document;
     const form = d.querySelector('#wc-shipping-sim-form');
     const input = form.querySelector('.input-postcode');
@@ -13,9 +13,11 @@ window.addEventListener('DOMContentLoaded', () => {
         filterResults: I,
         filterProduct: I,
         filterQuantity: I,
+        filterPostcodeMaxLength: () =>
+            input.dataset.mask ? input.dataset.mask.length : 20,
 
         beforeSubmit: (xhr) => {
-            hooks.resultsHandler('');
+            config.hooks.resultsHandler('');
             input.disabled = true;
             button.classList.add('loading');
         },
@@ -47,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 : '';
             const qty = getQuantity();
 
-            const formData = hooks.filterFormData(
+            const formData = config.hooks.filterFormData(
                 `action=${form.dataset.ajaxAction}&nonce=${
                     nonce.value
                 }&postcode=${input.value}&product=${product.id}&quantity=${
@@ -63,30 +65,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
             xhr.onload = () => {
                 config.requesting = false;
-                hooks.afterSubmit(xhr);
+                config.hooks.afterSubmit(xhr);
 
                 try {
                     const res = JSON.parse(xhr.responseText);
                     if (res.success) {
-                        const results = hooks.filterResults(
+                        const results = config.hooks.filterResults(
                             res.results_html ? res.results_html : ''
                         );
-                        hooks.resultsHandler(results);
+                        config.hooks.resultsHandler(results);
                     } else {
-                        hooks.errorHandler(res.error, res);
+                        config.hooks.errorHandler(res.error, res);
                     }
                 } catch (e) {
-                    hooks.errorHandler('Unexpected error', e);
+                    config.hooks.errorHandler('Unexpected error', e);
                 }
             };
 
             xhr.ontimeout = () => {
-                hooks.errorHandler('Timeout error', 'timeout');
+                config.hooks.errorHandler('Timeout error', 'timeout');
             };
 
-            xhr = hooks.filterXHR(xhr);
+            xhr = config.hooks.filterXHR(xhr);
 
-            hooks.beforeSubmit(xhr);
+            config.hooks.beforeSubmit(xhr);
 
             xhr.send();
         },
@@ -96,8 +98,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 input.addEventListener('input', (evt) => {
                     const mask = input.dataset.mask;
                     input.value = applyMask(input.value || '', mask);
-                    input.maxLength = mask ? mask.length : 20;
+                    input.maxLength = config.hooks.filterPostcodeMaxLength();
                 });
+
+                d.dispatchEvent(new Event('input'));
 
                 // usage: applyMask('01012000', 'XX-XX-XXXX') // returns "01-01-2000"
                 function applyMask(text, mask, symbol = 'X') {
@@ -120,17 +124,33 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         },
     };
-    const config = (window.wc_shipping_simulator = {
+    const config = {
         requesting: false,
+        ...params,
         hooks,
-    });
+    };
 
-    const event = new Event('wc_shipping_simulator:init');
-    d.dispatchEvent(event);
+    // Use this global object to manipulate the simulator
+    window.wc_shipping_simulator = config;
 
-    form.addEventListener('submit', hooks.submitHandler);
+    // Event to update the global object
+    d.dispatchEvent(new Event('wc_shipping_simulator:init'));
 
-    hooks.inputMaskHandler && hooks.inputMaskHandler();
+    config.hooks.inputMaskHandler && config.hooks.inputMaskHandler();
+
+    form.addEventListener('submit', config.hooks.submitHandler);
+
+    if (config.auto_submit) {
+        input.addEventListener('input', (evt) => {
+            if (
+                input.value &&
+                input.value.length === config.hooks.filterPostcodeMaxLength()
+            ) {
+                button.click();
+                input.blur();
+            }
+        });
+    }
 
     function getProduct() {
         const product = {
@@ -144,15 +164,15 @@ window.addEventListener('DOMContentLoaded', () => {
             product.variation_id = variation_id_input
                 ? variation_id_input.value
                 : 0;
-            if (settings.requires_variation && !product.variation_id) {
+            if (config.requires_variation && !product.variation_id) {
                 const error = wc_add_to_cart_variation_params
                     ? wc_add_to_cart_variation_params.i18n_make_a_selection_text
                     : '';
-                hooks.errorHandler(error, 'no_variation_selected');
+                config.hooks.errorHandler(error, 'no_variation_selected');
                 product.id = 0; // abort the submit
             }
         }
-        return hooks.filterProduct(product);
+        return config.hooks.filterProduct(product);
     }
 
     function getQuantity() {
@@ -161,6 +181,6 @@ window.addEventListener('DOMContentLoaded', () => {
         if (input) {
             value = input.value;
         }
-        return hooks.filterQuantity(value | 0);
+        return config.hooks.filterQuantity(value | 0);
     }
 });

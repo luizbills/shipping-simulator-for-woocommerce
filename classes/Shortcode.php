@@ -77,9 +77,10 @@ final class Shortcode {
 		wp_localize_script(
 			h::prefix( 'form' ),
 			'wc_shipping_simulator_params',
-			[
+			apply_filters( 'wc_shipping_simulator_form_js_params', [
 				'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
-			]
+				'auto_submit' => true,
+			] )
 		);
 		wp_enqueue_style(
 			h::prefix( 'form' ),

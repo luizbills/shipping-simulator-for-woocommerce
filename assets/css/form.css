@@ -2,6 +2,10 @@
     padding: 1.5em 0;
     border-top: 0.1em solid #e0e0e0;
 }
+#wc-shipping-sim-form-fields .input-postcode:disabled {
+    background-color: #dee2e6;
+    cursor: not-allowed;
+}
 #wc-shipping-sim-results table {
     margin: 0.5em 0;
     border-collapse: collapse;
