@@ -7,5 +7,5 @@ return [
 	'PREFIX' => 'wc_shipping_simulator_',
 	'LANGUAGES_DIR' => 'languages',
 	'TEMPLATES_DIR' => 'templates',
-	'DONATION_URL' => 'https://ko-fi.com/luizbills',
+	'DONATION_URL' => 'https://luizpb.com/donate/',
 ];
