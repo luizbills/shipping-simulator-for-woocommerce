@@ -32,14 +32,17 @@ final class Free_Shipping {
 
 	public function shipping_package_rates ( $rates, $package ) {
 		if ( count( $rates ) > 0 ) {
+			$found = false;
 			foreach ( $rates as $key => $rate ) {
 				if ( 'free_shipping' === $rate->get_method_id() ) {
 					$method = new WC_Shipping_Free_Shipping( $rate->get_instance_id() );
 					if ( in_array( $method->requires, [ 'min_amount', 'either' ] ) && $package['contents_cost'] < $method->min_amount ) {
 						unset( $rates[ $key ] );
+						$found = true;
 					}
 				}
 			}
+			$package['HAS_FREE_SHIPPING'] = $found;
 		}
 		return $rates;
 	}
