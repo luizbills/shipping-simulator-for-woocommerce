@@ -263,4 +263,29 @@ abstract class Helpers {
 	public static function sanitize_postcode ( $postcode ) {
 		return preg_replace( '/[^0-9]/', '', $postcode );
 	}
+
+	public static function product_needs_shipping ( $product ) {
+		$instock = ( 'instock' === $product->get_stock_status() );
+		$needs_shipping = false;
+
+		if ( $instock ) {
+			if ( 'variable' === $product->get_type() ) {
+				$variations = $product->get_available_variations();
+				foreach ( $variations as $variation ) {
+					if ( ! $variation['is_virtual'] ) {
+						$needs_shipping = true;
+						break;
+					}
+				}
+			} else {
+				$needs_shipping = $product->needs_shipping();
+			}
+		}
+
+		return apply_filters(
+			'wc_shipping_simulator_product_needs_shipping',
+			$instock && $needs_shipping,
+			$product
+		);
+	}
 }

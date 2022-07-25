@@ -29,7 +29,7 @@ final class Shortcode {
 			$prod = wc_get_product( $atts['product'] );
 		}
 
-		if ( $prod && 'instock' === $prod->get_stock_status() && $this->product_needs_shipping( $prod ) ) {
+		if ( $prod && h::product_needs_shipping( $prod ) ) {
 			$this->enqueue_scripts();
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -100,23 +100,5 @@ final class Shortcode {
 			return h::sanitize_postcode( $postcode );
 		}
 		return '';
-	}
-
-	protected function product_needs_shipping ( $product ) {
-		$result = false;
-		$type = $product->get_type();
-		if ( in_array( $type, [ 'simple', 'variation' ] ) ) {
-			$result = $product->needs_shipping();
-		}
-		elseif ( 'variable' === $product->get_type() ) {
-			$variations = $product->get_available_variations();
-			foreach ( $variations as $variation ) {
-				if ( ! $variation['is_virtual'] ) {
-					$result = true;
-					break;
-				}
-			}
-		}
-		return apply_filters( 'wc_shipping_simulator_product_needs_shipping', $result, $product );
 	}
 }
