@@ -33,6 +33,18 @@ return [
 		'default'  => 'yes'
 	],
 	[
+		'id'       => $prefix . 'update_address',
+		'type'     => 'radio',
+		'name'     => esc_html__( 'Update customer address', 'wc-shipping-simulator' ),
+		'options'  => [
+			'0' => esc_html__( "Don't update", 'wc-shipping-simulator' ),
+			'1' => esc_html__( "Update only shipping address", 'wc-shipping-simulator' ),
+			'2' => esc_html__( "Update billing and shipping address", 'wc-shipping-simulator' ),
+		],
+		'desc_tip' => esc_html__( 'The customer address can be updated when a shipping simulation returns shipping options.', 'wc-shipping-simulator' ),
+		'default'  => '0'
+	],
+	[
 		'id'       => $prefix . 'form_title',
 		'type'     => 'text',
 		'name'     => esc_html__( 'Title', 'wc-shipping-simulator' ),

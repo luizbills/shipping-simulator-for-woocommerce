@@ -19,6 +19,7 @@ final class Tweaks {
 		add_action( 'wc_shipping_simulator_form_start', [ $this, 'form_start' ] );
 		add_action( 'wc_shipping_simulator_results_before', [ $this, 'results_before' ] );
 		add_action( 'wc_shipping_simulator_results_after', [ $this, 'results_after' ] );
+		add_filter( 'wc_shipping_simulator_package_rates', [ $this, 'update_customer_address' ], 10, 2 );
 	}
 
 	public function auto_insert_shortcode () {
@@ -72,5 +73,57 @@ final class Tweaks {
 			<div id="wc-shipping-sim-results-after"><?php echo h::safe_html( $text ) ?></div>
 			<?php
 		}
+	}
+
+	public function update_customer_address ( $rates, $package ) {
+		$opt_update_address = (int) Settings::get_option( 'update_address' );
+		$dest = $package['destination'];
+		$enabled = apply_filters(
+			'wc_shipping_simulator_update_shipping_address',
+			// option enabled AND has shipping options AND has country
+			0 !== $opt_update_address && count( $rates ) > 0 && h::get( $dest['country'] ),
+			$rates,
+			$package
+		);
+		$customer = WC()->customer;
+		if ( $enabled && $customer ) {
+			WC()->shipping()->reset_shipping();
+
+			$customer->set_shipping_location(
+				h::get( $dest['country'] ),
+				h::get( $dest['state'] ),
+				h::get( $dest['postcode'] ),
+				h::get( $dest['city'] )
+			);
+			h::logger()->info( 'Customer shipping address updated to ' . wp_json_encode( $dest ) );
+
+			$should_update_billing_address = apply_filters(
+				'wc_shipping_simulator_update_billing_address',
+				2 === $opt_update_address,
+				$rates,
+				$package
+			);
+			if ( $should_update_billing_address ) {
+				$customer->set_billing_location(
+					h::get( $dest['country'] ),
+					h::get( $dest['state'] ),
+					h::get( $dest['postcode'] ),
+					h::get( $dest['city'] )
+				);
+				h::logger()->info( 'Customer billing address updated to ' . wp_json_encode( $dest ) );
+			}
+
+			$customer->set_calculated_shipping( true );
+			$customer->save();
+
+			WC()->cart->calculate_totals();
+
+
+
+			// wc_add_notice( __( 'Shipping costs updated.', 'woocommerce' ), 'notice' );
+
+			do_action( 'woocommerce_calculated_shipping' );
+		}
+		return $rates;
 	}
 }
