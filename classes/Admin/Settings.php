@@ -47,6 +47,10 @@ final class Settings {
 				$key = in_array( $type, [ 'title', 'sectionend' ] ) ? $i : $field['id'];
 				self::$fields[ $key ] = $field;
 			}
+			self::$fields = apply_filters(
+				'wc_shipping_simulator_settings_fields',
+				self::$fields
+			);
 		}
 		return $assoc ? self::$fields : array_values( self::$fields );
 	}
