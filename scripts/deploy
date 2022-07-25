@@ -32,31 +32,46 @@ PLUGIN_ASSETS_DIR=".wordpress-org"
 set -e
 clear >$( tty ) # clear the terminal
 
+
+
+STABLE_TAG=$( curl -m 3 -s https://raw.githubusercontent.com/${GITHUB_REPO_SLUG}/main/readme.txt | sed -n 's/Stable tag: \([0-9]\.[0-9]\.[0-9]*\).*/\1/p' )
+
+trim_spaces() {
+    # Usage: trim_spaces "   example   string    "
+    : "${1#"${1%%[![:space:]]*}"}"
+    : "${_%"${_##*[![:space:]]}"}"
+    printf '%s\n' "$_"
+}
+STABLE_TAG=$( trim_spaces $STABLE_TAG )
+
 # ASK INFO
 echo "--------------------------------------------"
 echo "      Github to WordPress.org RELEASER      "
 echo "--------------------------------------------"
-read -p "RELEASE VERSION: " VERSION
+read -p "RELEASE VERSION$( [ $STABLE_TAG ] && echo " [$STABLE_TAG]" || echo "" ): " VERSION
+
+VERSION=${VERSION:-$STABLE_TAG}
+
 echo "--------------------------------------------"
 echo ""
-echo "Before continuing, confirm that you have done the following :)"
+echo "Before continuing, confirm that you have done the following ..."
 echo ""
 read -p " - Added a changelog for "${VERSION}"?"
-read -p " - Set version in the readme.txt and main file to "${VERSION}"?"
+read -p " - Set version in the main file to "${VERSION}"?"
 read -p " - Set stable tag in the readme.txt file to "${VERSION}"?"
 read -p " - Updated the POT file?"
 read -p " - Committed all changes up to GITHUB?"
 echo ""
 read -p "PRESS [ENTER] TO BEGIN RELEASING "${VERSION}
-clear
 
-# VARS
+clear >$( tty ) # clear the terminal
+
+SVN_REPO="http://plugins.svn.wordpress.org/${WP_PLUGIN_SLUG}/"
+GIT_REPO="https://github.com/${GITHUB_REPO_SLUG}.git"
 CURRENT_DIR="."
 DIR="$( realpath ${CURRENT_DIR} )"
 TEMP_GITHUB_REPO="/tmp/${WP_PLUGIN_SLUG}-git"
 TEMP_SVN_REPO="/tmp/${WP_PLUGIN_SLUG}-svn"
-SVN_REPO="http://plugins.svn.wordpress.org/${WP_PLUGIN_SLUG}/"
-GIT_REPO="https://github.com/${GITHUB_REPO_SLUG}.git"
 
 # DELETE OLD TEMP DIRS
 rm -Rf $TEMP_GITHUB_REPO
@@ -69,8 +84,9 @@ git clone --progress --recurse-submodules $GIT_REPO $TEMP_GITHUB_REPO || { echo 
 # MOVE INTO GIT DIR
 cd "$TEMP_GITHUB_REPO"
 
+clear >$( tty ) # clear the terminal
+
 # LIST BRANCHES
-# clear
 git fetch origin
 echo "WHICH BRANCH DO YOU WISH TO DEPLOY?"
 git branch -r || { echo "Unable to list branches."; exit 1; }
@@ -132,6 +148,8 @@ rm -f .prettierrc.json
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
 
+clear >$( tty ) # clear the terminal
+
 # CHECKOUT SVN DIR IF NOT EXISTS
 echo "Checking out WordPress.org plugin SVN repository"
 svn checkout $SVN_REPO $TEMP_SVN_REPO || { echo "Unable to checkout repo."; exit 1; }
@@ -176,8 +194,9 @@ done
 echo "Copying trunk to new tag"
 svn copy trunk tags/${VERSION} || { echo "Unable to create tag."; exit 1; }
 
+clear >$( tty ) # clear the terminal
+
 # DO SVN COMMIT
-# clear
 echo "Showing SVN status"
 svn status
 
@@ -185,6 +204,8 @@ svn status
 echo ""
 read -p "PRESS [ENTER] TO COMMIT RELEASE "${VERSION}" TO WORDPRESS.ORG"
 echo ""
+
+clear >$( tty ) # clear the terminal
 
 # DEPLOY
 echo ""
