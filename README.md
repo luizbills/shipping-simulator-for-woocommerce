@@ -10,7 +10,7 @@
 
 Allows customers to calculate the shipping rates on the product page in your WooCommerce store.
 
-***This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs. More details in our [documentation](/docs/README.md).*
+**\*This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs. More details in our [documentation](/docs/README.md).\*
 
 ### Donations
 
@@ -24,13 +24,11 @@ You can ask for help in the Plugin Forum.
 
 ## Screenshots
 
-![Shipping simulator in a product page (in portuguese)](/.wordpress-org/screenshot-1.png)
+![Shipping simulator demo (in portuguese)](/.wordpress-org/screenshot-1.gif)
 
-![Shipping simulator with results (in portuguese)](/.wordpress-org/screenshot-2.png)
+![Shipping simulator without results (in portuguese)](/.wordpress-org/screenshot-2.png)
 
-![Shipping simulator without results (in portuguese)](/.wordpress-org/screenshot-3.png)
-
-![Settings page link](/.wordpress-org/screenshot-4.png)
+![Plugin settings page link](/.wordpress-org/screenshot-3.png)
 
 ## Changelog
 
