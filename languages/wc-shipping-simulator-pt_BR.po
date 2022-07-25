@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce-github\n"
-"POT-Creation-Date: 2022-07-20T11:34:58-03:00\n"
-"PO-Revision-Date: 2022-07-20 11:36-0300\n"
+"POT-Creation-Date: 2022-07-25T11:19:44-03:00\n"
+"PO-Revision-Date: 2022-07-25 11:21-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -14,12 +14,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Domain: wc-shipping-simulator\n"
 
 #. Plugin Name of the plugin
 msgid "Shipping Simulator for WooCommerce"
 msgstr "Simulador de Frete para WooCommerce"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/luizbills/shipping-simulator-for-woocommerce"
+msgstr "https://github.com/luizbills/shipping-simulator-for-woocommerce"
 
 #. Description of the plugin
 msgid ""
@@ -56,11 +60,11 @@ msgstr "Ativar Auto-Inserção"
 
 #: classes/Admin/inc/settings_fields.php:19
 #: classes/Admin/inc/settings_fields.php:31
-#: classes/Admin/inc/settings_fields.php:74
+#: classes/Admin/inc/settings_fields.php:86
 msgid "Enable"
 msgstr "Ativar"
 
-#. translators: shortcode name
+#. translators: %s is a shortcode tag
 #: classes/Admin/inc/settings_fields.php:22
 msgid ""
 "Display automatically the shipping simulator in product pages. Alternatively "
@@ -85,55 +89,79 @@ msgstr ""
 "Porém, tenha sempre certeza de que o produto variável tem um peso definido."
 
 #: classes/Admin/inc/settings_fields.php:38
+msgid "Update customer address"
+msgstr "Atualizar endereço do cliente"
+
+#: classes/Admin/inc/settings_fields.php:40
+msgid "Don't update"
+msgstr "Não atualizar"
+
+#: classes/Admin/inc/settings_fields.php:41
+msgid "Update only shipping address"
+msgstr "Atualizar apenas o endereço de entrega"
+
+#: classes/Admin/inc/settings_fields.php:42
+msgid "Update billing and shipping address"
+msgstr "Atualizar o endereço de cobrança e de entrega"
+
+#: classes/Admin/inc/settings_fields.php:44
+msgid ""
+"The customer address can be updated when a shipping simulation returns "
+"shipping options."
+msgstr ""
+"O endereço do cliente pode ser atualizado quando uma simulação de frete "
+"retornar opções de entrega."
+
+#: classes/Admin/inc/settings_fields.php:50
 msgid "Title"
 msgstr "Título"
 
-#: classes/Admin/inc/settings_fields.php:39
+#: classes/Admin/inc/settings_fields.php:51
 msgid "Text that appears before the simulator fields."
 msgstr "Texto que aparece antes dos campos do simulador."
 
-#: classes/Admin/inc/settings_fields.php:40
+#: classes/Admin/inc/settings_fields.php:52
 msgid "Check shipping cost and delivery time:"
 msgstr "Consulte o frete e o prazo de entrega:"
 
-#: classes/Admin/inc/settings_fields.php:45
+#: classes/Admin/inc/settings_fields.php:57
 msgid "Input placeholder"
 msgstr "Placeholder do campo"
 
-#: classes/Admin/inc/settings_fields.php:46
+#: classes/Admin/inc/settings_fields.php:58
 msgid "Text that appears when the postcode field is empty."
 msgstr "Texto que aparece quando o campo do código postal está vazio."
 
-#: classes/Admin/inc/settings_fields.php:47
+#: classes/Admin/inc/settings_fields.php:59
 msgid "Type your postcode"
 msgstr "Digite seu CEP"
 
-#: classes/Admin/inc/settings_fields.php:52
+#: classes/Admin/inc/settings_fields.php:64
 msgid "Button Text"
 msgstr "Texto do botão"
 
-#: classes/Admin/inc/settings_fields.php:53
+#: classes/Admin/inc/settings_fields.php:65
 msgid "Text that appears on the shipping simulator button."
 msgstr "Texto que aparece no botão do simulador de frete."
 
-#: classes/Admin/inc/settings_fields.php:54
+#: classes/Admin/inc/settings_fields.php:66
 msgid "Apply"
 msgstr "Consultar"
 
-#: classes/Admin/inc/settings_fields.php:59
+#: classes/Admin/inc/settings_fields.php:71
 msgid "Text after results."
 msgstr "Texto depois dos resultados."
 
-#: classes/Admin/inc/settings_fields.php:60
+#: classes/Admin/inc/settings_fields.php:72
 msgid "Delivery times start from the confirmation of payment."
 msgstr ""
 "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
 
-#: classes/Admin/inc/settings_fields.php:66
+#: classes/Admin/inc/settings_fields.php:78
 msgid "Text when not have results."
 msgstr "Texto quando não tem resultados."
 
-#: classes/Admin/inc/settings_fields.php:67
+#: classes/Admin/inc/settings_fields.php:79
 msgid ""
 "Unfortunately at this moment this product cannot be delivered to the "
 "specified region."
@@ -141,11 +169,11 @@ msgstr ""
 "Infelizmente, neste momento, este produto não pode ser entregue na região "
 "informada."
 
-#: classes/Admin/inc/settings_fields.php:73
+#: classes/Admin/inc/settings_fields.php:85
 msgid "Debug mode"
 msgstr "Modo de depuração"
 
-#: classes/Admin/inc/settings_fields.php:75
+#: classes/Admin/inc/settings_fields.php:87
 msgid ""
 "Enable debug mode to log your shipping simulations and display helpful tips."
 msgstr ""
@@ -160,11 +188,11 @@ msgstr "Suporte da comunidade"
 msgid "Donate"
 msgstr "Faça uma doação"
 
-#: classes/Admin/Settings.php:55
+#: classes/Admin/Settings.php:59
 msgid "Shipping simulator"
 msgstr "Simulador de frete"
 
-#: classes/Admin/Settings.php:71
+#: classes/Admin/Settings.php:75
 msgid "Settings"
 msgstr "Configurações"
 
@@ -233,7 +261,7 @@ msgid ""
 "Please select some product options before adding this product to your cart."
 msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
 
-#: classes/Tweaks.php:50
+#: classes/Tweaks.php:51
 msgid "Shipping options for"
 msgstr "Opções de frete para"
 
