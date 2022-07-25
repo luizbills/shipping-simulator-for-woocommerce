@@ -4,7 +4,7 @@ Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Requires PHP: 7.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -19,7 +19,7 @@ Allows customers to calculate the shipping rates on the product page in your Woo
 
 = Settings =
 
-Access your admin panel and open WooCommerce > Settings > Shipping > Shipping Simulator to configure the plugin.
+Access your admin panel and open **WooCommerce > Settings > Shipping > Shipping Simulator** to configure the plugin.
 
 = Contribuitions =
 
@@ -37,10 +37,9 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Screenshots ==
 
-1. Shipping simulator in a product page (in portuguese)
-2. Shipping simulator with results (in portuguese)
-3. Shipping simulator without results (in portuguese)
-4. Access the Settings to configure the plugin.
+1. Shipping simulator demo (in portuguese)
+2. Shipping simulator without results (in portuguese)
+3. Access the Settings to configure the plugin.
 
 == Changelog ==
 

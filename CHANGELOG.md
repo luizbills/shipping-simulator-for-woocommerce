@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.3.0 - 2022-07-25 - [Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.2.0...HEAD)
+
+-   New settings option: Update customer address (disabled by default). Now, the customer address can be updated when a shipping simulation returns shipping options.
+-   New filter hook: `wc_shipping_simulator_settings_field`
+-   Fix: don't display the simulator in products out of stock.
+
 ## 1.2.0 - 2022-07-24 - [Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.1.1...1.2.0)
 
 -   Feature: automatically simulates shipping when the customer finishes typing the postcode.
