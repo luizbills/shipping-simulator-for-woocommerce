@@ -74,14 +74,22 @@ final class Shortcode {
 			$plugin_version,
 			true
 		);
+
+		$params = apply_filters( 'wc_shipping_simulator_form_js_params', [
+			'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
+			'auto_submit' => true,
+			'timeout' => 60000, // 1 minute in milliseconds
+			'errors' => [
+				'timeout' => esc_html__( 'The server took too long to respond. Please try again.', 'wc-shipping-simulator' ),
+				'unexpected' => esc_html__( 'An unexpected error occurred. Please refresh the page and try again.', 'wc-shipping-simulator' ),
+			],
+		] );
 		wp_localize_script(
 			h::prefix( 'form' ),
 			'wc_shipping_simulator_params',
-			apply_filters( 'wc_shipping_simulator_form_js_params', [
-				'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
-				'auto_submit' => true,
-			] )
+			$params
 		);
+
 		wp_enqueue_style(
 			h::prefix( 'form' ),
 			h::plugin_url( "assets/css/form$suffix.css" ),
@@ -93,10 +101,10 @@ final class Shortcode {
 	}
 
 	protected function get_customer_postcode () {
-		if ( is_user_logged_in() ) {
-			$user_id = get_current_user_id();
-			$billing_postcode = get_user_meta( $user_id, 'billing_postcode', true );
-			$postcode = $billing_postcode ? $billing_postcode : get_user_meta( $user_id, 'shipping_postcode', true );
+		$customer = WC()->customer;
+		if ( $customer ) {
+			$billing_postcode = $customer->get_billing_postcode();
+			$postcode = $billing_postcode ? $billing_postcode : $customer->get_shipping_postcode();
 			return h::sanitize_postcode( $postcode );
 		}
 		return '';

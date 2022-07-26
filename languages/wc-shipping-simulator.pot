@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-26T11:00:19-03:00\n"
+"POT-Creation-Date: 2022-07-26T12:37:14-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -161,15 +161,15 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: classes/Ajax.php:133
+#: classes/Ajax.php:130
 msgid "The postcode is required."
 msgstr ""
 
-#: classes/Ajax.php:138
+#: classes/Ajax.php:135
 msgid "Invalid product."
 msgstr ""
 
-#: classes/Ajax.php:142
+#: classes/Ajax.php:139
 msgid "The quantity must be greater than zero."
 msgstr ""
 
@@ -231,6 +231,14 @@ msgstr ""
 
 #: classes/Shipping_Package.php:139
 msgid "Please select some product options before adding this product to your cart."
+msgstr ""
+
+#: classes/Shortcode.php:83
+msgid "The server took too long to respond. Please try again."
+msgstr ""
+
+#: classes/Shortcode.php:84
+msgid "An unexpected error occurred. Please refresh the page and try again."
 msgstr ""
 
 #: classes/Tweaks.php:51

@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce-github\n"
-"POT-Creation-Date: 2022-07-26T11:00:19-03:00\n"
-"PO-Revision-Date: 2022-07-26 11:01-0300\n"
+"POT-Creation-Date: 2022-07-26T12:37:14-03:00\n"
+"PO-Revision-Date: 2022-07-26 12:37-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -196,15 +196,15 @@ msgstr "Simulador de frete"
 msgid "Settings"
 msgstr "Configurações"
 
-#: classes/Ajax.php:133
+#: classes/Ajax.php:130
 msgid "The postcode is required."
 msgstr "O CEP é obrigatório."
 
-#: classes/Ajax.php:138
+#: classes/Ajax.php:135
 msgid "Invalid product."
 msgstr "Produto inválido."
 
-#: classes/Ajax.php:142
+#: classes/Ajax.php:139
 msgid "The quantity must be greater than zero."
 msgstr "A quantidade deve ser maior que zero."
 
@@ -264,6 +264,14 @@ msgstr "Selecione uma das opções do produto primeiro."
 msgid ""
 "Please select some product options before adding this product to your cart."
 msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
+
+#: classes/Shortcode.php:83
+msgid "The server took too long to respond. Please try again."
+msgstr "O servidor demorou demais para responder. Tente novamente."
+
+#: classes/Shortcode.php:84
+msgid "An unexpected error occurred. Please refresh the page and try again."
+msgstr "Ocorreu um erro inesperado. Recarregue a página e tente novamente."
 
 #: classes/Tweaks.php:51
 msgid "Shipping options for"

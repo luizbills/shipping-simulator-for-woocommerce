@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
             results.innerHTML = html;
         },
         errorHandler: (message, data) => {
-            alert(message ? message : 'Error');
+            alert(message || config.errors.unexpected);
             console.error('wc-shipping-simulator request error:', data);
         },
         submitHandler: (evt) => {
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             xhr.open('GET', encodeURI(form.action + '?' + formData), true);
 
-            xhr.timeout = 300000; // 5 minutes
+            xhr.timeout = +config.timeout || 0;
 
             xhr.onload = () => {
                 config.requesting = false;
@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         config.hooks.errorHandler(res.error, res);
                     }
                 } catch (e) {
-                    config.hooks.errorHandler(config.errors.unexpected, e);
+                    config.hooks.errorHandler(null, e);
                 }
             };
 
@@ -130,10 +130,10 @@ window.addEventListener('DOMContentLoaded', () => {
         requesting: false,
         ...params,
         hooks,
-        errors: {
-            timeout: 'Timeout error',
-            unexpected: 'Unexpected error',
-        },
+        // errors: {
+        //     timeout: 'Timeout error',
+        //     unexpected: 'Unexpected error',
+        // },
     };
 
     // Use this global object to manipulate the simulator
