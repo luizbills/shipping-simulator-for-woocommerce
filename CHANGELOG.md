@@ -8,9 +8,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 [Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.0...1.3.1)
 
+-   Feature: Correios integration now fill the package address with city, street and neighborhood. Useful to some shipping methods like Lalamove.
 -   Fix: better message when missing a variation.
 -   Fix: free shipping was unavailable for non logged in users.
 -   Fix: PHP v8+ deprecation notice.
+-   i18n: Frontend unexpected error and timeout is now translatable.
 
 ## 1.3.0 - 2022-07-25
 
