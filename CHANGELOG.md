@@ -6,8 +6,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 1.3.1 - 2022-07-26
 
+[Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.0...1.3.1)
+
 -   Fix: better message when missing a variation.
 -   Fix: free shipping was unavailable for non logged in users.
+-   Fix: PHP v8+ deprecation notice.
 
 ## 1.3.0 - 2022-07-25
 
