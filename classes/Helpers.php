@@ -76,12 +76,7 @@ abstract class Helpers {
 			}
 			$message .= $value;
 		}
-		$logger = h::logger();
-		if ( $logger && \method_exists( $logger, 'debug' ) ) {
-			$logger->debug( $message );
-		} else {
-			\error_log( "[$slug] $message" );
-		}
+		error_log( "[$slug] $message" );
 	}
 
 	public static function log_wp_error ( $var, $code = null ) {
