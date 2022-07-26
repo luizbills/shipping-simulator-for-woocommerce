@@ -75,10 +75,7 @@ final class Ajax {
 				$response['error'] = $e->getMessage();
 				$status = 400;
 			} catch ( \Throwable $e ) {
-				$response['success'] = false;
-				$response['error'] = esc_html__( 'Something went wrong. Please try again.' );
-				h::logger()->error( __METHOD__ . ' error: ' . $e->getMessage() );
-				$status = 500;
+				throw $e;
 			}
 		}
 
