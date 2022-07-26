@@ -148,12 +148,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (config.auto_submit) {
         input.addEventListener('input', (evt) => {
-            if (
-                input.value &&
-                input.value.length === config.hooks.filterPostcodeMaxLength()
-            ) {
-                button.click();
+            const value = input.value || '';
+            if (value.length === config.hooks.filterPostcodeMaxLength()) {
                 input.blur();
+                button.click();
             }
         });
     }
