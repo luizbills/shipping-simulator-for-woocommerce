@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce-github\n"
-"POT-Creation-Date: 2022-07-25T11:19:44-03:00\n"
-"PO-Revision-Date: 2022-07-25 11:21-0300\n"
+"POT-Creation-Date: 2022-07-26T11:00:19-03:00\n"
+"PO-Revision-Date: 2022-07-26 11:01-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -256,7 +256,11 @@ msgstr "Essa caixa não aparece para seus clientes."
 msgid "This product is virtual and can not shippable."
 msgstr "Este produto é virtual e não pode ser enviado."
 
-#: classes/Shipping_Package.php:56 classes/Shipping_Package.php:139
+#: classes/Shipping_Package.php:56
+msgid "Please select some product options first."
+msgstr "Selecione uma das opções do produto primeiro."
+
+#: classes/Shipping_Package.php:139
 msgid ""
 "Please select some product options before adding this product to your cart."
 msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
