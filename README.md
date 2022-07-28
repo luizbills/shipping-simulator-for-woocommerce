@@ -10,8 +10,7 @@
 
 Allows customers to calculate the shipping rates on the product page in your WooCommerce store.
 
-**\*This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs. More details in our [documentation](/docs/README.md).\*
-
+_**This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs._
 ### Donations
 
 [![Donate](https://img.shields.io/badge/SUPPORT%20ME-DONATE-2b8a3e?style=for-the-badge)](https://luizpb.com/donate/)
