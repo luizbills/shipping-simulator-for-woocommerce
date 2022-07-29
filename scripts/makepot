@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+DOMAIN="wc-shipping-simulator";
+
+# Requires WP-CLI
+wp i18n make-pot . languages/$DOMAIN.pot

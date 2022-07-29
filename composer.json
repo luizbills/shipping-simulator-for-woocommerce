@@ -1,22 +1,18 @@
 {
-    "require": {
-        "php": "^7.3",
-        "ext-mbstring": "*"
-    },
-    "require-dev": {},
-    "autoload": {
-        "psr-4": {
-            "Shipping_Simulator\\": [
-                "classes/"
-            ],
-            "Shipping_Simulator\\Core\\": [
-                "core/"
-            ]
-        }
-    },
-    "scripts": {
-        "build": "/usr/bin/env bash ./scripts/build",
-        "deploy": "/usr/bin/env bash ./scripts/deploy",
-        "make-pot": "wp i18n make-pot . languages/wc-shipping-simulator.pot"
+  "require": {
+    "php": "^7.3",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "Shipping_Simulator\\": ["classes/"],
+      "Shipping_Simulator\\Core\\": ["core/"]
     }
+  },
+  "scripts": {
+    "build": "/usr/bin/env bash ./scripts/build",
+    "deploy": "/usr/bin/env bash ./scripts/deploy",
+    "make-pot": "/usr/bin/env bash ./scripts/makepot"
+  }
 }
