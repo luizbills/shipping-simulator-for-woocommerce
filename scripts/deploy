@@ -24,6 +24,9 @@ WP_PLUGIN_SLUG="shipping-simulator-for-woocommerce"
 # GITHUB user who owns the repo
 GITHUB_REPO_SLUG="luizbills/shipping-simulator-for-woocommerce"
 
+# main Github branch
+MAIN_BRANCH="master";
+
 # folder with plugin icon, banner and screenshots used in https://wordpress.org
 PLUGIN_ASSETS_DIR=".wordpress-org"
 
@@ -32,9 +35,8 @@ PLUGIN_ASSETS_DIR=".wordpress-org"
 set -e
 clear >$( tty ) # clear the terminal
 
-
-
-STABLE_TAG=$( curl -m 3 -s https://raw.githubusercontent.com/${GITHUB_REPO_SLUG}/main/readme.txt | sed -n 's/Stable tag: \([0-9]\.[0-9]\.[0-9]*\).*/\1/p' )
+REMOTE_README_TXT="https://raw.githubusercontent.com/${GITHUB_REPO_SLUG}/${MAIN_BRANCH}/readme.txt"
+STABLE_TAG=$( curl -m 3 -s $REMOTE_README_TXT | sed -n 's/Stable tag: \([0-9]\.[0-9]\.[0-9]*\).*/\1/p' )
 
 trim_spaces() {
     # Usage: trim_spaces "   example   string    "
