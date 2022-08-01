@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
-"simulator-for-woocommerce-github\n"
-"POT-Creation-Date: 2022-07-26T12:37:14-03:00\n"
-"PO-Revision-Date: 2022-07-26 12:37-0300\n"
+"simulator-for-woocommerce\n"
+"POT-Creation-Date: 2022-08-01T11:53:14-03:00\n"
+"PO-Revision-Date: 2022-08-01 11:54-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -265,11 +265,11 @@ msgid ""
 "Please select some product options before adding this product to your cart."
 msgstr "Selecione uma das opções do produto antes de adicioná-lo ao carrinho."
 
-#: classes/Shortcode.php:83
+#: classes/Shortcode.php:79
 msgid "The server took too long to respond. Please try again."
 msgstr "O servidor demorou demais para responder. Tente novamente."
 
-#: classes/Shortcode.php:84
+#: classes/Shortcode.php:80
 msgid "An unexpected error occurred. Please refresh the page and try again."
 msgstr "Ocorreu um erro inesperado. Recarregue a página e tente novamente."
 
@@ -284,6 +284,14 @@ msgstr "Está faltando algumas dependências do plugin %s:"
 #: dependencies.php:25
 msgid "Install and activate the %s plugin."
 msgstr "Instale e ative o plugin %s."
+
+#: dependencies.php:35
+msgid "The WooCommerce option %s is disabled."
+msgstr "A opção %s do WooCommerce está desativada."
+
+#: dependencies.php:36
+msgid "Shipping location(s)"
+msgstr "Locais de entrega"
 
 #: main.php:43
 msgid "Error on plugin %s activation: %s"
