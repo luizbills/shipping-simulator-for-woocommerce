@@ -39,10 +39,6 @@ final class Shortcode {
 				'product_id' => $prod->get_id(),
 
 				// customizable template variables
-				'input_mask' => apply_filters(
-					'wc_shipping_simulator_form_input_mask',
-					'' // no input mask by default
-				),
 				'input_placeholder' => apply_filters(
 					'wc_shipping_simulator_form_input_placeholder',
 					Settings::get_option( 'input_placeholder' )
@@ -83,6 +79,10 @@ final class Shortcode {
 				'timeout' => esc_html__( 'The server took too long to respond. Please try again.', 'wc-shipping-simulator' ),
 				'unexpected' => esc_html__( 'An unexpected error occurred. Please refresh the page and try again.', 'wc-shipping-simulator' ),
 			],
+			'postcode_mask' => apply_filters(
+				'wc_shipping_simulator_form_input_mask',
+				'' // no input mask by default
+			)
 		] );
 		wp_localize_script(
 			h::prefix( 'form' ),

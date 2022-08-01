@@ -1,11 +1,12 @@
 window.addEventListener('DOMContentLoaded', () => {
     const params = window.wc_shipping_simulator_params || {};
-    const d = document;
-    const form = d.querySelector('#wc-shipping-sim-form');
-    const input = form.querySelector('.input-postcode');
-    const button = form.querySelector('.button.submit');
-    const nonce = form.querySelector('#nonce');
-    const results = d.querySelector('#wc-shipping-sim-results');
+    const $ = (s, root = document) => root.querySelector(s);
+    const on = (el, evt, cb) => el.addEventListener(evt, cb);
+    const form = $('#wc-shipping-sim-form');
+    const input = $('.input-postcode', form);
+    const button = $('.button.submit', form);
+    const nonce = $('#nonce', form);
+    const results = $('#wc-shipping-sim-results');
     const I = (val) => val;
     const hooks = {
         filterFormData: I,
@@ -14,8 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
         filterProduct: I,
         filterQuantity: I,
         filterPostcodeMaxLength: () =>
-            input.dataset.mask ? input.dataset.mask.length : 20,
-
+            config.postcode_mask ? config.postcode_mask.length : 15,
         beforeSubmit: (xhr) => {
             config.hooks.resultsHandler('');
             input.disabled = true;
@@ -95,22 +95,23 @@ window.addEventListener('DOMContentLoaded', () => {
             xhr.send();
         },
         inputMaskHandler: () => {
-            if (input.dataset.mask) {
+            input.maxLength = config.hooks.filterPostcodeMaxLength();
+            if (config.postcode_mask) {
                 // apply input mask
-                input.addEventListener('input', (evt) => {
-                    const mask = input.dataset.mask;
+                on(input, 'input', (evt) => {
+                    const mask = config.postcode_mask;
                     input.value = applyMask(input.value || '', mask);
-                    input.maxLength = config.hooks.filterPostcodeMaxLength();
+                    input.maxLength = config.postcode_mask.length;
                 });
 
-                d.dispatchEvent(new Event('input'));
+                input.dispatchEvent(new Event('input'));
 
-                // usage: applyMask('01012000', 'XX-XX-XXXX') // returns "01-01-2000"
+                // usage: applyMask('01153000', 'XX XXX-XXX') // returns "01 153-000"
                 function applyMask(text, mask, symbol = 'X') {
                     if (!mask) return text;
                     let result = '';
                     // remove all non allphanumerics
-                    const _text = (text + '').replace(/[^a-z0-9]/gi, '');
+                    const _text = (text + '').replace(/[^0-9]/g, '');
                     for (let i = 0, j = 0, len = mask.length; i < len; i++) {
                         if (!_text[j]) break;
                         if (symbol === mask[i]) {
@@ -127,29 +128,23 @@ window.addEventListener('DOMContentLoaded', () => {
         },
     };
     const config = {
-        requesting: false,
         ...params,
+        requesting: false,
         hooks,
-        // errors: {
-        //     timeout: 'Timeout error',
-        //     unexpected: 'Unexpected error',
-        // },
     };
 
     // Use this global object to manipulate the simulator
     window.wc_shipping_simulator = config;
-
-    // Event to update the global object
-    d.dispatchEvent(new Event('wc_shipping_simulator:init'));
+    document.dispatchEvent(new Event('wc_shipping_simulator:init'));
 
     config.hooks.inputMaskHandler && config.hooks.inputMaskHandler();
 
-    form.addEventListener('submit', config.hooks.submitHandler);
+    on(form, 'submit', config.hooks.submitHandler);
 
-    if (config.auto_submit) {
-        input.addEventListener('input', (evt) => {
-            const value = input.value || '';
-            if (value.length === config.hooks.filterPostcodeMaxLength()) {
+    if (config.auto_submit && config.postcode_mask) {
+        on(input, 'input', (evt) => {
+            const maxLength = config.hooks.filterPostcodeMaxLength();
+            if (maxLength > 0 && input.value.length === maxLength) {
                 input.blur();
                 button.click();
             }
@@ -162,9 +157,7 @@ window.addEventListener('DOMContentLoaded', () => {
             id: form.dataset.productId,
         };
         if ('variable' === product.type) {
-            const variation_id_input = d.querySelector(
-                '.variations_form .variation_id'
-            );
+            const variation_id_input = $('.variations_form .variation_id');
             product.variation_id = variation_id_input
                 ? variation_id_input.value
                 : 0;
@@ -181,7 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getQuantity() {
         let value = form.dataset.quantity;
-        let input = d.querySelector('[name="quantity"]');
+        let input = $('[name="quantity"]');
         if (input) {
             value = input.value;
         }
