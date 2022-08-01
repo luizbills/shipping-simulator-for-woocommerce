@@ -1,18 +1,22 @@
 {
-  "require": {
-    "php": "^7.3",
-    "ext-mbstring": "*"
-  },
-  "require-dev": {},
-  "autoload": {
-    "psr-4": {
-      "Shipping_Simulator\\": ["classes/"],
-      "Shipping_Simulator\\Core\\": ["core/"]
+    "require": {
+        "php": "^7.3",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Shipping_Simulator\\": [
+                "classes/"
+            ],
+            "Shipping_Simulator\\Core\\": [
+                "core/"
+            ]
+        }
+    },
+    "scripts": {
+        "build": "./scripts/build",
+        "deploy": "./scripts/deploy",
+        "make-pot": "./scripts/makepot"
     }
-  },
-  "scripts": {
-    "build": "/usr/bin/env bash ./scripts/build",
-    "deploy": "/usr/bin/env bash ./scripts/deploy",
-    "make-pot": "/usr/bin/env bash ./scripts/makepot"
-  }
 }
