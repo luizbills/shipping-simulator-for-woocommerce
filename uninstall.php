@@ -7,13 +7,14 @@ Reference: https://developer.wordpress.org/plugins/plugin-basics/uninstall-metho
 */
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit( 1 );
 
-// $option_name = 'your_plugin_option';
-// delete_option( $option_name );
+global $wpdb;
 
-//// Use `delete_site_option` in Multisite. Note: In Multisite, looping through all blogs to delete options can be very resource intensive.
-// delete_site_option( $option_name );
+$prefix = 'wc_shipping_simulator_';
+$settings_query = $wpdb->prepare(
+    "DELETE FROM {$wpdb->prefix}options WHERE option_name LIKE %s",
+    $prefix . '%'
+);
+$wpdb->query( $settings_query );
 
-// global $wpdb;
-// $wpdb->query(
-// 	"DROP TABLE IF EXISTS {$wpdb->prefix}yourtable" // drop a custom db table
-// );
+$cookie = $prefix . 'donation_notice_closed';
+setcookie( $cookie, '', time() - 10 );
