@@ -239,9 +239,9 @@ abstract class Helpers {
 		$args = \apply_filters( h::prefix( 'get_template_args' ), $args, $path );
 		$dir = \trim( h::config_get( 'TEMPLATES_DIR', 'templates' ), '/' );
 		$absolute_path = h::config_get( 'DIR' ) . "/{$dir}/$path" . ( ! h::str_ends_with( $path, '.php' ) ? '.php' : '' );
+		$absolute_path = apply_filters( h::prefix( 'get_template_path' ), $absolute_path, $path );
 
 		try {
-			\extract( $args );
 			\ob_start();
 			include $absolute_path;
 			return \ob_get_clean();
