@@ -5,7 +5,7 @@ Plugin URI: https://github.com/luizbills/shipping-simulator-for-woocommerce
 Version: 1.3.2
 Description: Allows your customers to calculate the shipping rates on the product page
 Author: Luiz Bills
-Author URI: https://github.com/luizbills
+Author URI: https://luizpb.com
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: wc-shipping-simulator
@@ -40,7 +40,8 @@ try {
 		if ( ! current_user_can( 'install_plugins' ) ) return;
 		list( $plugin_name ) = get_file_data( __FILE__, [ 'plugin name' ] );
 		$message = sprintf(
-			esc_html__( 'Error on plugin %s activation: %s', 'wc-shipping-simulator' ),
+			/* translators: %1$s is replaced with plugin name and %2$s with an error message */
+			esc_html__( 'Error on %1$s plugin activation: %2$s', 'wc-shipping-simulator' ),
 			'<strong>' . esc_html( $plugin_name ) . '</strong>',
 			'<br><code>' . esc_html( $e->getMessage() ) . '</code>'
 		);
