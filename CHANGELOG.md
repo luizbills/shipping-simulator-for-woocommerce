@@ -4,12 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 1.4.0 - 2022-08-01
+## 1.3.3 - 2022-08-02
 
-[Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.2...1.4.0)
+[Source changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.2...1.3.3)
 
--   Feature: delete plugin database options on uninstallation.
--   New filter hook: `wc_shipping_simulator_get_template_full_path` can be used to replace the path of a template file.
+-   Fix: delete plugin database options on uninstallation.
+-   New filter hook: `wc_shipping_simulator_get_template_full_path` can be used to override the path of a template file.
 
 ## 1.3.2 - 2022-08-01
 
