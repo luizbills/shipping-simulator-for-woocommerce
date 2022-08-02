@@ -14,7 +14,7 @@ final class Plugin_Meta {
 	public function plugin_meta ( $plugin_meta, $plugin_file ) {
 		if ( plugin_basename( h::config_get( 'FILE' ) ) === $plugin_file ) {
 			$donation_url = esc_url( h::config_get( 'DONATION_URL' ) );
-			$forum_url = 'https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/';
+			$forum_url = h::config_get( 'PLUGIN_FORUM' );
 
 			$plugin_meta[] = "<a href=\"$forum_url\" target='blank' rel='noopener'>" . esc_html__( 'Community support', 'wc-shipping-simulator' ) .  "</a>";
 
