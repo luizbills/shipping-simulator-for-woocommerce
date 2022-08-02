@@ -1,4 +1,5 @@
 <?php use Shipping_Simulator\Helpers as h; ?>
+<?php extract( $args ); ?>
 
 <?php if ( count( $rates ) ) : ?>
 	<?php do_action( 'wc_shipping_simulator_results_before', $data ) ?>

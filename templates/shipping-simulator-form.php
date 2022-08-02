@@ -1,3 +1,4 @@
+<?php extract( $args ); ?>
 <section id="wc-shipping-sim">
 	<?php do_action( 'wc_shipping_simulator_wrapper_start' ) ?>
 
