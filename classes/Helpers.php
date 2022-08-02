@@ -238,12 +238,13 @@ abstract class Helpers {
 	public static function get_template ( $path, $args = [] ) {
 		$args = \apply_filters( h::prefix( 'get_template_args' ), $args, $path );
 		$dir = \trim( h::config_get( 'TEMPLATES_DIR', 'templates' ), '/' );
-		$absolute_path = h::config_get( 'DIR' ) . "/{$dir}/$path" . ( ! h::str_ends_with( $path, '.php' ) ? '.php' : '' );
-		$absolute_path = apply_filters( h::prefix( 'get_template_path' ), $absolute_path, $path );
+		$full_path = h::config_get( 'DIR' ) . "/{$dir}/$path" . ( ! h::str_ends_with( $path, '.php' ) ? '.php' : '' );
+		$full_path = apply_filters( h::prefix( 'get_template_full_path' ), $full_path, $path );
 
 		try {
+			\extract( $args );
 			\ob_start();
-			include $absolute_path;
+			include $full_path;
 			return \ob_get_clean();
 		} catch ( \Throwable $e ) {
 			throw new \Error( "ERROR while rendering template \"$path\": " . $e->getMessage() );
