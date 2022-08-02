@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
-"POT-Creation-Date: 2022-08-01T11:53:14-03:00\n"
-"PO-Revision-Date: 2022-08-01 11:54-0300\n"
+"POT-Creation-Date: 2022-08-02T16:08:23-03:00\n"
+"PO-Revision-Date: 2022-08-02 16:08-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -37,8 +37,8 @@ msgid "Luiz Bills"
 msgstr "Luiz Bills"
 
 #. Author URI of the plugin
-msgid "https://github.com/luizbills"
-msgstr "https://github.com/luizbills"
+msgid "https://luizpb.com"
+msgstr "https://luizpb.com/pt"
 
 #: classes/Admin/inc/settings_fields.php:12
 msgid "Shipping Simulator Settings"
@@ -184,7 +184,7 @@ msgstr ""
 msgid "Community support"
 msgstr "Suporte da comunidade"
 
-#: classes/Admin/Plugin_Meta.php:21
+#: classes/Admin/Plugin_Meta.php:21 templates/notice-donation.php:17
 msgid "Donate"
 msgstr "Faça uma doação"
 
@@ -277,25 +277,42 @@ msgstr "Ocorreu um erro inesperado. Recarregue a página e tente novamente."
 msgid "Shipping options for"
 msgstr "Opções de frete para"
 
-#: core/Dependencies.php:68
+#. translators: %s is replaced with plugin name
+#: core/Dependencies.php:69
 msgid "Missing dependencies of %s plugin:"
 msgstr "Está faltando algumas dependências do plugin %s:"
 
-#: dependencies.php:25
+#. translators: %s is replaced with a required plugin name
+#: dependencies.php:27
 msgid "Install and activate the %s plugin."
 msgstr "Instale e ative o plugin %s."
 
-#: dependencies.php:35
+#. translators: %s is replaced with a required option
+#: dependencies.php:38
 msgid "The WooCommerce option %s is disabled."
 msgstr "A opção %s do WooCommerce está desativada."
 
-#: dependencies.php:36
+#: dependencies.php:39
 msgid "Shipping location(s)"
 msgstr "Locais de entrega"
 
-#: main.php:43
-msgid "Error on plugin %s activation: %s"
+#. translators: %1$s is replaced with plugin name and %2$s with an error message
+#: main.php:44
+msgid "Error on %1$s plugin activation: %2$s"
 msgstr "Erro na ativação do plugin %s: %s"
+
+#. translators: %1$s is replaced with plugin name and %2$s with 5 stars
+#: templates/notice-donation.php:7
+msgid ""
+"Help us keep the %1$s plugin free and always up to date making a donation or "
+"rating %2$s on WordPress.org."
+msgstr ""
+"Ajude-nos a manter o %1$s gratuito e sempre atualizado fazendo uma doação ou "
+"uma avaliação com %2$s no WordPress.org."
+
+#: templates/notice-donation.php:18
+msgid "Make a review"
+msgstr "Fazer uma avaliação"
 
 #~ msgid "Forum"
 #~ msgstr "Fórum"

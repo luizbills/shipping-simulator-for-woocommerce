@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-01T11:53:14-03:00\n"
+"POT-Creation-Date: 2022-08-02T16:08:23-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -31,7 +31,7 @@ msgid "Luiz Bills"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://github.com/luizbills"
+msgid "https://luizpb.com"
 msgstr ""
 
 #: classes/Admin/inc/settings_fields.php:12
@@ -150,6 +150,7 @@ msgid "Community support"
 msgstr ""
 
 #: classes/Admin/Plugin_Meta.php:21
+#: templates/notice-donation.php:17
 msgid "Donate"
 msgstr ""
 
@@ -245,22 +246,35 @@ msgstr ""
 msgid "Shipping options for"
 msgstr ""
 
-#: core/Dependencies.php:68
+#. translators: %s is replaced with plugin name
+#: core/Dependencies.php:69
 msgid "Missing dependencies of %s plugin:"
 msgstr ""
 
-#: dependencies.php:25
+#. translators: %s is replaced with a required plugin name
+#: dependencies.php:27
 msgid "Install and activate the %s plugin."
 msgstr ""
 
-#: dependencies.php:35
+#. translators: %s is replaced with a required option
+#: dependencies.php:38
 msgid "The WooCommerce option %s is disabled."
 msgstr ""
 
-#: dependencies.php:36
+#: dependencies.php:39
 msgid "Shipping location(s)"
 msgstr ""
 
-#: main.php:43
-msgid "Error on plugin %s activation: %s"
+#. translators: %1$s is replaced with plugin name and %2$s with an error message
+#: main.php:44
+msgid "Error on %1$s plugin activation: %2$s"
+msgstr ""
+
+#. translators: %1$s is replaced with plugin name and %2$s with 5 stars
+#: templates/notice-donation.php:7
+msgid "Help us keep the %1$s plugin free and always up to date making a donation or rating %2$s on WordPress.org."
+msgstr ""
+
+#: templates/notice-donation.php:18
+msgid "Make a review"
 msgstr ""
