@@ -8,4 +8,6 @@ return [
 	'LANGUAGES_DIR' => 'languages',
 	'TEMPLATES_DIR' => 'templates',
 	'DONATION_URL' => 'https://luizpb.com/donate/',
+	'PLUGIN_REVIEWS' => 'https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/reviews/?filter=5#new-post',
+	'PLUGIN_FORUM' => 'https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/',
 ];
