@@ -240,21 +240,31 @@ abstract class Helpers {
 		$dir = \trim( h::config_get( 'TEMPLATES_DIR', 'templates' ), '/' );
 		$full_path = h::config_get( 'DIR' ) . "/{$dir}/$path" . ( ! h::str_ends_with( $path, '.php' ) ? '.php' : '' );
 		$full_path = apply_filters( h::prefix( 'get_template_full_path' ), $full_path, $path );
-
+		$html = '';
 		try {
 			\extract( $args );
 			\ob_start();
-			include $full_path;
-			return \ob_get_clean();
+			require $full_path;
+			$html = \ob_get_clean();
 		} catch ( \Throwable $e ) {
-			throw new \Error( "ERROR while rendering template \"$path\": " . $e->getMessage() );
+			if ( h::user_is_admin() ) {
+				$error = wp_slash( "Error while rendering template '$path': " . $e->getMessage() );
+				$html = '<script>alert("' . esc_js( $error ) . '")</script>';
+			} else {
+				throw new \Error( $e );
+			}
 		}
+		return $html;
 	}
 
 	// YOUR CUSTOM HELPERS (ALWAYS STATIC)
 	// public static function foo () {
 	//     return 'bar';
 	// }
+
+	public static function user_is_admin ( $user_id = null ) {
+		return $user_id ? user_can( $user_id, 'administrator' ) : current_user_can(  'administrator' );
+	}
 
 	public static function sanitize_postcode ( $postcode ) {
 		return preg_replace( '/[^0-9]/', '', $postcode );

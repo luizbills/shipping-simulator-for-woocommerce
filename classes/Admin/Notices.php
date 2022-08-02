@@ -12,6 +12,7 @@ final class Notices {
 	}
 
 	public function donation_notice () {
+		if ( ! h::user_is_admin() ) return;
 		global $pagenow;
 		$in_plugins = 'plugins.php' === $pagenow;
 		$in_settings = 'admin.php' === $pagenow && 'wc-settings' === h::get( $_GET['page'] ) && 'wc-shipping-simulator' === h::get( $_GET['section'] );
