@@ -15,7 +15,7 @@ return [
 	[
 		'id'       => $prefix . 'auto_insert',
 		'type'     => 'checkbox',
-		'name'     => esc_html__( 'Enable Auto-Insert', 'wc-shipping-simulator' ),
+		'name'     => esc_html__( 'Enable auto-insert', 'wc-shipping-simulator' ),
 		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
 		'desc_tip' => sprintf(
 			// translators: %s is a shortcode tag
@@ -75,7 +75,7 @@ return [
 	[
 		'id'       => $prefix . 'no_results',
 		'type'     => 'textarea',
-		'name'     => esc_html__( 'Text when not have results.', 'wc-shipping-simulator' ),
+		'name'     => esc_html__( 'Text when there are no results.', 'wc-shipping-simulator' ),
 		'default'  => __( 'Unfortunately at this moment this product cannot be delivered to the specified region.', 'wc-shipping-simulator' ),
 		'css' => 'height: 6rem;',
 	],

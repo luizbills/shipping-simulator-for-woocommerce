@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
-"POT-Creation-Date: 2022-08-02T16:34:38-03:00\n"
-"PO-Revision-Date: 2022-08-03 09:00-0300\n"
+"POT-Creation-Date: 2022-08-03T09:27:05-03:00\n"
+"PO-Revision-Date: 2022-08-03 09:28-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -55,8 +55,8 @@ msgstr ""
 "<em>, etc."
 
 #: classes/Admin/inc/settings_fields.php:18
-msgid "Enable Auto-Insert"
-msgstr "Ativar Auto-Inserção"
+msgid "Enable auto-insert"
+msgstr "Ativar inserção automática"
 
 #: classes/Admin/inc/settings_fields.php:19
 #: classes/Admin/inc/settings_fields.php:31
@@ -158,8 +158,8 @@ msgstr ""
 "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
 
 #: classes/Admin/inc/settings_fields.php:78
-msgid "Text when not have results."
-msgstr "Texto quando não tem resultados."
+msgid "Text when there are no results."
+msgstr "Texto quando não existir resultados."
 
 #: classes/Admin/inc/settings_fields.php:79
 msgid ""
