@@ -17,6 +17,7 @@
     "scripts": {
         "build": "./scripts/build",
         "deploy": "./scripts/deploy",
+        "update-trunk": "./scripts/deploy --only-trunk",
         "make-pot": "./scripts/makepot"
     }
 }
