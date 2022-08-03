@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
 "POT-Creation-Date: 2022-08-02T16:34:38-03:00\n"
-"PO-Revision-Date: 2022-08-02 16:34-0300\n"
+"PO-Revision-Date: 2022-08-03 09:00-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -299,7 +299,7 @@ msgstr "Locais de entrega"
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
 #: main.php:44
 msgid "Error on %1$s plugin activation: %2$s"
-msgstr "Erro na ativação do plugin %s: %s"
+msgstr "Erro na ativação do plugin %1$s: %2$s"
 
 #. translators: %1$s is replaced with plugin name and %2$s with 5 stars
 #: templates/notice-donation.php:7
