@@ -2,8 +2,6 @@
 
 namespace Shipping_Simulator;
 
-use Shipping_Simulator\Helpers as h;
-
 defined( 'WPINC' ) || exit( 1 );
 
 return [

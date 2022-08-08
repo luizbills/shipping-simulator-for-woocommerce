@@ -5,8 +5,6 @@ namespace Shipping_Simulator\Admin;
 use Shipping_Simulator\Helpers as h;
 
 final class Plugin_Meta {
-	protected static $fields = null;
-
 	public function __start () {
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_meta' ], 10, 2 );
 	}
