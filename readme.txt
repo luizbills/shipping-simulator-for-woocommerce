@@ -1,7 +1,7 @@
 === Shipping Simulator for WooCommerce ===
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
-Tags: woocommerce, shipping simulator, simulador de frete, brazil, calculadora de frete, shipping calculator, product page
+Tags: woocommerce, shipping simulator, simulador de frete, brazil, calculadora de frete, shipping calculator, product page, shipping, frete
 Requires at least: 4.9
 Tested up to: 6.0
 Stable tag: 1.3.3
