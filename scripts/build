@@ -38,15 +38,15 @@ fi
 if [ -f 'composer.json' ];
 then
 	rm -rf ./vendor
-	echo "Installing composer dependencies..."
-	composer install --no-dev
+	echo "Installing composer packages..."
+	composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
 fi
 
 # npm install
 if [ -f 'package.json' ];
 then
-	echo "Installing NPM dependencies..."
-	npm install
+	echo "Installing NPM packages..."
+	npm ci --no-progress
 fi
 
 # delete some dev files
