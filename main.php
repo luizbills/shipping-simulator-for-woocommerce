@@ -31,10 +31,23 @@ defined( 'WPINC' ) || exit( 1 );
 load_plugin_textdomain( 'wc-shipping-simulator', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 try {
+	// Check PHP Version
+	$php_expected = '7.4';
+	$php_current = PHP_VERSION;
+	if ( version_compare( $php_current, $php_expected, '<' ) ) {
+		throw new Error(
+			sprintf(
+				// translators: the %s are PHP versions
+				esc_html__( "This plugin requires PHP version %s or later (your server PHP version is %s)", 'wc-shipping-simulator' ),
+				$php_expected, esc_html( $php_current )
+			)
+		);
+	}
+
 	// check composer autoload
 	$composer_autoload = __DIR__ . '/vendor/autoload.php';
 	if ( ! file_exists( $composer_autoload ) ) {
-		throw new \Error( $composer_autoload . ' does not exist' );
+		throw new Error( $composer_autoload . ' does not exist' );
 	}
 	include_once $composer_autoload;
 } catch ( Throwable $e ) {

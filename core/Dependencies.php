@@ -2,6 +2,9 @@
 
 namespace Shipping_Simulator\Core;
 
+use Shipping_Simulator\Core\Config;
+use Shipping_Simulator\Core\Loader;
+
 abstract class Dependencies {
 	protected static $dependencies;
 
@@ -24,14 +27,14 @@ abstract class Dependencies {
 		$errors = [];
 		$passed = [];
 
-		foreach ( self::$dependencies as $key => $dep ) {
+		foreach ( self::$dependencies as $dep ) {
 			$check = is_callable( $dep['check'] ) ? call_user_func( $dep['check'] ) : $dep['check'];
 			$message = is_callable( $dep['message'] ) ? call_user_func( $dep['message'] ) : $dep['message'];
 
 			if ( ! $check ) {
-				$errors[ $key ] = $message;
+				$errors[] = $message;
 			} else {
-				$passed[ $key ] = $message;
+				$passed[] = $message;
 			}
 		}
 
@@ -66,7 +69,7 @@ abstract class Dependencies {
 			echo "<div class='notice notice-error'><p>";
 			echo sprintf(
 				/* translators: %s is replaced with plugin name */
-				__( 'Missing dependencies of %s plugin:', 'wc-shipping-simulator' ),
+				__( 'Missing dependencies for %s:', 'wc-shipping-simulator' ),
 				"<strong>" . Config::get( 'NAME' ) . "</strong>",
 			);
 

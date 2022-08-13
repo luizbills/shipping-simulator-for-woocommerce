@@ -2,6 +2,8 @@
 
 namespace Shipping_Simulator\Core;
 
+use Shipping_Simulator\Core\Config;
+
 abstract class Loader {
 	protected static $classes;
 
