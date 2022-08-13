@@ -4,3 +4,5 @@
 *.log
 *.min.js
 *.min.css
+/.phpunit.result.cache
+/phpunit.xml
