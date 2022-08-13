@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
-"POT-Creation-Date: 2022-08-03T09:27:05-03:00\n"
-"PO-Revision-Date: 2022-08-03 09:28-0300\n"
+"POT-Creation-Date: 2022-08-13T15:51:53-03:00\n"
+"PO-Revision-Date: 2022-08-13 15:53-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -180,11 +180,11 @@ msgstr ""
 "Ative o modo de depuração para registrar em arquivos de log suas simulações "
 "de frete e mostrar informações úteis."
 
-#: classes/Admin/Plugin_Meta.php:19
+#: classes/Admin/Plugin_Meta.php:17
 msgid "Community support"
 msgstr "Suporte da comunidade"
 
-#: classes/Admin/Plugin_Meta.php:21 templates/notice-donation.php:17
+#: classes/Admin/Plugin_Meta.php:19 templates/notice-donation.php:17
 msgid "Donate"
 msgstr "Faça uma doação"
 
@@ -278,26 +278,33 @@ msgid "Shipping options for"
 msgstr "Opções de frete para"
 
 #. translators: %s is replaced with plugin name
-#: core/Dependencies.php:69
-msgid "Missing dependencies of %s plugin:"
-msgstr "Está faltando algumas dependências do plugin %s:"
+#: core/Dependencies.php:72
+msgid "Missing dependencies for %s:"
+msgstr "Está faltando algumas dependências do %s:"
 
 #. translators: %s is replaced with a required plugin name
-#: dependencies.php:27
+#: dependencies.php:14
 msgid "Install and activate the %s plugin."
 msgstr "Instale e ative o plugin %s."
 
 #. translators: %s is replaced with a required option
-#: dependencies.php:38
+#: dependencies.php:25
 msgid "The WooCommerce option %s is disabled."
 msgstr "A opção %s do WooCommerce está desativada."
 
-#: dependencies.php:39
+#: dependencies.php:26
 msgid "Shipping location(s)"
 msgstr "Locais de entrega"
 
+#. translators: the %s are PHP versions
+#: main.php:41
+msgid ""
+"This plugin requires PHP version %s or later (your server PHP version is %s)"
+msgstr ""
+"Este plugin requer PHP na versão %s ou superior (o PHP do seu servidor é %s) "
+
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
-#: main.php:44
+#: main.php:59
 msgid "Error on %1$s plugin activation: %2$s"
 msgstr "Erro na ativação do plugin %1$s: %2$s"
 

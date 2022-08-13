@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-03T09:27:05-03:00\n"
+"POT-Creation-Date: 2022-08-13T15:51:53-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -145,11 +145,11 @@ msgstr ""
 msgid "Enable debug mode to log your shipping simulations and display helpful tips."
 msgstr ""
 
-#: classes/Admin/Plugin_Meta.php:19
+#: classes/Admin/Plugin_Meta.php:17
 msgid "Community support"
 msgstr ""
 
-#: classes/Admin/Plugin_Meta.php:21
+#: classes/Admin/Plugin_Meta.php:19
 #: templates/notice-donation.php:17
 msgid "Donate"
 msgstr ""
@@ -247,26 +247,31 @@ msgid "Shipping options for"
 msgstr ""
 
 #. translators: %s is replaced with plugin name
-#: core/Dependencies.php:69
-msgid "Missing dependencies of %s plugin:"
+#: core/Dependencies.php:72
+msgid "Missing dependencies for %s:"
 msgstr ""
 
 #. translators: %s is replaced with a required plugin name
-#: dependencies.php:27
+#: dependencies.php:14
 msgid "Install and activate the %s plugin."
 msgstr ""
 
 #. translators: %s is replaced with a required option
-#: dependencies.php:38
+#: dependencies.php:25
 msgid "The WooCommerce option %s is disabled."
 msgstr ""
 
-#: dependencies.php:39
+#: dependencies.php:26
 msgid "Shipping location(s)"
 msgstr ""
 
+#. translators: the %s are PHP versions
+#: main.php:41
+msgid "This plugin requires PHP version %s or later (your server PHP version is %s)"
+msgstr ""
+
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
-#: main.php:44
+#: main.php:59
 msgid "Error on %1$s plugin activation: %2$s"
 msgstr ""
 
