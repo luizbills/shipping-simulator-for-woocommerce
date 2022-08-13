@@ -19,15 +19,17 @@
 # ----- START EDITING HERE -----
 
 # The slug of your WordPress.org plugin
-WP_PLUGIN_SLUG="shipping-simulator-for-woocommerce"
+# You need publish your plugin first: https://wordpress.org/plugins/developers/add/
+WP_PLUGIN_SLUG="your_wp_plugin_slug"
 
-# GITHUB user who owns the repo
-GITHUB_REPO_SLUG="luizbills/shipping-simulator-for-woocommerce"
+# The GITHUB repository
+# format: username/repository (example: luizbills/wp-tweaks)
+GITHUB_REPO_SLUG="your_gh_username/your_gh_repo"
 
-# main Github branch
-MAIN_BRANCH="master";
+# The main Github repository branch
+MAIN_BRANCH="main"
 
-# folder with plugin icon, banner and screenshots used in https://wordpress.org
+# directory with plugin icon, banner and screenshots used in https://wordpress.org
 PLUGIN_ASSETS_DIR=".wordpress-org"
 
 # ----- STOP EDITING HERE -----

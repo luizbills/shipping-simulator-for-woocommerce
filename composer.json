@@ -15,9 +15,9 @@
     },
     "scripts": {
         "build": "./scripts/build",
-        "deploy": "./scripts/deploy",
-        "update-trunk": "./scripts/deploy --only-trunk",
-        "make-pot": "./scripts/makepot",
+        "deploy": "./scripts/svn-push",
+        "update-trunk": "./scripts/svn-push --only-trunk",
+        "make-pot": "wp i18n make-pot . languages/wc-shipping-simulator.pot",
         "upgrade-core": "./scripts/upgrade-core"
     },
     "wp-plugin-base": {
