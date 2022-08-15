@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-15T13:19:31-03:00\n"
+"POT-Creation-Date: 2022-08-15T14:31:17-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -39,7 +39,7 @@ msgid "Shipping Simulator Settings"
 msgstr ""
 
 #: classes/Admin/inc/settings_fields.php:13
-msgid "The following options are used to configure the Shipping Simulator. In almost all text fields below you can use html tags like <span>, <strong>, <em>, etc."
+msgid "The following options are used to configure the Shipping Simulator."
 msgstr ""
 
 #: classes/Admin/inc/settings_fields.php:18

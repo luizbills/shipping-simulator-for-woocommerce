@@ -10,7 +10,7 @@ return [
 		'id' => $prefix . 'settings',
 		'type' => 'title',
 		'name' => esc_html__( 'Shipping Simulator Settings', 'wc-shipping-simulator' ),
-		'desc' => esc_html__( 'The following options are used to configure the Shipping Simulator. In almost all text fields below you can use html tags like <span>, <strong>, <em>, etc.', 'wc-shipping-simulator' ),
+		'desc' => esc_html__( 'The following options are used to configure the Shipping Simulator.', 'wc-shipping-simulator' ),
 	],
 	[
 		'id'       => $prefix . 'auto_insert',
