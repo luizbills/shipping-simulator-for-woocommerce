@@ -6,9 +6,7 @@ defined( 'WPINC' ) || exit( 1 );
 
 return [
 	'woocommerce' => [
-		'check' => function () {
-			return function_exists( 'WC' );
-		},
+		'check' => 'function:WC',
 		'message' => sprintf(
 			/* translators: %s is replaced with a required plugin name */
 			__( 'Install and activate the %s plugin.', 'wc-shipping-simulator' ),
