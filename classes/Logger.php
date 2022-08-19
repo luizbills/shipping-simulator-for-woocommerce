@@ -16,16 +16,16 @@ class Logger {
 
 	public function debug ( $message ) {
 		if ( ! Settings::debug_enabled() ) return;
-		wc_get_logger()->debug( $message, [ 'source' => h::get_slug() ] );
+		wc_get_logger()->debug( $message, [ 'source' => h::config_get( 'SLUG' ) ] );
 	}
 
 	public function info ( $message ) {
 		if ( ! Settings::debug_enabled() ) return;
-		wc_get_logger()->info( $message, [ 'source' => h::get_slug() ] );
+		wc_get_logger()->info( $message, [ 'source' => h::config_get( 'SLUG' ) ] );
 	}
 
 	public function error ( $message ) {
 		if ( ! Settings::debug_enabled() ) return;
-		wc_get_logger()->error( $message, [ 'source' => h::get_slug() ] );
+		wc_get_logger()->error( $message, [ 'source' => h::config_get( 'SLUG' ) ] );
 	}
 }

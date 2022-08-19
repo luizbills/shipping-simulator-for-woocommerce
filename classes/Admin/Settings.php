@@ -27,7 +27,7 @@ final class Settings {
 	}
 
 	public static function get_id () {
-		return h::get_slug();
+		return h::config_get( 'SLUG' );
 	}
 
 	public static function get_prefix () {
