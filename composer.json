@@ -2,15 +2,14 @@
     "require": {
         "ext-mbstring": "*"
     },
-    "require-dev": {},
+    "require-dev": {
+        "brain/monkey": "2.*",
+        "phpunit/phpunit": "^9"
+    },
     "autoload": {
         "psr-4": {
-            "Shipping_Simulator\\": [
-                "classes/"
-            ],
-            "Shipping_Simulator\\Core\\": [
-                "core/"
-            ]
+            "Shipping_Simulator\\": ["classes/"],
+            "Shipping_Simulator\\Core\\": ["core/"]
         }
     },
     "scripts": {
