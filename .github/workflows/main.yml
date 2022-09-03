@@ -14,6 +14,6 @@ jobs:
         with:
           command: analyse
           php_version: 7.4
-          php_extensions: mbstring
-          memory_limit: 256M
+          php_extensions: opcache mbstring
+          memory_limit: 512M
           
