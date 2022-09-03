@@ -12,8 +12,8 @@ jobs:
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
-          command: analyse
+          error_format: github
           php_version: 7.4
           php_extensions: opcache mbstring
-          memory_limit: 512M
+          memory_limit: 1G
           
