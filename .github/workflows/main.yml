@@ -7,12 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: php-actions/composer@v6
 
       - name: PHPStan Static Analysis
-        uses: php-actions/phpstan@master
+        uses: php-actions/phpstan@v3
         with:
           command: analyse
           php_version: 7.4
           php_extensions: mbstring
+          memory_limit: 256M
           
