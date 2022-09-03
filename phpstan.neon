@@ -13,5 +13,6 @@ parameters:
         - config.php
         - loader.php
         - dependencies.php
+        - uninstall.php
         - classes/
         - core/
