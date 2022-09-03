@@ -5,7 +5,7 @@ namespace Shipping_Simulator\Core\Traits;
 use Shipping_Simulator\Core\Config;
 
 trait Debug_Helpers {
-    public static function dd ( ...$values ) {
+	public static function dd ( ...$values ) {
 		if ( ! WP_DEBUG ) return;
 		foreach ( $values as $v ) {
 			echo '<pre>';
@@ -16,20 +16,20 @@ trait Debug_Helpers {
 	}
 
 	public static function log ( ...$values ) {
-        $debug_log = defined( WP_DEBUG_LOG ) && WP_DEBUG_LOG;
-		if ( ! WP_DEBUG && ! $debug_log ) return;
+		$debug_log_enabled = WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG;
+		if ( ! $debug_log_enabled ) return;
 		$message = '';
 		foreach ( $values as $value ) {
 			if ( \is_string( $value ) ) {
-                $message .= $value . ' ';
-            } else {
-                ob_start();
-                var_dump( $value );
-                $message .= ob_get_clean();
-            }
-            $message .= ' ';
+				$message .= $value;
+			} else {
+				ob_start();
+				var_dump( $value );
+				$message .= ob_get_clean();
+			}
+			$message .= ' ';
 		}
-        $slug = Config::get( 'SLUG' );
-        \error_log( "[$slug] $message" );
+		$slug = Config::get( 'SLUG' );
+		\error_log( "[$slug] $message" );
 	}
 }
