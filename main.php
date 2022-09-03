@@ -32,7 +32,7 @@ load_plugin_textdomain( 'wc-shipping-simulator', false, dirname( plugin_basename
 
 try {
 	// Check PHP Version
-	$php_expected = '7.4'
+	$php_expected = '7.4';
 	$php_current = PHP_VERSION;
 	if ( version_compare( $php_current, $php_expected, '<' ) ) {
 		throw new Error(
