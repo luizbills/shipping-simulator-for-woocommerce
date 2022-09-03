@@ -5,9 +5,9 @@ namespace Shipping_Simulator\Core\Traits;
 use Shipping_Simulator\Core\Config;
 
 trait Common_Helpers {
-    // Get the value if set, otherwise return a default value or `null`. Prevents notices when data is not set.
+	// Get the value if set, otherwise return a default value or `null`. Prevents notices when data is not set.
 	public static function get ( &$var, $default = null ) {
-        return $var ?? $default;
+		return $var ?? $default;
 	}
 
 	// Get the constant if set, otherwise return a default value or `null`.

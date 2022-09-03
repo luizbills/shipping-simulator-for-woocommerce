@@ -86,7 +86,7 @@ final class Tweaks {
 			$package
 		);
 		$customer = WC()->customer;
-		if ( $enabled && $customer ) {
+		if ( $enabled ) {
 			WC()->shipping()->reset_shipping();
 
 			$customer->set_shipping_location(
@@ -117,10 +117,6 @@ final class Tweaks {
 			$customer->save();
 
 			WC()->cart->calculate_totals();
-
-
-
-			// wc_add_notice( __( 'Shipping costs updated.', 'woocommerce' ), 'notice' );
 
 			do_action( 'woocommerce_calculated_shipping' );
 		}

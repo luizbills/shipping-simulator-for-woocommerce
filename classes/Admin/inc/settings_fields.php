@@ -1,8 +1,9 @@
 <?php
 
 use Shipping_Simulator\Shortcode;
+use Shipping_Simulator\Admin\Settings;
 
-$prefix = self::get_prefix();
+$prefix = Settings::get_prefix();
 $shortcode = Shortcode::get_tag();
 
 return [

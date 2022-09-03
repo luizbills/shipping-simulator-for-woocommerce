@@ -5,8 +5,6 @@ namespace Shipping_Simulator\Integration;
 use Shipping_Simulator\Helpers as h;
 use WC_Correios_Autofill_Addresses;
 
-use function Complex\rho;
-
 final class Correios {
 	protected static $instace = null;
 	protected $address_cache = null;

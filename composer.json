@@ -2,7 +2,10 @@
     "require": {
         "ext-mbstring": "*"
     },
-    "require-dev": {},
+    "require-dev": {
+        "szepeviktor/phpstan-wordpress": "^1.1",
+        "php-stubs/woocommerce-stubs": "^6.8"
+    },
     "autoload": {
         "psr-4": {
             "Shipping_Simulator\\": [
@@ -14,6 +17,7 @@
         }
     },
     "scripts": {
+        "check": "phpstan",
         "build": "./scripts/build",
         "deploy": "./scripts/svn-push",
         "update-trunk": "./scripts/svn-push --only-trunk",

@@ -1,0 +1,17 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 5
+
+    scanFiles:
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+        - .phpstan/woocommerce-correios-stubs.php
+
+    paths:
+        - main.php
+        - config.php
+        - loader.php
+        - dependencies.php
+        - classes/
+        - core/
