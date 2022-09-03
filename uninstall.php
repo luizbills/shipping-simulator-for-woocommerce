@@ -7,7 +7,7 @@ Reference: https://developer.wordpress.org/plugins/plugin-basics/uninstall-metho
 */
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit( 1 );
 
-global $wpdb;
+global $wpdb
 
 $prefix = 'wc_shipping_simulator_';
 $settings_query = $wpdb->prepare(
