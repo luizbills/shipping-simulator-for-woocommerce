@@ -121,7 +121,7 @@ abstract class Dependencies {
 			echo "<div class='notice notice-error'><p>";
 			echo sprintf(
 				/* translators: %s is replaced with plugin name */
-				__( 'Missing dependencies for %s:', 'wc-variations-table' ),
+				__( 'Missing dependencies for %s:', 'wc-shipping-simulator' ),
 				"<strong>" . Config::get( 'NAME' ) . "</strong>",
 			);
 
