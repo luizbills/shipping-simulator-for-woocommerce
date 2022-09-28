@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## 1.4.0 - 2022-09-28
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.3...HEAD)
+
+-   Feature: automatically disables shipping simulator of "Melhor Envio" plugin.
 
 ## 1.3.3 - 2022-08-02
 
