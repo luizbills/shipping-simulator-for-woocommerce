@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.3.3...1.4.0)
 
--   Feature: automatically disables shipping simulator of "Melhor Envio" plugin.
+-   Feature: automatically disables built-in shipping simulator of "Melhor Envio" plugin.
 
 ## 1.3.3 - 2022-08-02
 
