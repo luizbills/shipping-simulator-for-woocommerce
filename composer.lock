@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "php-stubs/woocommerce-stubs",
-            "version": "v6.8.0",
+            "version": "v6.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/woocommerce-stubs.git",
-                "reference": "aa70197bc38607e0f25a4de0b39422ab379defd3"
+                "reference": "870c0c0abcd5ae9a8be58fc797123a4d882e604e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/aa70197bc38607e0f25a4de0b39422ab379defd3",
-                "reference": "aa70197bc38607e0f25a4de0b39422ab379defd3",
+                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/870c0c0abcd5ae9a8be58fc797123a4d882e604e",
+                "reference": "870c0c0abcd5ae9a8be58fc797123a4d882e604e",
                 "shasum": ""
             },
             "require": {
@@ -47,9 +47,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/woocommerce-stubs/issues",
-                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v6.8.0"
+                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v6.9.3"
             },
-            "time": "2022-08-09T05:06:14+00:00"
+            "time": "2022-09-20T23:28:43+00:00"
         },
         {
             "name": "php-stubs/wordpress-stubs",
@@ -100,16 +100,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.4",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "eed4c9da531f6ebb4787235b6fb486e2c20f34e5"
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/eed4c9da531f6ebb4787235b6fb486e2c20f34e5",
-                "reference": "eed4c9da531f6ebb4787235b6fb486e2c20f34e5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c386ab2741e64cc9e21729f891b28b2b10fe6618",
+                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.4"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.6"
             },
             "funding": [
                 {
@@ -155,7 +155,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-03T13:08:04+00:00"
+            "time": "2022-09-23T09:54:39+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -238,16 +238,16 @@
         },
         {
             "name": "szepeviktor/phpstan-wordpress",
-            "version": "v1.1.2",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
-                "reference": "e487dc725845ac914681e148d0e8ac479ad887ec"
+                "reference": "e644df734e1bbe95810e0f617d17df091048a94e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/e487dc725845ac914681e148d0e8ac479ad887ec",
-                "reference": "e487dc725845ac914681e148d0e8ac479ad887ec",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/e644df734e1bbe95810e0f617d17df091048a94e",
+                "reference": "e644df734e1bbe95810e0f617d17df091048a94e",
                 "shasum": ""
             },
             "require": {
@@ -291,15 +291,19 @@
             ],
             "support": {
                 "issues": "https://github.com/szepeviktor/phpstan-wordpress/issues",
-                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v1.1.2"
+                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v1.1.3"
             },
             "funding": [
                 {
                     "url": "https://www.paypal.me/szepeviktor",
                     "type": "custom"
+                },
+                {
+                    "url": "https://github.com/szepeviktor",
+                    "type": "github"
                 }
             ],
-            "time": "2022-06-21T10:51:00+00:00"
+            "time": "2022-09-22T13:14:50+00:00"
         }
     ],
     "aliases": [],
