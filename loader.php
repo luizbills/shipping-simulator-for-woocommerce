@@ -14,6 +14,7 @@ return [
 	Integration\Brazil::class,
 	Integration\Correios::class,
 	Integration\Free_Shipping::class,
+	Integration\Melhor_Envio::instance(),
 	Admin\Settings::class,
 	Admin\Plugin_Meta::class,
 	Admin\Notices::class,
