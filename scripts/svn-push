@@ -175,6 +175,8 @@ rm -f CONTRIBUTING.md
 rm -f .gitpod.dockerfile
 rm -f .gitpod.yml
 rm -f .prettierrc.json
+rm -Rf .phpstan
+rm -Rf phpstan.neon
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
@@ -267,4 +269,4 @@ rm -Rf "$TEMP_GITHUB_REPO"
 rm -Rf "$TEMP_SVN_REPO"
 
 # DONE, BYE
-echo "RELEASER DONE!"
+echo 'RELEASER DONE!'
