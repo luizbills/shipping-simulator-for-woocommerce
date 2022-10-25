@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "php-stubs/woocommerce-stubs",
-            "version": "v6.9.3",
+            "version": "v6.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/woocommerce-stubs.git",
-                "reference": "870c0c0abcd5ae9a8be58fc797123a4d882e604e"
+                "reference": "823aa38297d9013b96c5eab2846c260bbe12b975"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/870c0c0abcd5ae9a8be58fc797123a4d882e604e",
-                "reference": "870c0c0abcd5ae9a8be58fc797123a4d882e604e",
+                "url": "https://api.github.com/repos/php-stubs/woocommerce-stubs/zipball/823aa38297d9013b96c5eab2846c260bbe12b975",
+                "reference": "823aa38297d9013b96c5eab2846c260bbe12b975",
                 "shasum": ""
             },
             "require": {
@@ -47,22 +47,22 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/woocommerce-stubs/issues",
-                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v6.9.3"
+                "source": "https://github.com/php-stubs/woocommerce-stubs/tree/v6.9.4"
             },
-            "time": "2022-09-20T23:28:43+00:00"
+            "time": "2022-10-12T08:01:21+00:00"
         },
         {
             "name": "php-stubs/wordpress-stubs",
-            "version": "v6.0.1",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/wordpress-stubs.git",
-                "reference": "e04781a84e364615a7b5f70fdc345c8253ca5b8f"
+                "reference": "165b84f082db851e76ec51bebcde550d03976893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/e04781a84e364615a7b5f70fdc345c8253ca5b8f",
-                "reference": "e04781a84e364615a7b5f70fdc345c8253ca5b8f",
+                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/165b84f082db851e76ec51bebcde550d03976893",
+                "reference": "165b84f082db851e76ec51bebcde550d03976893",
                 "shasum": ""
             },
             "replace": {
@@ -94,22 +94,22 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/wordpress-stubs/issues",
-                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v6.0.1"
+                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v6.0.2"
             },
-            "time": "2022-07-15T11:10:45+00:00"
+            "time": "2022-09-30T17:46:11+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.8.6",
+            "version": "1.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618"
+                "reference": "46e223dd68a620da18855c23046ddb00940b4014"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c386ab2741e64cc9e21729f891b28b2b10fe6618",
-                "reference": "c386ab2741e64cc9e21729f891b28b2b10fe6618",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/46e223dd68a620da18855c23046ddb00940b4014",
+                "reference": "46e223dd68a620da18855c23046ddb00940b4014",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.8.6"
+                "source": "https://github.com/phpstan/phpstan/tree/1.8.11"
             },
             "funding": [
                 {
@@ -155,7 +155,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-23T09:54:39+00:00"
+            "time": "2022-10-24T15:45:13+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
