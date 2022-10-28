@@ -25,7 +25,10 @@ window.addEventListener('DOMContentLoaded', () => {
             input.disabled = false;
             button.classList.remove('loading');
         },
-        resultsHandler: (html) => (results.innerHTML = html),
+        resultsHandler: (html) => {
+            results.ariaBusy = !html ? 'true' : 'false';
+            results.innerHTML = html;
+        },
         errorHandler: (message, data) => {
             alert(message || config.errors.unexpected);
             console.error('wc-shipping-simulator request error:', data);

@@ -21,7 +21,7 @@
 
 	<?php do_action( 'wc_shipping_simulator_form_after' ) ?>
 
-	<div id="wc-shipping-sim-results" role="status"></div>
+	<div id="wc-shipping-sim-results" role="status" aria-busy="false"></div>
 
 	<?php do_action( 'wc_shipping_simulator_wrapper_end' ) ?>
 </section>
