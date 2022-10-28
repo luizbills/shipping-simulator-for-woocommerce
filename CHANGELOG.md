@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.4.0...1.5.0)
 
-- Fix: Shipping simulator appearing for external and grouped products. #39
+-   Fix: Shipping simulator appearing for external and grouped products. #39
 
 ## 1.4.0 - 2022-09-28
 
