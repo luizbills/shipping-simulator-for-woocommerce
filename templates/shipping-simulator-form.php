@@ -10,6 +10,8 @@
 
 			<input name="postcode" type="<?php echo esc_attr( $input_type ); ?>" value="<?php echo esc_attr( $input_value ) ?>" placeholder="<?php echo esc_attr( $input_placeholder ); ?>" title="<?php echo esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" required>
 
+			<?php do_action( 'wc_shipping_simulator_form_before_button' ) ?>
+			
 			<?php echo $nonce ?>
 
 			<button type="submit" class="button submit"><?php echo esc_html( $submit_label ); ?></button>
