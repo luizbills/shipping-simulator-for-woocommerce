@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.5.0...1.6.0)
 
--   Feature: improve accessibily. #36
+-   Feature: Improve simulator/frontend accessibility. #36
 -   New action hook: `wc_shipping_simulator_form_before_button`. #42
 
 ## 1.5.0 - 2022-10-25
