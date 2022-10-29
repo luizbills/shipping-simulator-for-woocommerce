@@ -177,6 +177,7 @@ rm -f .gitpod.yml
 rm -f .prettierrc.json
 rm -Rf .phpstan
 rm -Rf phpstan.neon
+rm -Rf pnpm-lock.yaml
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
