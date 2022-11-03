@@ -21,7 +21,7 @@ return [
 		'desc_tip' => sprintf(
 			// translators: %s is a shortcode tag
 			esc_html__( 'Display automatically the shipping simulator in product pages. Alternatively you can manually insert the shipping simulator using the %s shortcode.', 'wc-shipping-simulator' ),
-			'<code>' . "[$shortcode]" . '</code>'
+			"<code>[$shortcode]</code>"
 		),
 		'default'  => 'yes'
 	],
