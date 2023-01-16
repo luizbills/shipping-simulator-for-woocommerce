@@ -41,7 +41,7 @@ abstract class Helpers {
 	public static function product_needs_shipping ( $product ) {
 		$needs_shipping = false;
 
-		if ( 'instock' === $product->get_stock_status() ) {
+		if ( 'instock' === $product->get_stock_status() || $product->is_on_backorder() ) {
 			$type = $product->get_type();
 			if ( 'variable' === $type ) {
 				$variations = $product->get_available_variations();
