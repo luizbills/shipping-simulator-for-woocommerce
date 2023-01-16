@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.0 - 2023-01-16
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.6.0...1.7.0)
+
+-   Feature: Display the simulator in backorder products.
+
 ## 1.6.0 - 2022-10-28
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.5.0...1.6.0)
