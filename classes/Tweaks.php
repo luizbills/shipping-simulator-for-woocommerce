@@ -26,7 +26,6 @@ final class Tweaks {
 		if ( 'yes' !== Settings::get_option( 'auto_insert' ) ) return;
 		global $product;
 		if ( $product ) {
-			$id = $product->get_id();
 			$tag = Shortcode::get_tag();
 			echo do_shortcode( "[$tag]" );
 		}
