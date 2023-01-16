@@ -13,7 +13,7 @@ final class Melhor_Envio {
 	}
 
 	public function __start () {
-		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10, 2 );
+		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10 );
 	}
 
 	public function is_enabled () {

@@ -14,7 +14,7 @@ final class Free_Shipping {
 
 	public function __start () {
 		self::$instace = $this;
-		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10, 2 );
+		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ], 10 );
 	}
 
 	public function is_enabled () {
