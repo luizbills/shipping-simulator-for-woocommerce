@@ -29,4 +29,3 @@
 	<div class="no-results"><?php echo h::safe_html( $no_results_notice ) ?></div>
 
 <?php endif ?>
-
