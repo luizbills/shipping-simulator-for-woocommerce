@@ -3,13 +3,13 @@
 namespace Shipping_Simulator\Integration;
 
 final class Melhor_Envio {
-	protected static $instace = null;
+	protected static $instance = null;
 
 	public static function instance () {
-		if ( null === self::$instace ) {
-			self::$instace = new self();
+		if ( null === self::$instance ) {
+			self::$instance = new self();
 		}
-		return self::$instace;
+		return self::$instance;
 	}
 
 	public function __start () {
