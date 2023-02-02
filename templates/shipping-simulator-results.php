@@ -1,7 +1,7 @@
 <?php use Shipping_Simulator\Helpers as h; ?>
 <?php extract( $args ); ?>
 
-<?php if ( count( $rates ) ) : ?>
+<?php if ( count( $rates ) > 0 ) : ?>
 	<?php do_action( 'wc_shipping_simulator_results_before', $data ) ?>
 
 	<table aria-label="<?php esc_attr_e( 'Avaliable shipping options', 'wc-shipping-simulator' ); ?>">
@@ -24,8 +24,6 @@
 	</table>
 
 	<?php do_action( 'wc_shipping_simulator_results_after', $data ) ?>
-<?php elseif ( $no_results_notice ) : ?>
-
-	<div class="no-results"><?php echo h::safe_html( $no_results_notice ) ?></div>
-
+<?php elseif ( $notice ) : ?>
+	<div class="no-results"><?php echo h::safe_html( $notice ) ?></div>
 <?php endif ?>

@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = $('#wc-shipping-sim-form');
     const input = $('.input-postcode', form);
     const button = $('.button.submit', form);
-    const nonce = $('#nonce', form);
+    const nonce = $('#' + params.nonce_name, form);
     const results = $('#wc-shipping-sim-results');
     const I = (val) => val;
     const hooks = {
@@ -46,21 +46,26 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             const variation = product.variation_id
-                ? '&variation=' + product.variation_id
+                ? '&variation_id=' + product.variation_id
                 : '';
             const qty = getQuantity();
 
             const formData = config.hooks.filterFormData(
-                `action=${form.dataset.ajaxAction}&nonce=${
+                `action=${form.dataset.ajaxAction}&${params.nonce_name}=${
                     nonce.value
-                }&postcode=${input.value}&product=${product.id}&quantity=${
+                }&postcode=${input.value}&product_id=${product.id}&quantity=${
                     qty >= 1 ? qty : 1
                 }${variation}`
             );
 
             let xhr = new XMLHttpRequest();
 
-            xhr.open('GET', encodeURI(form.action + '?' + formData), true);
+            xhr.open('POST', params.ajax_url, true);
+
+            xhr.setRequestHeader(
+                'Content-Type',
+                'application/x-www-form-urlencoded'
+            );
 
             xhr.timeout = +config.timeout || 0;
 
@@ -93,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             config.hooks.beforeSubmit(xhr);
 
-            xhr.send();
+            xhr.send(formData);
         },
         inputMaskHandler: () => {
             input.maxLength = config.hooks.filterPostcodeMaxLength();

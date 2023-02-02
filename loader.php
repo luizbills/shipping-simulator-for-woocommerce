@@ -12,10 +12,10 @@ return [
 	Integration\Correios::instance(),
 	Integration\Free_Shipping::instance(),
 	Integration\Melhor_Envio::instance(),
-	Request::class,
 	Shortcode::class,
+	Request::class,
 	Tweaks::class,
 	Logger::class,
 	Integrations::class,
-	Debug_Box::class,
+	Debug_Box::class
 ];

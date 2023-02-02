@@ -9,17 +9,12 @@ use Shipping_Simulator\Admin\Settings;
 final class Shortcode {
 	public function __start () {
 		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
-
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
 	}
 
 	public function display_results_wrapper () {
-		$display = apply_filters(
-			'wc_shipping_simulator_display_results_wrapper',
-			'GET' === $_SERVER['REQUEST_METHOD']
-		);
-		if ( ! $display ) return;
-		echo h::get_template( 'shipping-simulator-results-wrapper' );
+		$wrapper = h::get_template( 'shipping-simulator-results-wrapper' );
+		echo apply_filters( 'wc_shipping_simulator_results_wrapper', $wrapper );
 	}
 
 	public static function get_tag () {
@@ -41,7 +36,10 @@ final class Shortcode {
 		}
 
 		if ( $prod && h::product_needs_shipping( $prod ) ) {
+			do_action( 'wc_shipping_simulator_shortcode_included', $atts );
+
 			$this->enqueue_scripts();
+
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'ajax_action' => Request::get_ajax_action(),
@@ -86,6 +84,8 @@ final class Shortcode {
 			'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
 			'auto_submit' => true,
 			'timeout' => 60000, // 1 minute in milliseconds
+			'nonce_name' => Request::get_nonce_arg(),
+			'ajax_url' => \admin_url( '/admin-ajax.php' ),
 			'errors' => [
 				'timeout' => esc_html__( 'The server took too long to respond. Please try again.', 'wc-shipping-simulator' ),
 				'unexpected' => esc_html__( 'An unexpected error occurred. Please refresh the page and try again.', 'wc-shipping-simulator' ),
