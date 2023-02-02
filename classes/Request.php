@@ -6,11 +6,16 @@ use Shipping_Simulator\Helpers as h;
 use Shipping_Simulator\Shipping_Package;
 use Shipping_Simulator\Admin\Settings;
 
-final class Ajax {
+final class Request {
+	/**
+	 * @var array
+	 */
+	protected $data = null;
+
 	public function __start () {
 		$action = self::get_ajax_action();
-		add_action( "wp_ajax_$action", [ $this, 'handle_request' ] );
-		add_action( "wp_ajax_nopriv_$action", [ $this, 'handle_request' ] );
+		add_action( "wp_ajax_$action", [ $this, 'handle_ajax_request' ] );
+		add_action( "wp_ajax_nopriv_$action", [ $this, 'handle_ajax_request' ] );
 	}
 
 	public static function get_ajax_action () {
@@ -29,68 +34,55 @@ final class Ajax {
 		return wp_nonce_field( self::get_nonce_action(), self::get_nonce_arg(), $referer, $echo );
 	}
 
-	public function handle_request ( $posted = null ) {
+	public function handle_ajax_request () {
 		$response = [ 'success' => true ];
-		$posted = $posted ? $posted : $_GET;
-		$status = 200;
+		$status_code = 200;
+		$posted = $_GET;
 
 		if ( ! check_ajax_referer( self::get_nonce_action(), self::get_nonce_arg(), false ) ) {
 			$response['success'] = false;
-			$status = 403;
+			$status_code = 403;
 		} else {
 			try {
 				h::logger()->info( 'Request raw data: ' . wp_json_encode( $posted ) );
 
-				$posted = $this->prepare_request_data( $posted );
-				$this->validate_request_data( $posted );
+				$this->data = $this->prepare_request_data( $_GET );
+				$this->validate_request_data( $this->data );
 
-				h::logger()->info( 'Request sanitized data: ' . wp_json_encode( $posted ) );
+				h::logger()->info( 'Request sanitized data: ' . wp_json_encode( $this->data ) );
 
 				$package = new Shipping_Package();
-				$package = apply_filters( 'wc_shipping_simulator_request_update_package', $package, $posted );
+				$package = apply_filters( 'wc_shipping_simulator_request_update_package', $package, $this->data );
 
 				if ( ! $package->ready ) {
-					$package->add_product( $posted['product'], $posted['quantity'], $posted['variation'] );
+					$package->add_product( $this->data['product'], $this->data['quantity'], $this->data['variation'] );
 					$package->set_destination( [
-						'postcode' => $posted['postcode']
+						'postcode' => $this->data['postcode']
 					] );
 				}
 
 				$rates = $package->calculate_shipping();
-				$response['results_html'] = apply_filters(
-					'wc_shipping_simulator_request_results_html',
-					h::get_template( 'shipping-simulator-results', [
-						'rates' => $rates,
-						'no_results_notice' => apply_filters(
-							'wc_shipping_simulator_no_results_notice',
-							Settings::get_option( 'no_results' )
-						),
-						'data' => $posted,
-					] ),
-					$rates,
-					$posted
-				);
+				$response['results_html'] = $this->get_results( $rates );
+				$response['data'] = $this->data;
 			} catch ( Error $e ) {
 				$response['success'] = false;
 				$response['error'] = $e->getMessage();
-				$status = 400;
+				$status_code = 400;
 			} catch ( \Throwable $e ) {
 				throw $e;
 			}
 		}
 
-		$status = apply_filters(
+		$status_code = apply_filters(
 			'wc_shipping_simulator_request_response_status',
-			$status,
-			$posted,
+			$status_code,
 			$response
 		);
 
 		$response = apply_filters(
 			'wc_shipping_simulator_request_response',
 			$response,
-			$posted,
-			$status
+			$status_code
 		);
 
 		if ( ! Settings::debug_enabled() ) {
@@ -104,7 +96,27 @@ final class Ajax {
 			}
 		}
 
-		wp_send_json( $response, $status );
+		wp_send_json( $response, $status_code );
+	}
+
+	public function handle_form_request () {
+
+	}
+
+	protected function get_results ( $rates ) {
+		return \apply_filters(
+			'wc_shipping_simulator_request_results_html',
+			h::get_template( 'shipping-simulator-results', [
+				'rates' => $rates,
+				'no_results_notice' => apply_filters(
+					'wc_shipping_simulator_no_results_notice',
+					Settings::get_option( 'no_results' )
+				),
+				'data' => $this->data,
+			] ),
+			$rates,
+			$this->data
+		);
 	}
 
 	protected function prepare_request_data ( $posted ) {
