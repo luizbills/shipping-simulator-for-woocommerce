@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.0 - 2023-01-16
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.7.0...1.8.0)
+
+-   The simulator now notifies when an error is preventing it from working correctly. The empty screen is no longer shown.
+
 ## 1.7.0 - 2023-01-16
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.6.0...1.7.0)
