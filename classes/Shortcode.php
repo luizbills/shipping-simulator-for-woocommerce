@@ -3,7 +3,7 @@
 namespace Shipping_Simulator;
 
 use Shipping_Simulator\Helpers as h;
-use Shipping_Simulator\Ajax;
+use Shipping_Simulator\Request;
 use Shipping_Simulator\Admin\Settings;
 
 final class Shortcode {
@@ -43,8 +43,8 @@ final class Shortcode {
 			$this->enqueue_scripts();
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'ajax_action' => Ajax::get_ajax_action(),
-				'nonce' => Ajax::get_nonce_field(),
+				'ajax_action' => Request::get_ajax_action(),
+				'nonce' => Request::get_nonce_field(),
 				'product_type' => $prod->get_type(),
 				'product_id' => $prod->get_id(),
 
