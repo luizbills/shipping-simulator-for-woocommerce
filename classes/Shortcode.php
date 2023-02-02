@@ -8,8 +8,9 @@ use Shipping_Simulator\Admin\Settings;
 
 final class Shortcode {
 	public function __start () {
+		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
+
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
-		add_action( 'wc_shipping_simulator_form_after', 'display_results_wrapper' );
 	}
 
 	public function display_results_wrapper () {
@@ -18,7 +19,7 @@ final class Shortcode {
 			'GET' === $_SERVER['REQUEST_METHOD']
 		);
 		if ( ! $display ) return;
-		h::get_template( 'shipping-simulator-results-wrapper' );
+		echo h::get_template( 'shipping-simulator-results-wrapper' );
 	}
 
 	public static function get_tag () {
