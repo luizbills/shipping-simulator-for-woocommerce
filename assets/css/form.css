@@ -21,6 +21,7 @@
     text-align: right;
 }
 #wc-shipping-sim-results .no-results {
+    margin: 0.5em 0;
     color: #c92a2a;
     background-color: #fff5f5;
     padding: 0.25em 0.5em;

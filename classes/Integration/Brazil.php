@@ -6,14 +6,16 @@ use Shipping_Simulator\Helpers as h;
 
 final class Brazil {
 	protected $state_list = null;
-	protected static $instace = null;
+	protected static $instance = null;
 
 	public static function instance () {
-		return self::$instace;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	public function __start () {
-		self::$instace = $this;
 		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
 	}
 

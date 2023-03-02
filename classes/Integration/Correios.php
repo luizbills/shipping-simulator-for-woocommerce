@@ -6,15 +6,17 @@ use Shipping_Simulator\Helpers as h;
 use WC_Correios_Autofill_Addresses;
 
 final class Correios {
-	protected static $instace = null;
+	protected static $instance = null;
 	protected $address_cache = null;
 
 	public static function instance () {
-		return self::$instace;
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	public function __start () {
-		self::$instace = $this;
 		add_action( 'wc_shipping_simulator_load_integrations', [ $this, 'add_hooks' ] );
 	}
 
