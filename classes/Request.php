@@ -110,8 +110,8 @@ final class Request {
 
 		if ( ! isset( $_POST[ $nonce_name ] ) ) return;
 
-		if ( current_user_can( 'install_plugins' ) ) {
-			$this->form_notice = __( 'There are JavaScript errors preventing the shipping simulator from working. Check your browser console or disable other plugins to try to find any conflicts.', 'wc-shipping-simulator' );
+		if ( current_user_can( 'manage_options' ) ) {
+			$this->form_notice = __( 'Your browser does not have JavaScript enabled or there are JavaScript errors preventing the shipping simulator from working. Check your browser console or disable other plugins to try to find any conflicts.', 'wc-shipping-simulator' );
 		}
 	}
 
