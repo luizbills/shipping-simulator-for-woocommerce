@@ -108,7 +108,7 @@ final class Shipping_Package {
 	}
 
 	public function calculate_shipping () {
-		$wc_shipping = WC()->shipping;
+		$wc_shipping = WC()->shipping();
 
 		// backup the current WC_Shipping::packages
 		$original_shipping_packages = $wc_shipping->packages;
@@ -157,22 +157,20 @@ final class Shipping_Package {
 	public function modify_cart_info () {
 		$cart = WC()->cart;
 		$this->original_cart_info = [
-			'cart_contents_total' => $cart->cart_contents_total,
-			'cart_contents' => $cart->cart_contents,
-			'subtotal_ex_tax' => $cart->subtotal_ex_tax,
-			'subtotal' => $cart->subtotal,
+			'cart_contents' => $cart->get_cart_contents(),
+			'cart_contents_total' => $cart->get_cart_contents_total(),
+			'subtotal' => $cart->get_subtotal(),
 		];
-		$cart->cart_contents_total = $this->package['contents_cost'];
-		$cart->cart_contents = $this->package['contents'];
-		$cart->subtotal_ex_tax = $this->package['contents_cost'];
-		$cart->subtotal = $this->package['contents_cost'];
+		$cart->set_cart_contents( $this->package['contents' ]);
+		$cart->set_cart_contents_total( $this->package['contents_cost'] );
+		$cart->set_subtotal( $this->package['contents_cost'] );
 	}
 
 	public function restore_cart_info () {
 		if ( 0 === count( $this->original_cart_info ) ) return;
 		$cart = WC()->cart;
 		foreach ( $this->original_cart_info as $prop => $value ) {
-			$cart->$prop = $value;
+			$cart->{'set_' . $prop}( $value );
 			unset( $this->original_cart_info[ $prop ] );
 		}
 	}
