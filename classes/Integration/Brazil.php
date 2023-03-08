@@ -65,7 +65,7 @@ final class Brazil {
 	}
 
 	public function form_input_mask ( $mask ) {
-		return 'XX XXX-XXX';
+		return 'XXXXX-XXX';
 	}
 
 	public function add_cep_finder_link () {

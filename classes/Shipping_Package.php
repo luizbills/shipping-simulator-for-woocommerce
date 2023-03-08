@@ -8,8 +8,10 @@ use Shipping_Simulator\Admin\Settings;
 final class Shipping_Package {
 	public $ready = false;
 
-	protected $contents;
-	protected $destination;
+	protected $package = null;
+	protected $destination = null;
+	protected $contents = [];
+	protected $original_cart_info = [];
 
 	public function __construct () {
 		$this->contents = [];
@@ -99,29 +101,39 @@ final class Shipping_Package {
 				'has_variations' => $has_variations
 			]
 		);
+
 		$package['DOING_SHIPPING_SIMULATION'] = true;
 
 		return $package;
 	}
 
 	public function calculate_shipping () {
-		$wc_shipping = \WC_Shipping::instance();
+		$wc_shipping = WC()->shipping();
 
-		// save the current WC_Shipping->packages
-		$original_packages = $wc_shipping->packages;
+		// backup the current WC_Shipping::packages
+		$original_shipping_packages = $wc_shipping->packages;
+
+		$this->package = $this->get_package();
+		h::logger()->info( 'Calculating shipping rates for ...' );
+		$this->log_package( $this->package );
+
+		// sync the cart contents and totals
+		$this->modify_cart_info();
 
 		// calculate
-		$package = $this->get_package();
-		h::logger()->info( 'Calculating shipping rates for ...' );
-		$this->log_package( $package );
-		$result = $wc_shipping->calculate_shipping( [ $package ] );
+		$result = $wc_shipping->calculate_shipping( [ $this->package ] );
 
-		// restore the WC_Shipping->packages
-		$wc_shipping->packages = $original_packages;
+		// restore the cart contents and totals
+		$this->restore_cart_info();
 
+		// restore the WC_Shipping::packages
+		$wc_shipping->packages = $original_shipping_packages;
+
+		// get the results
 		$rates = h::get( $result[0]['rates'], [] );
 		h::logger()->info( 'Result: ' . wp_json_encode( array_keys( $rates ) ) );
 
+		// sort results in ASC order
 		if ( count( $rates ) > 1 ) {
 			uasort( $rates, function ( $a, $b ) {
 				return $a->get_cost() <=> $b->get_cost();
@@ -131,15 +143,36 @@ final class Shipping_Package {
 		$rates = apply_filters(
 			'wc_shipping_simulator_package_rates',
 			$rates,
-			$package
+			$this->package
 		);
 
 		h::throw_if(
-			$package['has_variations'] && 0 === count( $rates ),
+			$this->package['has_variations'] && 0 === count( $rates ),
 			esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
 		);
 
 		return $rates;
+	}
+
+	public function modify_cart_info () {
+		$cart = WC()->cart;
+		$this->original_cart_info = [
+			'cart_contents' => $cart->get_cart_contents(),
+			'cart_contents_total' => $cart->get_cart_contents_total(),
+			'subtotal' => $cart->get_subtotal(),
+		];
+		$cart->set_cart_contents( $this->package['contents' ]);
+		$cart->set_cart_contents_total( $this->package['contents_cost'] );
+		$cart->set_subtotal( $this->package['contents_cost'] );
+	}
+
+	public function restore_cart_info () {
+		if ( 0 === count( $this->original_cart_info ) ) return;
+		$cart = WC()->cart;
+		foreach ( $this->original_cart_info as $prop => $value ) {
+			$cart->{'set_' . $prop}( $value );
+			unset( $this->original_cart_info[ $prop ] );
+		}
 	}
 
 	protected function log_package ( $package ) {
