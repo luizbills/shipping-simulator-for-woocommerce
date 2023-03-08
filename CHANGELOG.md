@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.9.0 - 2023-03-08
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.8.0...1.9.0)
+
+-   Tweak: Change input mask for Brazilian postcodes from "99 999-999" to "99999-999" (removed a whitespace).
+-   Tweak: Improve the shipping calculation for better compatibility with other plugins.
+
 ## 1.8.0 - 2023-03-02
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.7.0...1.8.0)
