@@ -4,7 +4,8 @@
     },
     "require-dev": {
         "szepeviktor/phpstan-wordpress": "^1.1",
-        "php-stubs/woocommerce-stubs": "^7.4"
+        "php-stubs/woocommerce-stubs": "^7.4",
+        "phpstan/phpstan": "^1.10"
     },
     "autoload": {
         "psr-4": {
