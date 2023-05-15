@@ -7,6 +7,14 @@
         "php-stubs/woocommerce-stubs": "^7.4",
         "phpstan/phpstan": "^1.10"
     },
+    "scripts": {
+        "check": "phpstan",
+        "build": "./scripts/build",
+        "deploy": "./scripts/svn-push",
+        "update-trunk": "./scripts/svn-push --only-trunk",
+        "make-pot": "wp i18n make-pot . languages/wc-shipping-simulator.pot",
+        "upgrade-core": "./scripts/upgrade-core"
+    },
     "autoload": {
         "psr-4": {
             "Shipping_Simulator\\": [
@@ -16,14 +24,6 @@
                 "core/"
             ]
         }
-    },
-    "scripts": {
-        "check": "phpstan",
-        "build": "./scripts/build",
-        "deploy": "./scripts/svn-push",
-        "update-trunk": "./scripts/svn-push --only-trunk",
-        "make-pot": "wp i18n make-pot . languages/wc-shipping-simulator.pot",
-        "upgrade-core": "./scripts/upgrade-core"
     },
     "wp-plugin-base": {
         "namespace": "Shipping_Simulator",
