@@ -2,6 +2,15 @@
     padding: 1.5em 0;
     border-top: 0.1em solid #e0e0e0;
 }
+#wc-shipping-sim-form-fields {
+    display: flex;
+}
+#wc-shipping-sim-form-fields .input-postcode {
+    width: 100%;
+    max-width: 200px;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+}
 #wc-shipping-sim-form-fields .input-postcode:disabled {
     background-color: #dee2e6;
     cursor: not-allowed;
