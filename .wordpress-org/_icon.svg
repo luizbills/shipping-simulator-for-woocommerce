@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 67.733331 67.733331"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="_icon.svg"
+   inkscape:export-filename="/home/luiz/dev/wordpress/lab/wp-content/plugins/shipping-simulator-for-woocommerce/.wordpress-org/icon-256x256.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     width="256px"
+     inkscape:snap-global="true"
+     inkscape:zoom="1.0137907"
+     inkscape:cx="18.741541"
+     inkscape:cy="135.62957"
+     inkscape:window-width="1366"
+     inkscape:window-height="740"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-page="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#faf9ff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.26623;stroke-linecap:round;stroke-opacity:1"
+       id="rect17085"
+       width="67.73333"
+       height="67.73333"
+       x="-2.9101562e-07"
+       y="1.2015626e-06" />
+    <g
+       id="g12085"
+       transform="matrix(0.88087478,0,0,0.88087478,80.999248,-2.3367294)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#5f3dc4;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="-53.649445"
+         y="51.765305"
+         id="text6779"><tspan
+           sodipodi:role="line"
+           id="tspan6777"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';text-align:center;text-anchor:middle;fill:#5f3dc4;fill-opacity:1;stroke-width:0.264583"
+           x="-53.649445"
+           y="51.765305">Shipping</tspan><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';text-align:center;text-anchor:middle;fill:#5f3dc4;fill-opacity:1;stroke-width:0.264583"
+           x="-53.649445"
+           y="65.499535"
+           id="tspan6781">Simulator</tspan></text>
+      <g
+         id="g12073">
+        <g
+           style="fill:none;stroke:#5f3dc4;stroke-width:1.5;stroke-opacity:1"
+           id="g2658"
+           transform="matrix(1.384313,0,0,1.384313,-68.253144,9.9630869)">
+          <path
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             d="m 8.25,18.75 c 0,1.999999 -3,1.999999 -3,0 m 3,0 c 0,-1.999999 -3,-1.999999 -3,0 m 3,0 h 6 m -9,0 H 3.375 C 2.7536797,18.75 2.25,18.24632 2.25,17.625 V 14.25 m 17.25,4.5 c 0,1.999999 -3,1.999999 -3,0 m 3,0 c 0,-1.999999 -3,-1.999999 -3,0 m 3,0 h 1.125 c 0.621,0 1.129,-0.504 1.09,-1.124 -0.200945,-3.302358 0.215941,-6.484436 -1.683962,-9.193 -0.36666,-0.5140838 -0.949214,-0.8311701 -1.58,-0.86 h -3.05426 M 16.5,18.75 H 14.25 M 15.396778,7.573 V 6.615 c 0,-0.568 -0.422,-1.048 -0.987,-1.106 -3.370414,0 -6.7186488,0 -10.0259998,0 -0.5639375,0.061021 -0.9902919,0.5387803 -0.987,1.106 L 2.25,14.25 M 15.396778,7.573 v 6.677 m -1.146778,4.5 1.146778,-4.5 m 0,0 H 2.25"
+             id="path2649"
+             style="stroke:#5f3dc4;stroke-opacity:1"
+             sodipodi:nodetypes="cccccccssccccccscccccccscccccccccc" />
+        </g>
+        <path
+           style="fill:none;stroke:#5f3dc4;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -66.660141,18.037286 h -9.266387"
+           id="path3129" />
+        <path
+           style="fill:none;stroke:#5f3dc4;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -67.353905,22.748797 h -5.958222"
+           id="path10691" />
+        <path
+           style="fill:none;stroke:#5f3dc4;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -67.917277,27.146881 h -3.132079"
+           id="path10693" />
+        <path
+           style="fill:none;stroke:#5f3dc4;stroke-width:2.11667;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M -68.308886,31.4708 H -68.99317"
+           id="path11003" />
+      </g>
+    </g>
+  </g>
+</svg>
