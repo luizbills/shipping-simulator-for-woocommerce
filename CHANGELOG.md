@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0 - 2023-03-08
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.9.0...2.0.0)
+
+-   Tweak: Removed nonce validation from simulator form.
+-   Tweak: Added CSS to make the simulator input and button appears side by side.
+
 ## 1.9.0 - 2023-03-08
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.8.0...1.9.0)

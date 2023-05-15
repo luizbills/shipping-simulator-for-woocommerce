@@ -31,18 +31,6 @@ final class Request {
 		return 'wc_shipping_simulator';
 	}
 
-	public static function get_nonce_action () {
-		return 'wc_shipping_simulator';
-	}
-
-	public static function get_nonce_arg () {
-		return h::prefix( 'nonce' );
-	}
-
-	public static function get_nonce_field ( $referer = false, $echo = false ) {
-		return wp_nonce_field( self::get_nonce_action(), self::get_nonce_arg(), $referer, $echo );
-	}
-
 	public function handle_ajax_request () {
 		$response = [ 'success' => true ];
 		$status_code = 200;
@@ -51,15 +39,6 @@ final class Request {
 			$response['success'] = false;
 			$response['error'] = 'Method Not Allowed';
 			$status_code = 405;
-			wp_send_json( $response, $status_code );
-		}
-
-		$valid_nonce = check_ajax_referer( self::get_nonce_action(), self::get_nonce_arg(), false );
-
-		if ( ! $valid_nonce ) {
-			$response['success'] = false;
-			$response['error'] = 'Forbidden';
-			$status_code = 403;
 			wp_send_json( $response, $status_code );
 		}
 
@@ -105,10 +84,6 @@ final class Request {
 
 	public function handle_form_request () {
 		if ( 'POST' !== $_SERVER['REQUEST_METHOD'] ) return;
-
-		$nonce_name = self::get_nonce_arg();
-
-		if ( ! isset( $_POST[ $nonce_name ] ) ) return;
 
 		if ( current_user_can( 'manage_options' ) ) {
 			$this->form_notice = __( 'Your browser does not have JavaScript enabled or there are JavaScript errors preventing the shipping simulator from working. Check your browser console or disable other plugins to try to find any conflicts.', 'wc-shipping-simulator' );
