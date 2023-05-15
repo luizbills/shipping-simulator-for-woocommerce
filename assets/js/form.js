@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = $('#wc-shipping-sim-form');
     const input = $('.input-postcode', form);
     const button = $('.button.submit', form);
-    const nonce = $('#' + params.nonce_name, form);
     const results = $('#wc-shipping-sim-results');
     const I = (val) => val;
     const hooks = {
@@ -51,9 +50,9 @@ window.addEventListener('DOMContentLoaded', () => {
             const qty = getQuantity();
 
             const formData = config.hooks.filterFormData(
-                `action=${form.dataset.ajaxAction}&${params.nonce_name}=${
-                    nonce.value
-                }&postcode=${input.value}&product_id=${product.id}&quantity=${
+                `action=${form.dataset.ajaxAction}&postcode=${
+                    input.value
+                }&product_id=${product.id}&quantity=${
                     qty >= 1 ? qty : 1
                 }${variation}`
             );

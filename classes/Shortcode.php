@@ -43,7 +43,6 @@ final class Shortcode {
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'ajax_action' => Request::get_ajax_action(),
-				'nonce' => Request::get_nonce_field(),
 				'product_type' => $prod->get_type(),
 				'product_id' => $prod->get_id(),
 
@@ -84,7 +83,6 @@ final class Shortcode {
 			'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
 			'auto_submit' => true,
 			'timeout' => 60000, // 1 minute in milliseconds
-			'nonce_name' => Request::get_nonce_arg(),
 			'ajax_url' => \admin_url( '/admin-ajax.php' ),
 			'errors' => [
 				'timeout' => esc_html__( 'The server took too long to respond. Please try again.', 'wc-shipping-simulator' ),
