@@ -15,7 +15,14 @@ Allows customers to calculate the shipping rates on the product page in your Woo
 
 Allows customers to calculate the shipping rates on the product page in your WooCommerce store.
 
-***This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet your needs.*
+***This plugin was specially designed for brazilian stores**, but it can be easily adapted (with hooks) to meet other needs.*
+
+= Features =
+
+* Calculate shipping directly from the product page
+* Calculate shipping without having to choose variations (Check it on the plugin settings page)
+* Automatically fills in the customer's address (Check it on the plugin settings page)
+* If you are using some page builder, use the shortcode `[wc_shipping_simulator]`
 
 = Settings =
 
