@@ -110,8 +110,8 @@ final class Shortcode {
 	}
 
 	protected function get_customer_postcode () {
-		$billing_postcode = WC()->customer->get_billing_postcode();
-		$postcode = $billing_postcode ? $billing_postcode : WC()->customer->get_shipping_postcode();
-		return h::sanitize_postcode( $postcode );
+		$postcode = WC()->customer->get_shipping_postcode();
+		$postcode = $postcode ? $postcode : WC()->customer->get_billing_postcode();
+		return $postcode ? h::sanitize_postcode( $postcode ) : '';
 	}
 }
