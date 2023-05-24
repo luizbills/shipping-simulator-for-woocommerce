@@ -27,15 +27,14 @@ final class Shortcode {
 		], $atts, self::get_tag() );
 
 		$atts['product'] = absint( $atts['product'] );
-		$prod = null;
-		if ( 0 === $atts['product'] ) {
-			global $product;
-			$prod = $product;
+		$product = null;
+		if ( $atts['product'] !== 0 ) {
+			$product = wc_get_product( $atts['product'] );
 		} else {
-			$prod = wc_get_product( $atts['product'] );
+			$product = $GLOBALS['product'] ?? null;
 		}
 
-		if ( $prod && h::product_needs_shipping( $prod ) ) {
+		if ( is_object( $product ) && h::product_needs_shipping( $product ) ) {
 			do_action( 'wc_shipping_simulator_shortcode_included', $atts );
 
 			$this->enqueue_scripts();
@@ -43,8 +42,8 @@ final class Shortcode {
 			return h::get_template( 'shipping-simulator-form', [
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'ajax_action' => Request::get_ajax_action(),
-				'product_type' => $prod->get_type(),
-				'product_id' => $prod->get_id(),
+				'product_type' => $product->get_type(),
+				'product_id' => $product->get_id(),
 
 				// customizable template variables
 				'input_placeholder' => apply_filters(
