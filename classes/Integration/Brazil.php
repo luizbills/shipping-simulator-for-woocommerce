@@ -37,7 +37,21 @@ final class Brazil {
 			add_action( 'wc_shipping_simulator_validate_request_data', [ $this, 'validate_request_data' ] );
 
 			add_filter( 'wc_shipping_simulator_request_update_package', [ $this, 'update_package' ], 10, 2 );
+
+			add_filter( 'wc_shipping_simulator_wrapper_css_class', [ $this, 'wrapper_css_class' ] );
+
+			add_filter( 'wc_shipping_simulator_form_input_type', [ $this, 'form_input_type' ] );
 		}
+	}
+
+	public function form_input_type ( $type ) {
+		$type = 'tel';
+		return $type;
+	}
+
+	public function wrapper_css_class ( $css_class ) {
+		$css_class[] = 'inline-inputs';
+		return $css_class;
 	}
 
 	public function prepare_request_data ( $data, $posted ) {
