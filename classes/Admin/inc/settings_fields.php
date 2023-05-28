@@ -81,11 +81,20 @@ return [
 		'css' => 'height: 6rem;',
 	],
 	[
+		'id' => $prefix . 'settings',
+		'type' => 'sectionend',
+	],
+	[
+		'id' => $prefix . 'settings_debug',
+		'type' => 'title',
+		'name' => esc_html__( 'Debug', 'wc-shipping-simulator' ),
+	],
+	[
 		'id'       => $prefix . 'debug_mode',
 		'type'     => 'checkbox',
 		'name'     => esc_html__( 'Debug mode', 'wc-shipping-simulator' ),
 		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
-		'desc_tip' => __( 'Enable debug mode to log your shipping simulations and display helpful tips.', 'wc-shipping-simulator' ),
+		'desc_tip' => __( 'Enable debug mode to log your shipping simulations and display helpful informations in product page.', 'wc-shipping-simulator' ),
 		'default'  => 'no'
 	],
 	[

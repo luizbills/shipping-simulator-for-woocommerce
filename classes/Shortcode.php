@@ -44,6 +44,10 @@ final class Shortcode {
 				'ajax_action' => Request::get_ajax_action(),
 				'product_type' => $product->get_type(),
 				'product_id' => $product->get_id(),
+				'css_class' => implode( ' ', apply_filters(
+					'wc_shipping_simulator_wrapper_css_class',
+					[]
+				) ),
 
 				// customizable template variables
 				'input_placeholder' => apply_filters(
@@ -52,7 +56,7 @@ final class Shortcode {
 				),
 				'input_type' => apply_filters(
 					'wc_shipping_simulator_form_input_type',
-					'tel'
+					'text'
 				),
 				'input_value' => apply_filters(
 					'wc_shipping_simulator_form_input_value',
