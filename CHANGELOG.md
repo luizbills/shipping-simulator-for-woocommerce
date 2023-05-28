@@ -2,7 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.0.0 - 2023-03-08
+## 2.1.0 - 2023-05-28
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.0.0...2.1.0)
+
+-   New filter hook: `wc_shipping_simulator_wrapper_css_class`.
+-   Tweak: improve inline inputs form layout.
+-   Tweak: improve general CSS.
+-   Fix: hide free shipping if requires coupon.
+
+## 2.0.0 - 2023-05-15
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/1.9.0...2.0.0)
 
