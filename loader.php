@@ -12,6 +12,7 @@ return [
 	Integration\Correios::instance(),
 	Integration\Free_Shipping::instance(),
 	Integration\Melhor_Envio::instance(),
+	Integration\Estimating_Delivery::instance(),
 	Shortcode::class,
 	Request::class,
 	Tweaks::class,
