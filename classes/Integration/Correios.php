@@ -30,7 +30,6 @@ final class Correios {
 	public function add_hooks () {
 		if ( $this->is_enabled() ) {
 			add_filter( 'wc_shipping_simulator_package_data', [ $this, 'fill_package_destination' ] );
-			add_filter( 'wc_shipping_simulator_package_rates', [ $this, 'package_rates' ] );
 			add_filter( 'wc_shipping_simulator_results_title_address', [ $this, 'results_title_address' ], 10, 2 );
 		}
 	}
@@ -60,22 +59,6 @@ final class Correios {
 			}
 		}
 		return $package;
-	}
-
-	public function package_rates ( $rates ) {
-		if ( count( $rates ) > 0 ) {
-			foreach ( $rates as $rate ) {
-				if ( h::str_starts_with( $rate->get_method_id(), 'correios-' ) ) {
-					$metadata = $rate->get_meta_data();
-					$delivery = intval( h::get( $metadata['_delivery_forecast'] ) );
-					if ( $delivery > 0 ) {
-						$label = wc_correios_get_estimating_delivery( $rate->get_label(), $delivery );
-						$rate->set_label( $label );
-					}
-				}
-			}
-		}
-		return $rates;
 	}
 
 	public function results_title_address ( $address_string, $data ) {

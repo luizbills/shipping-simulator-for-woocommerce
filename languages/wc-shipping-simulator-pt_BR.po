@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
-"POT-Creation-Date: 2023-05-28T15:01:00-03:00\n"
-"PO-Revision-Date: 2023-05-28 15:02-0300\n"
+"POT-Creation-Date: 2023-06-20T09:51:05-03:00\n"
+"PO-Revision-Date: 2023-06-20 09:52-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -238,6 +238,13 @@ msgstr "MODO DE DEPURAÇÃO ATIVADO"
 #: classes/Debug_Box.php:80
 msgid "This box not appears for your customers."
 msgstr "Essa caixa não aparece para seus clientes."
+
+#. translators: %d: days to delivery
+#: classes/Helpers.php:76
+msgid "Delivery within %d working day"
+msgid_plural "Delivery within %d working days"
+msgstr[0] "Entrega em %d dia útil"
+msgstr[1] "Entrega em %d dias úteis"
 
 #: classes/Request.php:89
 msgid ""

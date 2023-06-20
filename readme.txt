@@ -2,7 +2,7 @@
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil, brasil, calculadora de frete, shipping calculator, product
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 Requires at least: 4.9
 Requires PHP: 7.4
 Tested up to: 6.2
@@ -49,6 +49,14 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 3. Access the Settings to configure the plugin.
 
 == Changelog ==
+
+= v2.2.0 =
+
+* New filter hook: `woocommerce_correios_get_estimating_delivery`.
+* New filter hook: `wc_shipping_simulator_integration_estimating_delivery_enabled`.
+* New filter hook: `wc_shipping_simulator_integration_estimating_delivery_check_rate`.
+* New filter hook: `wc_shipping_simulator_integration_estimating_delivery_metadata`.
+* New filter hook: `wc_shipping_simulator_integration_estimating_delivery_days`.
 
 [See changelog for all versions](https://github.com/luizbills/shipping-simulator-for-woocommerce/blob/main/CHANGELOG.md)
 

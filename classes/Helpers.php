@@ -66,4 +66,16 @@ abstract class Helpers {
 	public static function logger ( $args = [] ) {
 		return \apply_filters( h::prefix( 'get_logger' ), null, $args );
 	}
+
+	public static function get_estimating_delivery ( $days ) {
+		$days = intval( $days );
+		$result = '';
+
+		if ( $days > 0 ) {
+			/* translators: %d: days to delivery */
+			$result = sprintf( _n( 'Delivery within %d working day', 'Delivery within %d working days', $days, 'wc-shipping-simulator' ), $days );
+		} //woocommerce-correios
+
+		return apply_filters( 'woocommerce_correios_get_estimating_delivery', $result, $days );
+	}
 }

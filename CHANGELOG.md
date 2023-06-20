@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.0 - 2023-06-20
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.1.0...2.2.0)
+
+-   New filter hook: `woocommerce_correios_get_estimating_delivery`.
+-   New filter hook: `wc_shipping_simulator_integration_estimating_delivery_enabled`.
+-   New filter hook: `wc_shipping_simulator_integration_estimating_delivery_check_rate`.
+-   New filter hook: `wc_shipping_simulator_integration_estimating_delivery_metadata`.
+-   New filter hook: `wc_shipping_simulator_integration_estimating_delivery_days`.
+
 ## 2.1.0 - 2023-05-28
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.0.0...2.1.0)
