@@ -84,7 +84,7 @@ else
 
 	echo "--------------------------------------------"
 	echo ""
-	echo "Before continuing, confirm that you have done the following ..."
+	echo "Before continuing, confirm that you have done the following:"
 	echo ""
 	read -p " - Added a changelog for "${VERSION}"?"
 	read -p " - Set version in the main file to "${VERSION}"?"
@@ -154,30 +154,26 @@ echo "No syntax errors found"
 
 # REMOVE UNWANTED FILES & FOLDERS
 echo "Removing unwanted files"
-rm -Rf .git
-rm -Rf .github
-rm -Rf tests
-rm -Rf docs
-rm -Rf scripts
-rm -Rf node_modules
+rm -rf .git
+rm -rf .github
+rm -rf tests
+rm -rf docs
+rm -rf scripts
+rm -rf logs
+rm -rf node_modules
+rm -rf wp-build
 rm -f .gitattributes
 rm -f .gitignore
 rm -f .gitmodules
-rm -f .travis.yml
+rm -f .editorconfig
+rm -f .prettierrc.json
 rm -f package-lock.json
+rm -f pnpm-lock.yaml
 rm -f composer.lock
 rm -f phpunit.xml
 rm -f phpunit.xml.dist
 rm -f README.md
-rm -f .coveralls.yml
-rm -f .editorconfig
 rm -f CONTRIBUTING.md
-rm -f .gitpod.dockerfile
-rm -f .gitpod.yml
-rm -f .prettierrc.json
-rm -Rf .phpstan
-rm -Rf phpstan.neon
-rm -Rf pnpm-lock.yaml
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}
@@ -204,7 +200,7 @@ cp -a "${TEMP_GITHUB_REPO}/." trunk/
 
 if [[ -d "trunk/${PLUGIN_ASSETS_DIR}" ]];
 then
-	echo "Checking Plugin icon, banner and screenshots ..."
+	echo "Checking Plugin icon, banner and screenshots..."
 	rm -Rf assets/
 	mv trunk/$PLUGIN_ASSETS_DIR assets
 fi
@@ -262,9 +258,9 @@ fi
 svn commit -m "$COMMIT_MESSAGE" || { echo "Unable to commit."; exit 1; }
 
 # REMOVE THE TEMP DIRS
-echo "CLEANING UP ..."
+echo "CLEANING UP..."
 rm -Rf "$TEMP_GITHUB_REPO"
 rm -Rf "$TEMP_SVN_REPO"
 
 # DONE, BYE
-echo 'RELEASER DONE!'
+echo "RELEASER DONE!"
