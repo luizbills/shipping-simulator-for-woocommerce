@@ -10,8 +10,6 @@
 
 			<input name="postcode" type="<?php echo esc_attr( $input_type ); ?>" value="<?php echo esc_attr( $input_value ) ?>" placeholder="<?php echo esc_attr( $input_placeholder ); ?>" aria-label="<?php echo esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" required>
 
-			<input type="hidden" name="product_id" value="<?php echo esc_attr( $params['product_id'] ); ?>">
-
 			<?php do_action( 'wc_shipping_simulator_form_before_button' ) ?>
 
 			<button type="submit" class="button submit" aria-label="<?php esc_attr_e( 'Calculate shipping', 'wc-shipping-simulator' ); ?>"><?php echo esc_html( $submit_label ); ?></button>

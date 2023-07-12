@@ -39,13 +39,10 @@ window.addEventListener('DOMContentLoaded', () => {
             evt.preventDefault();
             if (config.requesting) return;
 
-            config.requesting = true;
-
             const product = getProduct();
-            if (0 === product.id) {
-                config.requesting = false;
-                return;
-            }
+            if (0 === product.id) return;
+
+            config.requesting = true;
 
             const variation = product.variation_id
                 ? '&variation_id=' + product.variation_id
@@ -182,7 +179,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getQuantity() {
         let value = 1;
-        let input = $('.cart [name="quantity"]');
+        const input = $('.cart [name="quantity"]');
         if (input) {
             value = input.value;
         }
