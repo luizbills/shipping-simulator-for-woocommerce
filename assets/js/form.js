@@ -1,8 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const params = window.wc_shipping_simulator_params || {};
     const $ = (s, root = document) => root.querySelector(s);
     const on = (el, evt, cb) => el.addEventListener(evt, cb);
     const form = $('#wc-shipping-sim-form');
+
+    if (!form) return console.error('Shipping Simulator not found');
+
+    const params = JSON.parse(form.dataset.params);
     const input = $('.input-postcode', form);
     const button = $('.button.submit', form);
     const results = $('#wc-shipping-sim-results');
@@ -36,13 +39,10 @@ window.addEventListener('DOMContentLoaded', () => {
             evt.preventDefault();
             if (config.requesting) return;
 
-            config.requesting = true;
-
             const product = getProduct();
-            if (0 === product.id) {
-                config.requesting = false;
-                return;
-            }
+            if (0 === product.id) return;
+
+            config.requesting = true;
 
             const variation = product.variation_id
                 ? '&variation_id=' + product.variation_id
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const qty = getQuantity();
 
             const formData = config.hooks.filterFormData(
-                `action=${form.dataset.ajaxAction}&postcode=${
+                `action=${params.ajax_action}&postcode=${
                     input.value
                 }&product_id=${product.id}&quantity=${
                     qty >= 1 ? qty : 1
@@ -158,8 +158,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function getProduct() {
         const product = {
-            type: form.dataset.productType,
-            id: form.dataset.productId,
+            type: params.product_type,
+            id: params.product_id,
         };
         if ('variable' === product.type) {
             const variation_id_input = $('.variations_form .variation_id');
@@ -178,11 +178,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function getQuantity() {
-        let value = form.dataset.quantity;
-        let input = $('[name="quantity"]');
+        let value = 1;
+        const input = $('.cart [name="quantity"]');
         if (input) {
             value = input.value;
         }
-        return config.hooks.filterQuantity(value | 0);
+        return config.hooks.filterQuantity(+value || 1);
     }
 });
