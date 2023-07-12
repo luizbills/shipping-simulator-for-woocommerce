@@ -84,7 +84,6 @@ final class Shortcode {
 			'requires_variation' => 'yes' === Settings::get_option( 'requires_variation' ),
 			'auto_submit' => true,
 			'timeout' => 60000, // 1 minute in milliseconds
-			'ajax_url' => \admin_url( '/admin-ajax.php' ),
 			'errors' => [
 				'timeout' => esc_html__( 'The server took too long to respond. Please try again.', 'wc-shipping-simulator' ),
 				'unexpected' => esc_html__( 'An unexpected error occurred. Please refresh the page and try again.', 'wc-shipping-simulator' ),
