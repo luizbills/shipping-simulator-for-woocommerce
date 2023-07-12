@@ -2,7 +2,7 @@
 <section id="wc-shipping-sim" class="<?php echo esc_attr( $css_class ) ?>">
 	<?php do_action( 'wc_shipping_simulator_wrapper_start' ) ?>
 
-	<form method="POST" enctype="application/x-www-form-urlencoded" id="wc-shipping-sim-form" data-ajax-action="<?php echo esc_attr( $ajax_action ) ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>" data-product-type="<?php echo esc_attr( $product_type ); ?>">
+	<form method="POST" enctype="application/x-www-form-urlencoded" id="wc-shipping-sim-form" data-params="<?php echo esc_attr( wp_json_encode( $params ) ) ?>">
 		<?php do_action( 'wc_shipping_simulator_form_start' ) ?>
 
 		<div id="wc-shipping-sim-form-fields">
@@ -10,7 +10,7 @@
 
 			<input name="postcode" type="<?php echo esc_attr( $input_type ); ?>" value="<?php echo esc_attr( $input_value ) ?>" placeholder="<?php echo esc_attr( $input_placeholder ); ?>" aria-label="<?php echo esc_attr( $input_placeholder ); ?>" class="input-text input-postcode" required>
 
-			<input type="hidden" name="product_id" value="<?php echo esc_attr( $product_id ); ?>">
+			<input type="hidden" name="product_id" value="<?php echo esc_attr( $params['product_id'] ); ?>">
 
 			<?php do_action( 'wc_shipping_simulator_form_before_button' ) ?>
 
