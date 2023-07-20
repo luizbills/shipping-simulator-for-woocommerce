@@ -1,14 +1,18 @@
 window.addEventListener('DOMContentLoaded', () => {
     const $ = (s, root = document) => root.querySelector(s);
     const on = (el, evt, cb) => el.addEventListener(evt, cb);
+    
+    const root = $('#wc-shipping-sim');
+
+    if (!root) return console.error('Shipping Simulator not found');
+
     const form = $('#wc-shipping-sim-form');
-
-    if (!form) return console.error('Shipping Simulator not found');
-
     const params = JSON.parse(form.dataset.params);
+
     const input = $('.input-postcode', form);
     const button = $('.button.submit', form);
     const results = $('#wc-shipping-sim-results');
+
     const I = (val) => val;
     const hooks = {
         filterFormData: I,
@@ -141,6 +145,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // Use this global object to manipulate the simulator
     window.wc_shipping_simulator = config;
     document.dispatchEvent(new Event('wc_shipping_simulator:init'));
+
+    root.style.display = config.root_display;
 
     config.hooks.inputMaskHandler && config.hooks.inputMaskHandler();
 
