@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.1 - 2023-07-20
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.0...2.2.1)
+
+-   Add `data-cfasync="false"` attribute on simulator's script tag. This makes the Cloudflare Rocket Loader ignore this tag.
+-   Add `defer` attribute on simulator's script tag.
+-   New filter hook: `wc_shipping_simulator_script_use_defer`.
+-   New filter hook: `wc_shipping_simulator_script_disable_cfrocket`.
+
 ## 2.2.0 - 2023-06-20
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.1.0...2.2.0)

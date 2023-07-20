@@ -11,8 +11,10 @@ final class Shortcode {
 	protected $product;
 
 	public function __start () {
-		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
+
+		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
+		add_filter( 'script_loader_tag', [ $this, 'prepare_script_tag' ], 10, 2 );
 	}
 
 	public function display_results_wrapper () {
@@ -75,6 +77,22 @@ final class Shortcode {
 		return '';
 	}
 
+	public function prepare_script_tag ( $tag, $handle ) {
+		if ( h::prefix( 'form' ) !== $handle) return $tag;
+
+		$atts = [];
+
+		if ( apply_filters( 'wc_shipping_simulator_script_use_defer', true ) ) {
+			$atts[] = 'defer';
+		}
+
+		if ( apply_filters( 'wc_shipping_simulator_script_disable_cfrocket', true ) ) {
+			$atts[] = 'data-cfasync="false"';
+		}
+
+		return str_replace( ' src=', ' ' . implode( ' ', $atts ) . ' src=', $tag );
+	}
+
 	protected function get_script_params () {
 		return [
 			'ajax_url' => \admin_url( 'admin-ajax.php' ),
@@ -91,7 +109,8 @@ final class Shortcode {
 			'postcode_mask' => apply_filters(
 				'wc_shipping_simulator_form_input_mask',
 				'' // no input mask by default
-			)
+			),
+			'root_display' => 'block'
 		];
 	}
 
