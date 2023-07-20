@@ -14,7 +14,7 @@ final class Shortcode {
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
 
 		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
-		add_filter( 'script_loader_tag', [ $this, 'prepare_script_tag' ], 10, 3 );
+		add_filter( 'script_loader_tag', [ $this, 'prepare_script_tag' ], 10, 2 );
 	}
 
 	public function display_results_wrapper () {
@@ -77,7 +77,7 @@ final class Shortcode {
 		return '';
 	}
 
-	public function prepare_script_tag ( $tag, $handle, $src ) {
+	public function prepare_script_tag ( $tag, $handle ) {
 		if ( h::prefix( 'form' ) !== $handle) return $tag;
 
 		$atts = [];
