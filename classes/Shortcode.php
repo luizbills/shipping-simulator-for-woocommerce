@@ -82,6 +82,10 @@ final class Shortcode {
 
 		$atts = [];
 
+		if ( apply_filters( 'wc_shipping_simulator_script_use_defer', true ) ) {
+			$atts[] = 'defer';
+		}
+
 		if ( apply_filters( 'wc_shipping_simulator_script_disable_cfrocket', true ) ) {
 			$atts[] = 'data-cfasync="false"';
 		}
