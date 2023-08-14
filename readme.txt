@@ -2,7 +2,7 @@
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil, brasil, calculadora de frete, shipping calculator, product
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 Requires at least: 4.9
 Requires PHP: 7.4
 Tested up to: 6.2
@@ -50,12 +50,9 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Changelog ==
 
-= v2.2.1 =
+= v2.2.2 =
 
-* Add `data-cfasync="false"` attribute on simulator's script tag. This makes the Cloudflare Rocket Loader ignore this tag.
-* Add `defer` attribute on simulator's script tag.
-* New filter hook: `wc_shipping_simulator_script_use_defer`.
-* New filter hook: `wc_shipping_simulator_script_disable_cfrocket`.
+- Tweak: Remove an uncessary internal check for variations.
 
 [See changelog for all versions](https://github.com/luizbills/shipping-simulator-for-woocommerce/blob/main/CHANGELOG.md)
 
