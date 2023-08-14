@@ -146,11 +146,6 @@ final class Shipping_Package {
 			$this->package
 		);
 
-		h::throw_if(
-			$this->package['has_variations'] && 0 === count( $rates ),
-			esc_attr__( 'Please select some product options before adding this product to your cart.', 'wc-shipping-simulator' )
-		);
-
 		return $rates;
 	}
 

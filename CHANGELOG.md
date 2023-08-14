@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.2 - 2023-08-14
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.1...2.2.2)
+
+- Tweak: Remove an uncessary internal check for variations.
+
 ## 2.2.1 - 2023-07-20
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.0...2.2.1)
