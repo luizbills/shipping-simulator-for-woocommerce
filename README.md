@@ -5,7 +5,8 @@
 [![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/shipping-simulator-for-woocommerce?label=Plugin%20Rating&logo=wordpress&style=flat-square)](https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce/reviews/)
 [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/shipping-simulator-for-woocommerce.svg?label=Downloads&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/shipping-simulator-for-woocommerce/advanced/)
 [![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](/LICENSE)
-[![Github Workflow](https://img.shields.io/github/workflow/status/luizbills/shipping-simulator-for-woocommerce/CI?label=CI&logo=github&style=flat-square)](https://github.com/luizbills/shipping-simulator-for-woocommerce/actions/workflows/main.yml)
+[![Github Workflow](https://img.shields.io/github/actions/workflow/status/luizbills/shipping-simulator-for-woocommerce/main.yml?style=flat-square
+)](https://github.com/luizbills/shipping-simulator-for-woocommerce/actions/workflows/main.yml)
 
 ## Description
 
