@@ -40,10 +40,8 @@ final class Estimating_Delivery {
 		if ( count( $rates ) === 0 ) return $rates;
 
 		foreach ( $rates as $rate ) {
-			if ( ! $this->check_rate( $rate ) ) continue;
-
 			$days = $this->get_delivery_days( $rate );
-			if ( $days <= 0 ) continue;
+			if ( $days < 1 ) continue;
 
 			$label = $rate->get_label();
 			$delivery = h::get_estimating_delivery( $days );
@@ -51,19 +49,6 @@ final class Estimating_Delivery {
 		}
 
 		return $rates;
-	}
-
-	/**
-	 * @param \WC_Shipping_Rate $rate
-	 * @return boolean
-	 */
-	protected function check_rate ( $rate ) {
-		$result = h::str_starts_with( $rate->get_method_id(), 'correios-' );
-		return \apply_filters(
-			'wc_shipping_simulator_integration_estimating_delivery_check_rate',
-			$result,
-			$rate
-		);
 	}
 
 	/**
