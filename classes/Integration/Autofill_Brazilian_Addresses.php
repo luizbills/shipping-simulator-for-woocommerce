@@ -81,11 +81,7 @@ final class Autofill_Brazilian_Addresses {
 				$address['city'],
 				$address['state']
 			];
-			$address_string = '<strong>' . apply_filters(
-				'wc_shipping_simulator_integration_correios_results_address',
-				implode( ', ', array_filter( $parts ) ),
-				$address
-			) . '</strong>';
+			$address_string = '<strong>' . implode( ', ', array_filter( $parts ) ) . '</strong>';
 		}
 		return $address_string;
 	}

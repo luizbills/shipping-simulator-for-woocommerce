@@ -2,11 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.3.0 - 2023-09-19
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.2...2.3.0)
+
+-   Tweak: Now uses the [OpenCEP API](https://opencep.com/) to search addresses.
+-   Tweak: Renamed filter hook from `woocommerce_correios_get_estimating_delivery` to `wc_shipping_simulator_get_estimating_delivery`.
+-   Tweak: Delivery estimating will be shown for other delivery methods.
+-   Fix: street name was not updating.
+
 ## 2.2.2 - 2023-08-14
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.1...2.2.2)
 
-- Tweak: Remove an uncessary internal check for variations.
+-   Tweak: Remove an uncessary internal check for variations.
 
 ## 2.2.1 - 2023-07-20
 
