@@ -35,7 +35,12 @@ abstract class Helpers {
 	}
 
 	public static function sanitize_postcode ( $postcode ) {
-		return preg_replace( '/[^0-9]/', '', $postcode );
+		$sanitized = preg_replace( '/[^0-9]/', '', $postcode );
+		return (string) apply_filters(
+			'wc_shipping_simulator_sanitize_postcode',
+			$sanitized,
+			$postcode
+		);
 	}
 
 	public static function product_needs_shipping ( $product ) {
@@ -63,8 +68,8 @@ abstract class Helpers {
 		);
 	}
 
-	public static function logger ( $args = [] ) {
-		return \apply_filters( h::prefix( 'get_logger' ), null, $args );
+	public static function logger () {
+		return \apply_filters( h::prefix( 'get_logger' ), null );
 	}
 
 	public static function get_estimating_delivery ( $days ) {
@@ -76,6 +81,6 @@ abstract class Helpers {
 			$result = sprintf( _n( 'Delivery within %d working day', 'Delivery within %d working days', $days, 'wc-shipping-simulator' ), $days );
 		} //woocommerce-correios
 
-		return apply_filters( 'woocommerce_correios_get_estimating_delivery', $result, $days );
+		return apply_filters( 'wc_shipping_simulator_get_estimating_delivery', $result, $days );
 	}
 }

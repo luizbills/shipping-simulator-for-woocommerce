@@ -41,6 +41,8 @@ final class Brazil {
 			add_filter( 'wc_shipping_simulator_wrapper_css_class', [ $this, 'wrapper_css_class' ] );
 
 			add_filter( 'wc_shipping_simulator_form_input_type', [ $this, 'form_input_type' ] );
+
+			add_filter( 'wc_shipping_simulator_results_title_address', [ $this, 'results_title_address' ], 10, 2 );
 		}
 	}
 
@@ -98,8 +100,28 @@ final class Brazil {
 		<?php
 	}
 
+	public function results_title_address ( $address_string, $data ) {
+		$country = $data['country'] ?? '';
+		$postcode = $data['postcode'] ?? '';
+
+		if ( 'BR' === $country ) {
+			$state = $this->get_state_by_postcode( $postcode );
+			if ( $state ) {
+				$address_string = '<strong>' . $this->format_cep( $postcode ) . ', ' . $state . ', Brasil</strong>';
+			}
+		}
+
+		return $address_string;
+	}
+
 	protected function is_cep ( $postcode ) {
 		return h::str_length( $postcode ) === 8;
+	}
+
+	protected function format_cep ( $postcode ) {
+		$postcode = h::sanitize_postcode( $postcode );
+		$mask = $this->form_input_mask( null );
+		return $mask ? h::str_mask( $postcode, $mask ) : $postcode;
 	}
 
 	protected function get_state_by_postcode ( $postcode ) {
@@ -128,4 +150,5 @@ final class Brazil {
 
 		return $this->state_list;
 	}
+
 }

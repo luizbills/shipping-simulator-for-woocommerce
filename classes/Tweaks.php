@@ -76,7 +76,7 @@ final class Tweaks {
 
 	public function update_customer_address ( $rates, $package ) {
 		$opt_update_address = (int) Settings::get_option( 'update_address' );
-		$dest = $package['destination'];
+		$dest = $package['destination'] ?? [];
 		$enabled = apply_filters(
 			'wc_shipping_simulator_update_shipping_address',
 			// option enabled AND has shipping options AND has country
@@ -94,6 +94,9 @@ final class Tweaks {
 				h::get( $dest['postcode'] ),
 				h::get( $dest['city'] )
 			);
+			$customer->set_shipping_address_1( $dest['address_1'] ?? '' );
+			$customer->set_shipping_address_2( $dest['address_1'] ?? '' );
+
 			h::logger()->info( 'Customer shipping address updated to ' . wp_json_encode( $dest ) );
 
 			$should_update_billing_address = apply_filters(
@@ -109,6 +112,9 @@ final class Tweaks {
 					h::get( $dest['postcode'] ),
 					h::get( $dest['city'] )
 				);
+				$customer->set_billing_address_1( $dest['address_1'] ?? '' );
+				$customer->set_billing_address_2( $dest['address_2'] ?? '' );
+
 				h::logger()->info( 'Customer billing address updated to ' . wp_json_encode( $dest ) );
 			}
 

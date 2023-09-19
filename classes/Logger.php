@@ -10,7 +10,7 @@ class Logger {
 		add_filter( h::prefix( 'get_logger' ), [ $this, 'get_logger' ] );
 	}
 
-	public function get_logger ( $logger = null, $args = null ) {
+	public function get_logger () {
 		return $this;
 	}
 

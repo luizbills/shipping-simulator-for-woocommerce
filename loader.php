@@ -9,7 +9,7 @@ return [
 	Admin\Plugin_Meta::class,
 	Admin\Notices::class,
 	Integration\Brazil::instance(),
-	Integration\Correios::instance(),
+	Integration\Autofill_Brazilian_Addresses::instance(),
 	Integration\Free_Shipping::instance(),
 	Integration\Melhor_Envio::instance(),
 	Integration\Estimating_Delivery::instance(),

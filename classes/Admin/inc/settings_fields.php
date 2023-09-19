@@ -34,6 +34,14 @@ return [
 		'default'  => 'yes'
 	],
 	[
+		'id'       => $prefix . 'autofill_addresses',
+		'type'     => 'checkbox',
+		'name'     => esc_html__( 'Display full address', 'wc-shipping-simulator' ),
+		'desc'     => esc_html__( 'Enable', 'wc-shipping-simulator' ),
+		'desc_tip' => esc_html__( 'When this option is activated, the street, neighborhood and city will be displayed in the shipping simulator.', 'wc-shipping-simulator' ),
+		'default'  => 'yes'
+	],
+	[
 		'id'       => $prefix . 'update_address',
 		'type'     => 'radio',
 		'name'     => esc_html__( 'Update customer address', 'wc-shipping-simulator' ),
