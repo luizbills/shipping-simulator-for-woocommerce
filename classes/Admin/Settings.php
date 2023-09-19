@@ -14,6 +14,9 @@ final class Settings {
 
 		// plugin action links
 		add_filter( 'plugin_action_links_' . plugin_basename( h::config_get( 'FILE' ) ), [ $this, 'add_plugin_action_links' ] );
+
+		// Maybe enable integration: Autofill Addresses
+		add_filter( 'wc_shipping_simulator_integration_autofill_br_addresses_enabled', [ $this, 'enable_autofill_addresses' ] );
 	}
 
 	public static function get_option ( $key ) {
@@ -76,5 +79,10 @@ final class Settings {
 			],
 			$actions
 		);
+	}
+
+	public function enable_autofill_addresses ( $value ) {
+		$value = 'yes' === self::get_option( 'autofill_addresses' );
+		return $value;
 	}
 }
