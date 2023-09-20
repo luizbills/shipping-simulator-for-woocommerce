@@ -1,4 +1,3 @@
-<?php extract( $args ); ?>
 <section id="wc-shipping-sim" class="<?php echo esc_attr( $css_class ) ?>">
 	<?php do_action( 'wc_shipping_simulator_wrapper_start' ) ?>
 

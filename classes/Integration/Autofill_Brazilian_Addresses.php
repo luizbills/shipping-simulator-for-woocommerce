@@ -48,7 +48,6 @@ final class Autofill_Brazilian_Addresses {
 		$address = $this->get_address( $postcode );
 
 		if ( $address ) {
-			h::log( $package['destination'] );
 			$package['destination'] = [
 				'postcode' => $address['postcode'],
 				'address' => implode(
@@ -57,6 +56,7 @@ final class Autofill_Brazilian_Addresses {
 						$address['address_1'],
 						$address['address_2'],
 						$address['neighborhood'],
+						$address['city'],
 					] )
 				),
 				'address_1' => $address['address_1'],
@@ -65,7 +65,6 @@ final class Autofill_Brazilian_Addresses {
 				'state' => $address['state'],
 				'country' => 'BR',
 			];
-			h::log( $package['destination'] );
 		}
 
 		return $package;

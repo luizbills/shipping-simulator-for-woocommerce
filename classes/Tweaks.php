@@ -95,7 +95,7 @@ final class Tweaks {
 				h::get( $dest['city'] )
 			);
 			$customer->set_shipping_address_1( $dest['address_1'] ?? '' );
-			$customer->set_shipping_address_2( $dest['address_1'] ?? '' );
+			$customer->set_shipping_address_2( $dest['address_2'] ?? '' );
 
 			h::logger()->info( 'Customer shipping address updated to ' . wp_json_encode( $dest ) );
 
