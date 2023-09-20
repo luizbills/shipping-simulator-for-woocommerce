@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.3.1 - 2023-09-20
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.0...2.3.1)
+
+-   Fix: Street name duplicated in customer address.
+
 ## 2.3.0 - 2023-09-19
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.2.2...2.3.0)
