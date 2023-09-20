@@ -2,7 +2,7 @@
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, brazil, brasil, calculadora de frete, shipping calculator, product
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 Requires at least: 4.9
 Requires PHP: 7.4
 Tested up to: 6.2
@@ -50,12 +50,9 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Changelog ==
 
-= v2.3.0 =
+= v2.3.1 =
 
--   Tweak: Now uses the [OpenCEP API](https://opencep.com/) to search addresses.
--   Tweak: Renamed filter hook from `woocommerce_correios_get_estimating_delivery` to `wc_shipping_simulator_get_estimating_delivery`.
--   Tweak: Delivery estimating will be shown for other delivery methods.
--   Fix: street name was not updating.
+-   Fix: Street name duplicated in customer address.
 
 [See changelog for all versions](https://github.com/luizbills/shipping-simulator-for-woocommerce/blob/main/CHANGELOG.md)
 
