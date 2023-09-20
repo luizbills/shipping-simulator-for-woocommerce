@@ -56,6 +56,7 @@ final class Autofill_Brazilian_Addresses {
 						$address['address_1'],
 						$address['address_2'],
 						$address['neighborhood'],
+						$address['city'],
 					] )
 				),
 				'address_1' => $address['address_1'],
