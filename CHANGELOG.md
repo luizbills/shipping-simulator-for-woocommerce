@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.3.2 - 2023-09-22
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.1...2.3.2)
+
+-   Fix: missing translation for some strings.
+
 ## 2.3.1 - 2023-09-20
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.0...2.3.1)

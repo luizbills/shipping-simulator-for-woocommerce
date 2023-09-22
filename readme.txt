@@ -50,6 +50,10 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 
 == Changelog ==
 
+= v2.3.2 =
+
+-   Fix: missing translation for some strings.
+
 = v2.3.1 =
 
 -   Fix: Street name duplicated in customer address.
