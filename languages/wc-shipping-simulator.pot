@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shipping Simulator for WooCommerce 2.3.0\n"
+"Project-Id-Version: Shipping Simulator for WooCommerce 2.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-19T16:16:41-03:00\n"
+"POT-Creation-Date: 2023-09-22T14:38:15-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -266,6 +266,15 @@ msgstr ""
 msgid "Shipping options for"
 msgstr ""
 
+#. translators: %s is replaced with plugin name
+#: core/Dependencies.php:120
+msgid "The %s plugin needs the following dependencies to work:"
+msgstr ""
+
+#: core/Dependencies.php:125
+msgid "Missing"
+msgstr ""
+
 #. translators: %s is replaced with a required plugin name
 #: dependencies.php:12
 msgid "Install and activate the %s plugin."
@@ -299,10 +308,10 @@ msgstr ""
 msgid "Make a review"
 msgstr ""
 
-#: templates/shipping-simulator-form.php:15
+#: templates/shipping-simulator-form.php:14
 msgid "Calculate shipping"
 msgstr ""
 
-#: templates/shipping-simulator-results.php:7
+#: templates/shipping-simulator-results.php:6
 msgid "Avaliable shipping options"
 msgstr ""

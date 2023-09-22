@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Shipping Simulator for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-"
 "simulator-for-woocommerce\n"
-"POT-Creation-Date: 2023-09-19T16:16:41-03:00\n"
-"PO-Revision-Date: 2023-09-19 16:17-0300\n"
+"POT-Creation-Date: 2023-09-22T14:38:15-03:00\n"
+"PO-Revision-Date: 2023-09-22 14:39-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -302,6 +302,15 @@ msgstr "Ocorreu um erro inesperado. Recarregue a página e tente novamente."
 msgid "Shipping options for"
 msgstr "Opções de frete para"
 
+#. translators: %s is replaced with plugin name
+#: core/Dependencies.php:120
+msgid "The %s plugin needs the following dependencies to work:"
+msgstr "O plugin %s requer as seguintes dependências para funcionar:"
+
+#: core/Dependencies.php:125
+msgid "Missing"
+msgstr "Faltando"
+
 #. translators: %s is replaced with a required plugin name
 #: dependencies.php:12
 msgid "Install and activate the %s plugin."
@@ -341,11 +350,11 @@ msgstr ""
 msgid "Make a review"
 msgstr "Faça uma avaliação"
 
-#: templates/shipping-simulator-form.php:15
+#: templates/shipping-simulator-form.php:14
 msgid "Calculate shipping"
 msgstr "Calcular frete"
 
-#: templates/shipping-simulator-results.php:7
+#: templates/shipping-simulator-results.php:6
 msgid "Avaliable shipping options"
 msgstr "Opções de frete disponíveis"
 
