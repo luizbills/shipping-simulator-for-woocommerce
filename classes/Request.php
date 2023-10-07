@@ -25,6 +25,8 @@ final class Request {
 
 		add_action( 'wc_shipping_simulator_shortcode_included', [ $this, 'handle_form_request' ], 10 );
 		add_action( 'wc_shipping_simulator_results_wrapper', [ $this, 'maybe_display_form_notice' ] );
+
+		add_filter( 'wc_shipping_simulator_no_results_notice', [ $this, 'no_results_notice' ] );
 	}
 
 	public static function get_ajax_action () {
@@ -97,6 +99,10 @@ final class Request {
 		return $html;
 	}
 
+	public function no_results_notice ( $notice ) {
+		return $notice ? $notice : Settings::get_option( 'no_results' );
+	}
+
 	protected function calculate_shipping ( $args ) {
 		h::logger()->info( 'Request raw data: ' . wp_json_encode( $args ) );
 
@@ -119,24 +125,14 @@ final class Request {
 		return $package->calculate_shipping();
 	}
 
-	protected function get_results ( $rates, $notice = null ) {
-		$args = [
-			'rates' => [],
-			'notice' => $notice,
-		];
-		if ( ! $notice ) {
-			$args = [
-				'rates' => $rates,
-				'notice' => apply_filters(
-					'wc_shipping_simulator_no_results_notice',
-					Settings::get_option( 'no_results' )
-				),
-				'data' => $this->data,
-			];
-		}
+	protected function get_results ( $rates ) {
+		$template_html = h::get_template( 'shipping-simulator-results', [
+			'rates' => (array) $rates,
+			'data' => $this->data,
+		] );
 		return \apply_filters(
 			'wc_shipping_simulator_request_results_html',
-			h::get_template( 'shipping-simulator-results', $args ),
+			$template_html,
 			$rates,
 			$this->data
 		);

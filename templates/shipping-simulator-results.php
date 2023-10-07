@@ -1,4 +1,14 @@
-<?php use Shipping_Simulator\Helpers as h; ?>
+<?php
+/**
+ * The Template for displaying the shipping simulator results.
+ *
+ * @var \WC_Shipping_Rate[] $rates
+ * @var array $data
+ */
+
+use Shipping_Simulator\Helpers as h;
+
+?>
 
 <?php if ( count( $rates ) > 0 ) : ?>
 	<?php do_action( 'wc_shipping_simulator_results_before', $data ) ?>
@@ -23,6 +33,10 @@
 	</table>
 
 	<?php do_action( 'wc_shipping_simulator_results_after', $data ) ?>
-<?php elseif ( $notice ) : ?>
-	<div class="no-results"><?php echo h::safe_html( $notice ) ?></div>
+<?php else : ?>
+	<?php $no_results_notice = apply_filters( 'wc_shipping_simulator_no_results_notice', '' ); ?>
+
+	<?php if ( $no_results_notice ) : ?>
+		<div class="no-results"><?php echo h::safe_html( $no_results_notice ) ?></div>
+	<?php endif ?>
 <?php endif ?>
