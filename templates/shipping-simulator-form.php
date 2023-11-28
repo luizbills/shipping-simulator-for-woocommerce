@@ -1,3 +1,16 @@
+<?php
+/**
+ * The Template for displaying the shipping simulator form.
+ *
+ * @var string $css_class The wrapper CSS classes
+ * @var string $input_placeholder
+ * @var string $input_type
+ * @var string $input_value
+ * @var string $submit_label
+ * @var array  $params
+ */
+?>
+
 <section id="wc-shipping-sim" class="<?php echo esc_attr( $css_class ) ?>">
 	<?php do_action( 'wc_shipping_simulator_wrapper_start' ) ?>
 
