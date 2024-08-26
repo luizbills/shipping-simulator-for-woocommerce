@@ -54,13 +54,12 @@ final class Autofill_Brazilian_Addresses {
 					', ',
 					array_filter( [
 						$address['address_1'],
-						$address['address_2'],
 						$address['neighborhood'],
 						$address['city'],
 					] )
 				),
 				'address_1' => $address['address_1'],
-				'address_2' => $address['address_2'],
+				'address_2' => '',
 				'city' => $address['city'],
 				'state' => $address['state'],
 				'country' => 'BR',
@@ -76,7 +75,6 @@ final class Autofill_Brazilian_Addresses {
 		if ( $address ) {
 			$parts = [
 				$address['address_1'],
-				$address['address_2'],
 				$address['city'],
 				$address['state']
 			];
@@ -132,7 +130,6 @@ final class Autofill_Brazilian_Addresses {
 		return [
 			'postcode' => h::sanitize_postcode( h::get( $address['cep'], '' ) ),
 			'address_1' => h::get( $address['logradouro'], '' ),
-			'address_2' => str_replace( [ '(', ')' ], '', h::get( $address['complemento'], '' ) ),
 			'neighborhood' => h::get( $address['bairro'], '' ),
 			'city' => h::get( $address['localidade'], '' ),
 			'state' => h::get( $address['uf'], '' ),
