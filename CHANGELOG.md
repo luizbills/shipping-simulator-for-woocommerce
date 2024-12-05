@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.3.5 - 2024-12-05
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.4...2.3.5)
+
+-   Tested up to WordPress 6.7
+-   Minor fixes
+
 ## 2.3.4 - 2024-08-26
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.3...2.3.4)

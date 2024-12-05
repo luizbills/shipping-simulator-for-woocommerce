@@ -3,7 +3,7 @@
 Plugin Name: Shipping Simulator for WooCommerce
 Plugin URI: https://github.com/luizbills/shipping-simulator-for-woocommerce
 Description: Allows your customers to calculate the shipping rates on the product page
-Version: 2.3.4
+Version: 2.3.5
 Requires at least: 4.9
 Requires PHP: 7.4
 Author: Luiz Bills
@@ -27,43 +27,29 @@ along with Shipping Simulator for WooCommerce. If not, see http://www.gnu.org/li
 */
 
 // prevents your PHP files from being executed via direct browser access
-defined( 'WPINC' ) || exit( 1 );
+defined( 'ABSPATH' ) || exit( 1 );
 
-load_plugin_textdomain( 'wc-shipping-simulator', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-try {
-	// Check PHP Version
-	$php_expected = '7.4';
-	$php_current = PHP_VERSION;
-	if ( version_compare( $php_current, $php_expected, '<' ) ) {
-		throw new Error(
-			sprintf(
-				// translators: the %s are PHP versions
-				esc_html__( "This plugin requires PHP version %s or later (your server PHP version is %s)", 'wc-shipping-simulator' ),
-				$php_expected, esc_html( $php_current )
-			)
-		);
-	}
-
-	// check composer autoload
-	$composer_autoload = __DIR__ . '/vendor/autoload.php';
-	if ( ! file_exists( $composer_autoload ) ) {
-		throw new Error( $composer_autoload . ' does not exist' );
-	}
-	include_once $composer_autoload;
-} catch ( Throwable $e ) {
-	return add_action( 'admin_notices', function () use ( $e ) {
+$autoload = __DIR__ . '/vendor/autoload.php';
+if ( file_exists( $autoload ) ) {
+	// composer autoload
+	include $autoload;
+	// start the plugin
+	\Shipping_Simulator\Core\Main::start_plugin( __FILE__ );
+} else {
+	// display a error
+	return add_action( 'admin_notices', function () {
+		// error visible only for admin users
 		if ( ! current_user_can( 'install_plugins' ) ) return;
+
+		include_once ABSPATH . '/wp-includes/functions.php';
 		list( $plugin_name ) = get_file_data( __FILE__, [ 'plugin name' ] );
+
 		$message = sprintf(
-			/* translators: %1$s is replaced with plugin name and %2$s with an error message */
-			esc_html__( 'Error on %1$s plugin activation: %2$s', 'wc-shipping-simulator' ),
+			'Error on %1$s plugin activation: %2$s',
 			'<strong>' . esc_html( $plugin_name ) . '</strong>',
-			'<br><code>' . esc_html( $e->getMessage() ) . '</code>'
+			'<code>Autoload file not found</code><br><em>Download this plugin from WordPress repository and avoid downloading from other sources (Github, etc).</em>'
 		);
+
 		echo "<div class='notice notice-error'><p>$message</p></div>";
 	} );
 }
-
-// run the plugin
-\Shipping_Simulator\Core\Main::start_plugin( __FILE__ );

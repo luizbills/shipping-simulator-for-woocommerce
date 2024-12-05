@@ -1,6 +1,6 @@
 /vendor/
 /node_modules/
-/wp-build/
+*.zip
 *.log
 *.min.js
 *.min.css

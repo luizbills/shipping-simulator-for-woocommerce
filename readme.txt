@@ -1,11 +1,11 @@
 === Shipping Simulator for WooCommerce ===
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
-Tags: woocommerce, shipping simulator, simulador de frete, brazil, calculadora de frete
-Stable tag: 2.3.4
+Tags: woocommerce, shipping simulator, simulador de frete, brazil, brasil, calculadora de frete, shipping calculator, product
+Stable tag: 2.3.5
 Requires at least: 4.9
 Requires PHP: 7.4
-Tested up to: 6.6
+Tested up to: 6.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,11 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 3. Access the Settings to configure the plugin.
 
 == Changelog ==
+
+= v2.3.5 =
+
+-   Tested up to WordPress 6.7
+-   Minor fixes.
 
 = v2.3.4 =
 
