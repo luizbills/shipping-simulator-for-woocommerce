@@ -1,15 +1,15 @@
-# Copyright (C) 2023 Luiz Bills
+# Copyright (C) 2024 Luiz Bills
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shipping Simulator for WooCommerce 2.3.1\n"
+"Project-Id-Version: Shipping Simulator for WooCommerce 2.3.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shipping-simulator-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-22T14:38:15-03:00\n"
+"POT-Creation-Date: 2024-12-06T12:51:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-shipping-simulator\n"
@@ -234,15 +234,15 @@ msgstr[1] ""
 msgid "Your browser does not have JavaScript enabled or there are JavaScript errors preventing the shipping simulator from working. Check your browser console or disable other plugins to try to find any conflicts."
 msgstr ""
 
-#: classes/Request.php:165
+#: classes/Request.php:161
 msgid "The postcode is required."
 msgstr ""
 
-#: classes/Request.php:170
+#: classes/Request.php:166
 msgid "Invalid product."
 msgstr ""
 
-#: classes/Request.php:174
+#: classes/Request.php:170
 msgid "The quantity must be greater than zero."
 msgstr ""
 
@@ -267,11 +267,11 @@ msgid "Shipping options for"
 msgstr ""
 
 #. translators: %s is replaced with plugin name
-#: core/Dependencies.php:120
+#: core/Dependencies.php:146
 msgid "The %s plugin needs the following dependencies to work:"
 msgstr ""
 
-#: core/Dependencies.php:125
+#: core/Dependencies.php:151
 msgid "Missing"
 msgstr ""
 
@@ -287,16 +287,6 @@ msgstr ""
 
 #: dependencies.php:24
 msgid "Shipping location(s)"
-msgstr ""
-
-#. translators: the %s are PHP versions
-#: main.php:41
-msgid "This plugin requires PHP version %s or later (your server PHP version is %s)"
-msgstr ""
-
-#. translators: %1$s is replaced with plugin name and %2$s with an error message
-#: main.php:59
-msgid "Error on %1$s plugin activation: %2$s"
 msgstr ""
 
 #. translators: %1$s is replaced with plugin name and %2$s with 5 stars

@@ -23,6 +23,12 @@
 	</table>
 
 	<?php do_action( 'wc_shipping_simulator_results_after', $data ) ?>
-<?php elseif ( $notice ) : ?>
-	<div class="no-results"><?php echo h::safe_html( $notice ) ?></div>
+<?php else : ?>
+	<?php do_action( 'wc_shipping_simulator_no_results_before', $data ) ?>
+
+	<?php if ( $notice ) : ?>
+		<div class="no-results"><?php echo h::safe_html( $notice ) ?></div>
+	<?php endif; ?>
+
+	<?php do_action( 'wc_shipping_simulator_no_results_after', $data ) ?>
 <?php endif ?>

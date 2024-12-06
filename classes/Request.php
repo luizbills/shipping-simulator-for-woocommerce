@@ -107,6 +107,8 @@ final class Request {
 		h::logger()->info( 'Request data validated!');
 
 		$package = new Shipping_Package();
+
+		/** @var Shipping_Package */
 		$package = apply_filters( 'wc_shipping_simulator_request_update_package', $package, $this->data );
 
 		if ( ! $package->ready ) {
@@ -119,21 +121,15 @@ final class Request {
 		return $package->calculate_shipping();
 	}
 
-	protected function get_results ( $rates, $notice = null ) {
+	protected function get_results ( $rates ) {
 		$args = [
-			'rates' => [],
-			'notice' => $notice,
+			'rates' => $rates,
+			'notice' => apply_filters(
+				'wc_shipping_simulator_no_results_notice',
+				Settings::get_option( 'no_results' )
+			),
+			'data' => $this->data,
 		];
-		if ( ! $notice ) {
-			$args = [
-				'rates' => $rates,
-				'notice' => apply_filters(
-					'wc_shipping_simulator_no_results_notice',
-					Settings::get_option( 'no_results' )
-				),
-				'data' => $this->data,
-			];
-		}
 		return \apply_filters(
 			'wc_shipping_simulator_request_results_html',
 			h::get_template( 'shipping-simulator-results', $args ),
