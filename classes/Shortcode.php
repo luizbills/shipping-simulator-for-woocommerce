@@ -116,10 +116,13 @@ final class Shortcode {
 		return str_replace( ' src=', ' ' . implode( ' ', $atts ) . ' src=', $tag );
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function get_customer_postcode () {
 		$woo = WC();
 
-		if ( $woo->customer ) {
+		if ( null !== $woo->customer ) {
 			$billing_postcode = $woo->customer->get_billing_postcode();
 			$postcode = $billing_postcode ? $billing_postcode : $woo->customer->get_shipping_postcode();
 			return h::sanitize_postcode( $postcode );
