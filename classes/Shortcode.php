@@ -13,8 +13,13 @@ final class Shortcode {
 	public function __start () {
 		add_shortcode( self::get_tag(), [ $this, 'render_shortcode' ] );
 
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts'] );
 		add_action( 'wc_shipping_simulator_form_after', [ $this, 'display_results_wrapper' ] );
 		add_filter( 'script_loader_tag', [ $this, 'prepare_script_tag' ], 10, 2 );
+	}
+
+	public static function get_tag () {
+		return 'wc_shipping_simulator';
 	}
 
 	public function display_results_wrapper () {
@@ -22,9 +27,7 @@ final class Shortcode {
 		echo apply_filters( 'wc_shipping_simulator_results_wrapper', $wrapper );
 	}
 
-	public static function get_tag () {
-		return 'wc_shipping_simulator';
-	}
+
 
 	public function render_shortcode ( $atts ) {
 		$atts = shortcode_atts( [
@@ -43,8 +46,6 @@ final class Shortcode {
 			$this->product = $product;
 
 			do_action( 'wc_shipping_simulator_shortcode_included', $atts );
-
-			$this->enqueue_scripts();
 
 			return h::get_template( 'shipping-simulator-form', [
 				'css_class' => implode( ' ', apply_filters(
@@ -77,8 +78,30 @@ final class Shortcode {
 		return '';
 	}
 
+	public function enqueue_scripts () {
+		$suffix = h::get_defined( 'SCRIPT_DEBUG' ) ? '' : '.min';
+		$plugin_version = h::config_get( 'VERSION' );
+
+		wp_enqueue_script(
+			h::prefix( 'form' ),
+			h::plugin_url( "assets/js/form$suffix.js" ),
+			[],
+			$plugin_version,
+			(bool) apply_filters( 'wc_shipping_simulator_script_in_footer', false )
+		);
+
+		wp_enqueue_style(
+			h::prefix( 'form' ),
+			h::plugin_url( "assets/css/form$suffix.css" ),
+			[],
+			$plugin_version
+		);
+
+		do_action( 'wc_shipping_simulator_shortcode_enqueue_scripts' );
+	}
+
 	public function prepare_script_tag ( $tag, $handle ) {
-		if ( h::prefix( 'form' ) !== $handle) return $tag;
+		if ( h::prefix( 'form' ) !== $handle ) return $tag;
 
 		$atts = [];
 
@@ -91,6 +114,18 @@ final class Shortcode {
 		}
 
 		return str_replace( ' src=', ' ' . implode( ' ', $atts ) . ' src=', $tag );
+	}
+
+	protected function get_customer_postcode () {
+		$woo = WC();
+
+		if ( $woo->customer ) {
+			$billing_postcode = $woo->customer->get_billing_postcode();
+			$postcode = $billing_postcode ? $billing_postcode : $woo->customer->get_shipping_postcode();
+			return h::sanitize_postcode( $postcode );
+		}
+
+		return '';
 	}
 
 	protected function get_script_params () {
@@ -112,33 +147,5 @@ final class Shortcode {
 			),
 			'root_display' => 'block'
 		];
-	}
-
-	protected function enqueue_scripts () {
-		$suffix = h::get_defined( 'SCRIPT_DEBUG' ) ? '' : '.min';
-		$plugin_version = h::config_get( 'VERSION' );
-
-		wp_enqueue_script(
-			h::prefix( 'form' ),
-			h::plugin_url( "assets/js/form$suffix.js" ),
-			[],
-			$plugin_version,
-			true
-		);
-
-		wp_enqueue_style(
-			h::prefix( 'form' ),
-			h::plugin_url( "assets/css/form$suffix.css" ),
-			[],
-			$plugin_version
-		);
-
-		do_action( 'wc_shipping_simulator_shortcode_enqueue_scripts' );
-	}
-
-	protected function get_customer_postcode () {
-		$billing_postcode = WC()->customer->get_billing_postcode();
-		$postcode = $billing_postcode ? $billing_postcode : WC()->customer->get_shipping_postcode();
-		return h::sanitize_postcode( $postcode );
 	}
 }

@@ -1,10 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
     const $ = (s, root = document) => root.querySelector(s);
     const on = (el, evt, cb) => el.addEventListener(evt, cb);
-    
-    const root = $('#wc-shipping-sim');
 
-    if (!root) return console.error('Shipping Simulator not found');
+    const root = $('#wc-shipping-sim');
+    if (!root) return;
 
     const form = $('#wc-shipping-sim-form');
     const params = JSON.parse(form.dataset.params);

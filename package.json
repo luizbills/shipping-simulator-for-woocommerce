@@ -1,12 +1,12 @@
 {
     "name": "shipping-simulator-for-woocommerce",
     "scripts": {
-        "start": "./scripts/bundle --watch",
+        "dev": "esbuild assets/js/form.js --outfile=assets/js/form.min.js --bundle --minify --watch",
         "build": "./scripts/bundle",
         "postinstall": "npm run build"
     },
     "devDependencies": {
         "cli-color": "^2.0.3",
-        "esbuild": "^0.14.54"
+        "esbuild": "^0.25.2"
     }
 }
