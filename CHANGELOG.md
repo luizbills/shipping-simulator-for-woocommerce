@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.4.1
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.4.0...2.4.1)
+
+-   Misc: Fix w.org plugin tags
+
 ## 2.4.0 - 2025-04-08
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.3.5...2.4.0)
