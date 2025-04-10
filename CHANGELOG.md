@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.4.1
+## 2.4.2 - 2025-04-10
+
+[Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.4.1...2.4.2)
+
+-   Fix: wierd bug since WooCommerce 9.8
+
+## 2.4.1 - 2025-04-09
 
 [Source code changes](https://github.com/luizbills/shipping-simulator-for-woocommerce/compare/2.4.0...2.4.1)
 

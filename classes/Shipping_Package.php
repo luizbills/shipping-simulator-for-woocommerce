@@ -120,8 +120,12 @@ final class Shipping_Package {
 		// sync the cart contents and totals
 		$this->modify_cart_info();
 
+		add_filter( 'option_woocommerce_shipping_cost_requires_address', '__return_false', 999 );
+
 		// calculate
 		$result = $wc_shipping->calculate_shipping( [ $this->package ] );
+
+		remove_filter( 'option_woocommerce_shipping_cost_requires_address', '__return_false', 999 );
 
 		// restore the cart contents and totals
 		$this->restore_cart_info();
