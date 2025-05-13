@@ -2,7 +2,7 @@
 Contributors: luizbills
 Donate link: https://luizpb.com/donate/
 Tags: woocommerce, shipping simulator, simulador de frete, calculadora de frete, product page
-Stable tag: 2.4.2
+Stable tag: 2.5.0
 Requires at least: 4.9
 Requires PHP: 7.4
 Tested up to: 6.8
@@ -49,6 +49,10 @@ You can ask for help in the [Plugin Forum](https://wordpress.org/support/plugin/
 3. Access the Settings to configure the plugin.
 
 == Changelog ==
+
+= 2.5.0 =
+
+-   Allow multiples shipping simulators in a same page. This must fix some sites with elementor.
 
 = 2.4.2 =
 
