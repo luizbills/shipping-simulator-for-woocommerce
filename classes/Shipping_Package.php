@@ -43,7 +43,7 @@ final class Shipping_Package {
 		$variation = $variation_id ? wc_get_product_variation_attributes( $variation_id ) : [];
 		$quantity = max( $quantity, 1 );
 		$product = wc_get_product( $variation_id ? $variation_id : $product_id );
-		$price = $product->get_price();
+		$price = (float) $product->get_price();
 		$is_virtual = $product->is_virtual();
 
 		if ( apply_filters( 'wc_shipping_simulator_package_validate_virtual_product', true ) ) {
